@@ -20,6 +20,7 @@ if ($annunciC == true) {
     echo '<th>Data Acquisto</th>';
     echo '<th>Prezzo</th>';
     echo '<th>Metodo di Pagamento</th>';
+    echo '<th>Valuta Venditore</th>';
     echo '</tr>';
     echo '</thead>';
     echo '<tbody>';
@@ -31,6 +32,7 @@ if ($annunciC == true) {
         echo '<td>'.$row["DataAcquisto"].'</td>';
         echo '<td>'.$row["Prezzo"].' €</td>';
         echo '<td>'.$row["MetodoPagamento"].'</td>';
+        echo '<td><button>Valuta</button></td>';
 
         echo'</tr>';
         $i+=1;
