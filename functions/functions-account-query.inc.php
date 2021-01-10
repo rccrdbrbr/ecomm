@@ -191,7 +191,8 @@ function CambiaPwd($conn, $utente, $pwdv, $pwdn1, $pwdn2)
 
 function fetchAnnunciP($conn, $cf)
 {
-    $sql= "SELECT * FROM annuncio a NATURAL JOIN stati s  WHERE a.CF= ? ;";
+    $sql= "SELECT * FROM annuncio a NATURAL JOIN stati s
+    LEFT OUTER JOIN acquista ac ON ac.ID_A=a.ID_A WHERE a.CF= ? ;";
     $stmt= mysqli_stmt_init($conn);
     if (!mysqli_stmt_prepare($stmt, $sql)) {
         header("location: ../my-account.php?error=stmtfailed");
@@ -214,7 +215,8 @@ function fetchAnnunciP($conn, $cf)
 
 function fetchAnnunciC($conn, $cf)
 {
-    $sql= "SELECT * FROM annuncio an JOIN acquista ac ON an.ID_A=ac.ID_A WHERE ac.CF= ? ;";
+    $sql= "SELECT an.ID_A, an.CF, an.Nome_A, ac.DataAcquisto, an.Prezzo, ac.MetodoPagamento
+    FROM annuncio an JOIN acquista ac ON an.ID_A=ac.ID_A WHERE ac.CF= ? ;";
     $stmt= mysqli_stmt_init($conn);
     if (!mysqli_stmt_prepare($stmt, $sql)) {
         header("location: ../my-account.php?error=stmtfailed");

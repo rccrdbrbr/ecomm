@@ -32,7 +32,9 @@ if ($annunciC == true) {
         echo '<td>'.$row["DataAcquisto"].'</td>';
         echo '<td>'.$row["Prezzo"].' €</td>';
         echo '<td>'.$row["MetodoPagamento"].'</td>';
-        echo '<td><a href="backend/valutazione.inc.php"><button class="btn" type="submit" name="valuta">Valuta</button></a></td>';
+        echo '<form action="evaluation.php?id='.$row["ID_A"].'&cf='.$row["CF"].'" method="post">';
+        echo '<td><button class="btn" type="submit" name="valutaV" formmethod="post">Valuta</button></td>';
+        echo '</form>';
 
         echo'</tr>';
         $i+=1;
