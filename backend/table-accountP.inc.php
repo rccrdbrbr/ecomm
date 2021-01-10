@@ -21,6 +21,7 @@
       echo '<th>Data Scadenza</th>';
       echo '<th>Prezzo</th>';
       echo '<th>Stato</th>';
+      echo '<th>Valuta Acquirente</th>';
       echo '</tr>';
       echo '</thead>';
       echo '<tbody>';
@@ -32,6 +33,11 @@
           echo    '<td>'.$row["DataFine"].'</td>';
           echo    '<td>'.$row["Prezzo"].' €</td>';
           echo    '<td>'.$row["Stato"].'</td>';
+          if ($row["Stato"] === "venduto") {
+              echo '<td><a href="backend/valutazione.inc.php"><button class="btn" type="submit" name="valuta">Valuta</button></a></td>';
+          } else {
+              echo    '<td></td>';
+          }
 
           echo'</tr>';
           $i+=1;
