@@ -231,12 +231,6 @@ if (isset($_GET["id"]) and isset($_GET["cf"])) {
         echo "<li>Categoria: ".$annuncio["Categoria"]."</li>";
         echo "<li>Sottocategoria ".$annuncio["Sottocategoria"]."</li>";
         echo "<li>Questo prodotto è osservato da ".$nOsserva["n"]." persone</li>"; ?>
-        <!-- SELECT a.ID_A, p.ID_P, COUNT(*) as c
-        FROM annuncio a LEFT OUTER JOIN osserva o ON a.ID_A=o.ID_A JOIN stati s ON s.ID_A=a.ID_A JOIN prodotto p on p.ID_P=a.ID_P
-        WHERE s.Stato='in vendita'
-        GROUP BY a.ID_A, p.ID_P-->
-
-
                                         </ul>
                                     </div>
 
