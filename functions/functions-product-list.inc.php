@@ -3,6 +3,13 @@
 function fetchAnnunci($conn)
 {
     $sql= "SELECT * FROM annuncio a JOIN prodotto p ON a.ID_P=p.ID_P JOIN stati s ON s.ID_A=a.ID_A WHERE Stato='in vendita' ORDER BY DataPubb DESC;";
+    /*
+    SELECT a.ID_A, p.ID_P, count(*)
+    FROM annuncio a JOIN prodotto p ON a.ID_P=p.ID_P JOIN stati s ON s.ID_A=a.ID_A JOIN osserva o ON o.ID_A=a.ID_A
+    WHERE Stato='in vendita'
+    GROUP BY a.ID_A, p.ID_P
+    ORDER BY DataPubb DESC
+    */
     $stmt= mysqli_stmt_init($conn);
     if (!mysqli_stmt_prepare($stmt, $sql)) {
         header("location: ../product-list.php?error=stmtfailed");
