@@ -25,6 +25,28 @@ function fetchAnnunci($conn)
     mysqli_stmt_close($stmt);
 }
 
+function fetchAnnunciRecenti($conn)
+{
+    $sql= "SELECT * FROM annuncio a JOIN prodotto p ON a.ID_P=p.ID_P JOIN stati s ON s.ID_A=a.ID_A
+    WHERE Stato='in vendita' ORDER BY DataPubb DESC;";
+    $stmt= mysqli_stmt_init($conn);
+    if (!mysqli_stmt_prepare($stmt, $sql)) {
+        header("location: ../product-list.php?error=stmtfailed");
+        exit();
+    }
+    mysqli_stmt_execute($stmt);
+
+    $dati= mysqli_stmt_get_result($stmt);
+    if (mysqli_num_rows($dati) > 0) {
+        return $dati;
+    } else {
+        $risultato=false;
+        return $risultato;
+    }
+
+    mysqli_stmt_close($stmt);
+}
+
 function contaOsserva($conn, $ida)
 {
     $sql= "SELECT COUNT(*) as n FROM osserva o WHERE o.ID_A= ? ;";

@@ -3,7 +3,7 @@
 require_once 'dbh.inc.php';
 require_once 'functions/functions-product-list.inc.php';
 
-$annunci = fetchAnnunci($conn);
+$annunci = fetchAnnunciRecenti($conn);
 while ($row = mysqli_fetch_assoc($annunci)) {
     echo '<div class="col-lg-3">';
     echo '<div class="product-item">';
