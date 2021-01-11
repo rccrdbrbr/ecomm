@@ -27,9 +27,14 @@ if (isset($_SESSION["CF"])) {
                         <div class="nav flex-column nav-pills" role="tablist" aria-orientation="vertical">
                             <a class="nav-link active" id="dashboard-nav" data-toggle="pill" href="#dashboard-tab" role="tab"><i class="fa fa-tachometer-alt"></i>Bacheca</a>
                             <a class="nav-link" id="orders-nav" data-toggle="pill" href="#orders-tab" role="tab"><i class="fa fa-shopping-bag"></i>Annunci</a>
-                            <a class="nav-link" id="address-nav" data-toggle="pill" href="#address-tab" role="tab"><i class="fa fa-map-marker-alt"></i>Indirizzo</a>
+                            <a class="nav-link" id="address-nav" data-toggle="pill" href="#address-tab" role="tab"><i class="fa fa-map-marker-alt"></i>Indirizzo e Valutazioni</a>
+                            <?php if (!isset($_GET["cf"])) { ?>
                             <a class="nav-link" id="account-nav" data-toggle="pill" href="#account-tab" role="tab"><i class="fa fa-user"></i>Modifica Account</a>
+                            <?php   } ?>
+                            <?php if (!isset($_GET["cf"])) { ?>
+
                             <a class="nav-link" href="backend/logout.inc.php"><i class="fa fa-sign-out-alt"></i>Logout</a>
+                            <?php   } ?>
                         </div>
                     </div>
                     <div class="col-md-9">
@@ -72,14 +77,27 @@ if (isset($_SESSION["CF"])) {
                             </div>
 
                             <div class="tab-pane fade" id="address-tab" role="tabpanel" aria-labelledby="address-nav">
-                                <h4>Indirizzo</h4>
                                 <div class="row">
-                                    <div class="col-md-6">
+                                    <div class="col-md-12">
+                                      <h4>Indirizzo</h4>
                                       <?php
                                         echo '<p>Via ' .$utente["Via"]. ', ' .$utente["Città"]. ', ' .$utente["Prov"].', ' .$utente["Reg"].'</p>'; ?>
 
 
-                                        <button class="btn" href="#account-tab">Modifica Indirizzo</button>
+                                      <!--  <button class="btn" href="#account-tab">Modifica Indirizzo</button> -->
+                                    </div>
+                                    <div class="col-md-6">
+                                      <h4>Numero valutazioni</h4>
+                                      <?php echo $valutazioni["n"]; ?>
+                                    </div>
+                                    <div class="col-md-6">
+                                      <h4>Media Valutazioni</h4>
+                                      <div class="col-md-12">
+                                        <?php echo "Puntualità ".$valutazioni["p"]; ?>
+                                      </div>
+                                      <div class="col-md-12">
+                                        <?php echo "Serietà ".$valutazioni["s"]; ?>
+                                      </div>
                                     </div>
 
                                 </div>
