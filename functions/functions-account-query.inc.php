@@ -278,6 +278,30 @@ function fetchValutazione($conn, $cf1, $cf2, $ida)
     mysqli_stmt_close($stmt);
 }
 
+function fetchValutazioni($conn, $cf)
+{
+    $sql= "SELECT count(*) n, avg(Serietà) s, avg(Puntualità) p  FROM valutazione WHERE CF2=? ;";
+    $stmt= mysqli_stmt_init($conn);
+    if (!mysqli_stmt_prepare($stmt, $sql)) {
+        header("location: ../index.php?error=stmtfailed1");
+        exit();
+    }
+
+    mysqli_stmt_bind_param($stmt, "s", $cf);
+    mysqli_stmt_execute($stmt);
+
+    $dati= mysqli_stmt_get_result($stmt);
+
+    if ($riga= mysqli_fetch_assoc($dati)) {
+        return $riga;
+    } else {
+        $risultato= false;
+        return $risultato;
+    }
+
+    mysqli_stmt_close($stmt);
+}
+
 function valuta($conn, $cf1, $cf2, $ida, $serieta, $puntualita)
 {
     $sql= "INSERT INTO valutazione (CF1, CF2, ID_A, Serietà, Puntualità) VALUES (?, ?, ?, ?, ?);";

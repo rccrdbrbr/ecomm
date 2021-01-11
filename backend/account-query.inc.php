@@ -7,4 +7,5 @@
     require_once 'functions/functions-account-query.inc.php';
 
     $utente = fetchInfo($conn, $cf);
+    $valutazioni = fetchValutazioni($conn, $cf);
     //$annunciP = fetchAnnunci($conn, $cf);

@@ -121,9 +121,11 @@ include "common/header.php"
                                     <i class="fa fa-star"></i>
                                     <i class="fa fa-star"></i>
                                 </div>
+                                <!--
                                 <p>
                                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vitae nunc eget leo finibus luctus et vitae lorem
                                 </p>
+                              -->
                             </div>
                         </div>
                     </div>
@@ -142,9 +144,11 @@ include "common/header.php"
                                     <i class="fa fa-star"></i>
                                     <i class="fa fa-star"></i>
                                 </div>
+                                <!--
                                 <p>
                                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vitae nunc eget leo finibus luctus et vitae lorem
                                 </p>
+                              -->
                             </div>
                         </div>
                     </div>
@@ -163,9 +167,11 @@ include "common/header.php"
                                     <i class="fa fa-star"></i>
                                     <i class="fa fa-star"></i>
                                 </div>
+                                <!--
                                 <p>
                                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vitae nunc eget leo finibus luctus et vitae lorem
                                 </p>
+                              -->
                             </div>
                         </div>
                     </div>
