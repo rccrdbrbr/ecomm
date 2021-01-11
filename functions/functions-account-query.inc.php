@@ -277,23 +277,7 @@ function fetchValutazione($conn, $cf1, $cf2, $ida)
 
     mysqli_stmt_close($stmt);
 }
-/*
-function aggiornaValutaV($conn, $cf1, $cf2, $ida, $serieta, $puntualita)
-{
-    $sql= "UPDATE valutazione SET SerietàV = ? PuntualitàV = ?  WHERE CF1 = ? AND CF2 = ? AND ID_A = ? ;";
-    $stmt= mysqli_stmt_init($conn);
-    if (!mysqli_stmt_prepare($stmt, $sql)) {
-        header("location: ../index.php?error=stmtfailed2");
-        exit();
-    }
 
-    mysqli_stmt_bind_param($stmt, "ssssi", $serieta, $puntualita, $cf1, $cf2, $ida);
-    mysqli_stmt_execute($stmt);
-    mysqli_stmt_close($stmt);
-
-    header("location: ../my-account.php?error=none");
-}
-*/
 function valuta($conn, $cf1, $cf2, $ida, $serieta, $puntualita)
 {
     $sql= "INSERT INTO valutazione (CF1, CF2, ID_A, Serietà, Puntualità) VALUES (?, ?, ?, ?, ?);";
@@ -309,36 +293,3 @@ function valuta($conn, $cf1, $cf2, $ida, $serieta, $puntualita)
     mysqli_stmt_close($stmt);
     header("location: ../my-account.php?error=none");
 }
-/*
-function aggiornaValutaA($conn, $cf1, $cf2, $ida, $serieta, $puntualita)
-{
-    $sql= "UPDATE valutazione SET SerietàA = ? PuntualitàA = ?  WHERE CF1 = ? AND CF2 = ? AND ID_A = ? ;";
-    $stmt= mysqli_stmt_init($conn);
-    if (!mysqli_stmt_prepare($stmt, $sql)) {
-        header("location: ../index.php?error=stmtfailed2");
-        exit();
-    }
-
-    mysqli_stmt_bind_param($stmt, "ssssi", $serieta, $puntualita, $cf1, $cf2, $ida);
-    mysqli_stmt_execute($stmt);
-    mysqli_stmt_close($stmt);
-
-    header("location: ../my-account.php?error=none");
-}
-
-function valutaA($conn, $cf1, $cf2, $ida, $serieta, $puntualita)
-{
-    $sql= "INSERT INTO valutazione (CF1, CF2, ID_A, SerietàA, PuntualitàA) VALUES (?, ?, ?, ?, ?);";
-    $stmt= mysqli_stmt_init($conn);
-    if (!mysqli_stmt_prepare($stmt, $sql)) {
-        header("location: ../index.php?error=stmtfailed3");
-        exit();
-    }
-
-    mysqli_stmt_bind_param($stmt, "ssiii", $cf1, $cf2, $ida, $serieta, $puntualita);
-    mysqli_stmt_execute($stmt);
-
-    mysqli_stmt_close($stmt);
-    header("location: ../my-account.php?error=none");
-}
-*/
