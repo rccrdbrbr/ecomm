@@ -253,3 +253,59 @@ function eliminaAccount($conn, $utente)
 
     header("location: ../backend/logout.inc.php");
 }
+
+function fetchValutazione($conn, $cf1, $cf2, $ida)
+{
+    $sql= "SELECT * FROM valutazione WHERE CF1 = ? AND CF2=? AND ID_A=? ;";
+    $stmt= mysqli_stmt_init($conn);
+    if (!mysqli_stmt_prepare($stmt, $sql)) {
+        header("location: ../index.php?error=stmtfailed1");
+        exit();
+    }
+
+    mysqli_stmt_bind_param($stmt, "ssi", $cf1, $cf2, $ida);
+    mysqli_stmt_execute($stmt);
+
+    $dati= mysqli_stmt_get_result($stmt);
+
+    if ($riga= mysqli_fetch_assoc($dati)) {
+        return $riga;
+    } else {
+        $risultato= false;
+        return $risultato;
+    }
+
+    mysqli_stmt_close($stmt);
+}
+
+function aggiornaValutaV($conn, $cf1, $cf2, $ida, $serieta, $puntualita)
+{
+    $sql= "UPDATE valutazione SET SerietàV = ? PuntualitàV = ?  WHERE CF1 = ? AND CF2 = ? AND ID_A = ? ;";
+    $stmt= mysqli_stmt_init($conn);
+    if (!mysqli_stmt_prepare($stmt, $sql)) {
+        header("location: ../index.php?error=stmtfailed2");
+        exit();
+    }
+
+    mysqli_stmt_bind_param($stmt, "ssssi", $serieta, $puntualita, $cf1, $cf2, $ida);
+    mysqli_stmt_execute($stmt);
+    mysqli_stmt_close($stmt);
+
+    header("location: ../my-account.php?error=none");
+}
+
+function valutaV($conn, $cf1, $cf2, $ida, $serieta, $puntualita)
+{
+    $sql= "INSERT INTO osserva (CF1, CF2, ID_A, SerietàV, PuntualitàV) VALUES (?, ?, ?, ?, ?);";
+    $stmt= mysqli_stmt_init($conn);
+    if (!mysqli_stmt_prepare($stmt, $sql)) {
+        header("location: ../index.php?error=stmtfailed3");
+        exit();
+    }
+
+    mysqli_stmt_bind_param($stmt, "ssiss", $cf1, $cf2, $ida, $serieta, $puntualita);
+    mysqli_stmt_execute($stmt);
+
+    mysqli_stmt_close($stmt);
+    header("location: ../my-account.php?error=none");
+}

@@ -19,7 +19,7 @@ if (isset($_SESSION["CF"])) {
      </div>
  </div>
  <!-- Breadcrumb End -->
- <form action="backend/create-ad.inc.php" method="post">
+ <form action="backend/evaluation.inc.php?cf=<?php echo $_GET["id"]; ?>&id=<?php echo $_GET["cf"]; ?>" method="post">
  <div class="login">
      <div class="container-fluid">
          <div class="row">
@@ -30,15 +30,34 @@ if (isset($_SESSION["CF"])) {
                            <h3>Valutazione Utente</h3>
                          </div>
                          <div class="col-md-6">
-                             <label>Prezzo</label>
-                             <input class="form-control" type="number" name="price" placeholder="Prezzo">
+                           <label>Serietà</label>
+                           <select name="serieta" class="form-control">
+                             <option value="#" selected="selected">---</option>
+                             <option value="1">1</option>
+                             <option value="2">2</option>
+                             <option value="3">3</option>
+                             <option value="4">4</option>
+                             <option value="5">5</option>
+                           </select>
                          </div>
                          <div class="col-md-6">
-                             <label>Comune</label>
-                             <input class="form-control" type="text" name= "com" placeholder="Comune">
+                           <label>Puntualità</label>
+                           <select name="puntualita" class="form-control">
+                             <option value="#" selected="selected">---</option>
+                             <option value="1">1</option>
+                             <option value="2">2</option>
+                             <option value="3">3</option>
+                             <option value="4">4</option>
+                             <option value="5">5</option>
+                           </select>
                          </div>
                          <div class="col-md-12">
-                             <button class="btn" type="submit" name="submit">Invia</button>
+                           <?php if (isset($_POST["valutaV"])) { ?>
+                             <button class="btn" type="submit" name="submitV">Invia</button>
+
+                           <?php } else { ?>
+                             <button class="btn" type="submit" name="submitA">Invia</button>
+                           <?php } ?>
                          </div>
                       </div>
                   </div>
