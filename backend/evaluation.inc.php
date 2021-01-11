@@ -12,13 +12,15 @@ $puntualita = $_POST["puntualita"];
 require_once 'dbh.inc.php';
 require_once '../functions/functions-account-query.inc.php';
 
-if (isset($_POST["submitV"])) {
-    if (fetchValutazione($conn, $cf1, $cf2, $ida) == true) {
-        aggiornaValutaV($conn, $cf1, $cf2, $ida, $serieta, $puntualita);
+//echo $cf1." "; echo $cf2." "; echo $ida." "; echo $serieta. " "; echo $puntualita;
+
+
+if (isset($_POST["submit"])) {
+    if (fetchValutazione($conn, $cf1, $cf2, $ida) === false) {
+        valuta($conn, $cf1, $cf2, $ida, $serieta, $puntualita);
     } else {
-        valutaV($conn, $cf1, $cf2, $ida, $serieta, $puntualita);
+        header("location: ../my-account.php?error=notunique");
     }
-} elseif (isset($_POST["submitA"])) {
 } else {
     header("location: ../index.php");
 }

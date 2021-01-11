@@ -35,7 +35,7 @@
           echo    '<td>'.$row["Stato"].'</td>';
           if ($row["Stato"] === "venduto") {
               echo '<form action="evaluation.php?id='.$row["ID_A"].'&cf='.$row["CF"].'" method="post">';
-              echo '<td><button class="btn" type="submit" name="valutaA" formmethod="post">Valuta</button></td>';
+              echo '<td><button class="btn" type="submit" name="valuta" formmethod="post">Valuta</button></td>';
               echo '</form>';
           //echo '<td><a href="evaluation.php?id='.$row["ID_A"].'&cf='.$row["CF"].'"><button class="btn" type="submit" name="valutaA">Valuta</button></a></td>';
           } else {
