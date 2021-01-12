@@ -3,7 +3,7 @@ if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 
-if (isset($_SESSION["CF"])) {
+if (isset($_SESSION["CF"]) || isset($_GET["cf"])) {
     include "common/header.php";
     include "backend/account-query.inc.php"; ?>
 
@@ -30,9 +30,6 @@ if (isset($_SESSION["CF"])) {
                             <a class="nav-link" id="address-nav" data-toggle="pill" href="#address-tab" role="tab"><i class="fa fa-map-marker-alt"></i>Indirizzo e Valutazioni</a>
                             <?php if (!isset($_GET["cf"])) { ?>
                             <a class="nav-link" id="account-nav" data-toggle="pill" href="#account-tab" role="tab"><i class="fa fa-user"></i>Modifica Account</a>
-                            <?php   } ?>
-                            <?php if (!isset($_GET["cf"])) { ?>
-
                             <a class="nav-link" href="backend/logout.inc.php"><i class="fa fa-sign-out-alt"></i>Logout</a>
                             <?php   } ?>
                         </div>
@@ -59,13 +56,14 @@ if (isset($_SESSION["CF"])) {
     echo '<h5>' .$utente["Tipo"].'</h5>';
 
     echo '</div>'; ?>
-
+                                <?php if (!isset($_GET["cf"])) { ?>
                                <form action="backend/my-account.inc.php" method="post">
                                  <div class="col-md-12">
                                    <br>
                                      <button class="btn" type="submit" name="delete">Elimina Account</button>
                                  </div>
                                </form>
+                               <?php   } ?>
                             </div>
                             <div class="tab-pane fade" id="orders-tab" role="tabpanel" aria-labelledby="orders-nav">
 

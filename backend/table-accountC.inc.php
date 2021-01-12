@@ -1,6 +1,10 @@
 <?php
 
-  $cf= $_SESSION["CF"];
+if (isset($_GET["cf"])) {
+    $cf=$_GET["cf"];
+} else {
+    $cf= $_SESSION["CF"];
+}
 
   require_once 'dbh.inc.php';
   require_once 'functions/functions-account-query.inc.php';
@@ -20,7 +24,9 @@ if ($annunciC == true) {
     echo '<th>Data Acquisto</th>';
     echo '<th>Prezzo</th>';
     echo '<th>Metodo di Pagamento</th>';
-    echo '<th>Valuta Venditore</th>';
+    if (!isset($_GET["cf"])) {
+        echo '<th>Valuta Venditore</th>';
+    }
     echo '</tr>';
     echo '</thead>';
     echo '<tbody>';
@@ -32,10 +38,11 @@ if ($annunciC == true) {
         echo '<td>'.$row["DataAcquisto"].'</td>';
         echo '<td>'.$row["Prezzo"].' €</td>';
         echo '<td>'.$row["MetodoPagamento"].'</td>';
-        echo '<form action="evaluation.php?id='.$row["ID_A"].'&cf='.$row["CF"].'" method="post">';
-        echo '<td><button class="btn" type="submit" name="valuta" formmethod="post">Valuta</button></td>';
-        echo '</form>';
-
+        if (!isset($_GET["cf"])) {
+            echo '<form action="evaluation.php?id='.$row["ID_A"].'&cf='.$row["CF"].'" method="post">';
+            echo '<td><button class="btn" type="submit" name="valuta" formmethod="post">Valuta</button></td>';
+            echo '</form>';
+        }
         echo'</tr>';
         $i+=1;
     }
