@@ -302,6 +302,31 @@ function fetchValutazioni($conn, $cf)
     mysqli_stmt_close($stmt);
 }
 
+function fetchTopVenditori($conn)
+{
+    $sql= 'SELECT v.CF2, count(*) n, avg(Serietà) s, avg(Puntualità) p, u.Nome, u.Cognome, u.Tipo, u.Immagine, 
+    (avg(Serietà)+avg(Puntualità))/2 av, ((avg(Serietà)+avg(Puntualità))/2)*count(*) val
+    FROM valutazione v JOIN utente u ON v.CF2=u.CF
+    WHERE u.Tipo= "Venditore" OR u.Tipo= "Venditore e Acquirente" GROUP BY v.CF2 ORDER BY val DESC ;';
+    $stmt= mysqli_stmt_init($conn);
+    if (!mysqli_stmt_prepare($stmt, $sql)) {
+        header("location: ../my-account.php?error=stmtfailed");
+        exit();
+    }
+
+    mysqli_stmt_execute($stmt);
+
+    $dati= mysqli_stmt_get_result($stmt);
+    if (mysqli_num_rows($dati) > 0) {
+        return $dati;
+    } else {
+        $risultato=false;
+        return $risultato;
+    }
+
+    mysqli_stmt_close($stmt);
+}
+
 function valuta($conn, $cf1, $cf2, $ida, $serieta, $puntualita)
 {
     $sql= "INSERT INTO valutazione (CF1, CF2, ID_A, Serietà, Puntualità) VALUES (?, ?, ?, ?, ?);";

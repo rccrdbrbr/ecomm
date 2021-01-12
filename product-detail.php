@@ -83,7 +83,8 @@ if (isset($_GET["id"]) and isset($_GET["cf"])) {
                                         <h4>Specifiche</h4>
                                         <ul>
                                           <?php
-                                          echo "<li>Prodotto ".$annuncio["Tipo"]."</li>";
+                                          echo "<li>Venditore: <a href='my-account.php?cf=".$annuncio["CF"]."'>".$annuncio["Nome"]. " " .$annuncio["Cognome"]." </a></li>";
+        echo "<li>Prodotto ".$annuncio["Tipo"]."</li>";
         if ($annuncio["Tipo"] === "nuovo") {
             if ($annuncio["PeriodoAssicurazione"] > 0) {
                 echo "<li>L'assicurazione dura ancora ".$annuncio["PeriodoAssicurazione"]." mesi</li>";

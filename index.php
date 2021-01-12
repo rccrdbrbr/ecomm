@@ -15,13 +15,8 @@ include "common/header.php"
                                     <a class="nav-link" href="index.php"><i class="fa fa-home"></i>Home</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#"><i class="fa fa-shopping-bag"></i>Più venduti</a>
+                                    <a class="nav-link" href="product-list.php"><i class="fa fa-shopping-bag"></i>Più Visti</a>
                                 </li>
-                                <!--
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#"><i class="fa fa-plus-square"></i>Nuovi Arrivi</a>
-                                </li>
-                              -->
                                 <li class="nav-item">
                                     <a class="nav-link" href="product-list.php?category=Elettrodomestici"><i class="fa fa-microchip"></i>Elettrodomestici</a>
                                 </li>
@@ -106,75 +101,7 @@ include "common/header.php"
         <div class="review">
             <div class="container-fluid">
                 <div class="row align-items-center review-slider normal-slider">
-                    <div class="col-md-6">
-                        <div class="review-slider-item">
-                            <div class="review-img">
-                                <img src="img/review-1.jpg" alt="Image">
-                            </div>
-                            <div class="review-text">
-                                <h2>Nome Acquirente</h2>
-                                <h3>Professione</h3>
-                                <div class="ratting">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                </div>
-                                <!--
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vitae nunc eget leo finibus luctus et vitae lorem
-                                </p>
-                              -->
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="review-slider-item">
-                            <div class="review-img">
-                                <img src="img/review-2.jpg" alt="Image">
-                            </div>
-                            <div class="review-text">
-                                <h2>Nome Acquirente</h2>
-                                <h3>Professione</h3>
-                                <div class="ratting">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                </div>
-                                <!--
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vitae nunc eget leo finibus luctus et vitae lorem
-                                </p>
-                              -->
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="review-slider-item">
-                            <div class="review-img">
-                                <img src="img/review-3.jpg" alt="Image">
-                            </div>
-                            <div class="review-text">
-                                <h2>Nome Acquirente</h2>
-                                <h3>Professione</h3>
-                                <div class="ratting">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                </div>
-                                <!--
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vitae nunc eget leo finibus luctus et vitae lorem
-                                </p>
-                              -->
-                            </div>
-                        </div>
-                    </div>
+                  <?php include "backend/evaluations-slider.inc.php"; ?>      
                 </div>
             </div>
         </div>
