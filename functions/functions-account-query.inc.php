@@ -304,7 +304,7 @@ function fetchValutazioni($conn, $cf)
 
 function fetchTopVenditori($conn)
 {
-    $sql= 'SELECT v.CF2, count(*) n, avg(Serietà) s, avg(Puntualità) p, u.Nome, u.Cognome, u.Tipo, u.Immagine, 
+    $sql= 'SELECT v.CF2, count(*) n, avg(Serietà) s, avg(Puntualità) p, u.Nome, u.Cognome, u.Tipo, u.Immagine,
     (avg(Serietà)+avg(Puntualità))/2 av, ((avg(Serietà)+avg(Puntualità))/2)*count(*) val
     FROM valutazione v JOIN utente u ON v.CF2=u.CF
     WHERE u.Tipo= "Venditore" OR u.Tipo= "Venditore e Acquirente" GROUP BY v.CF2 ORDER BY val DESC ;';
@@ -341,4 +341,15 @@ function valuta($conn, $cf1, $cf2, $ida, $serieta, $puntualita)
 
     mysqli_stmt_close($stmt);
     header("location: ../my-account.php?error=none");
+}
+
+function erroreValutazione($serieta, $puntualita)
+{
+    $risultato;
+    if ($serieta=="#" || $puntualita=="#") {
+        $risultato=true;
+    } else {
+        $risultato=false;
+    }
+    return $risultato;
 }
