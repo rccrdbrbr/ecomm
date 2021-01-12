@@ -30,6 +30,9 @@ if (isset($_SESSION["CF"])) {
                                 <nav class="navbar bg-light">
                                     <ul class="navbar-nav">
                                       <li class="nav-item">
+                                          <a class="nav-link" href="wishlist.php"><i class="fa fa-home"></i>Tutti</a>
+                                      </li>
+                                      <li class="nav-item">
                                           <a class="nav-link" href="wishlist.php?category=Elettrodomestici"><i class="fa fa-microchip"></i>Elettrodomestici</a>
                                       </li>
                                       <li class="nav-item">
