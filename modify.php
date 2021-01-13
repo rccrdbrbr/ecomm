@@ -19,7 +19,7 @@ if (isset($_SESSION["CF"])) {
         </div>
     </div>
 
-    <form action="backend/evaluation.inc.php?cf=<?php echo $_GET["cf"]; ?>&id=<?php echo $_GET["id"]; ?>" method="post">
+    <form action="backend/modify.inc.php?id=<?php echo $_GET["id"]; ?>" method="post">
     <div class="login">
         <div class="container-fluid">
             <div class="row">
@@ -30,13 +30,13 @@ if (isset($_SESSION["CF"])) {
                               <h3>Modifica annuncio</h3>
                             </div>
                             <div class="col-md-4">
-                              <input type="image" name="img" src="img/<?php echo $annuncio["Foto"]; ?>" accept="image/jpeg/image/png/image/gif" width="300" height="300">
+                              <img  name="img" src="img/<?php echo $annuncio["Foto"]; ?>"  width="300" height="300">
                             </div>
                             <div class="col-md-4">
                               <label>Nome Annuncio</label>
-                              <input class="form-control" type="text" name="nomeA" placeholder="Nome annuncio" value="<?php echo $annuncio["Nome_A"]; ?>">
+                              <input class="form-control" type="text" name="nameA" placeholder="Nome annuncio" value="<?php echo $annuncio["Nome_A"]; ?>">
                               <label>Prezzo</label>
-                              <input class="form-control" type="number" name="prezzo" placeholder="Prezzo" value="<?php echo $annuncio["Prezzo"]; ?>">
+                              <input class="form-control" type="number" name="price" placeholder="Prezzo" value="<?php echo $annuncio["Prezzo"]; ?>">
                               <label>Categoria</label>
                               <select name="category" class="form-control">
                                 <option value="#" selected="selected">--- </option>
@@ -54,29 +54,33 @@ if (isset($_SESSION["CF"])) {
                             </div>
                             <div class="col-md-4">
                               <label>Nome Prodotto</label>
-                              <input class="form-control" type="text" name="nomeP" placeholder="Nome prodotto" value="<?php echo $annuncio["Nome_P"]; ?>">
+                              <input class="form-control" type="text" name="nameP" placeholder="Nome prodotto" value="<?php echo $annuncio["Nome_P"]; ?>">
                               <label>Tipo</label>
                               <input class="form-control" type="text" name="type" placeholder="Tipo" value="<?php echo $annuncio["TipoP"]; ?>" disabled>
                               <label>Sottocategoria</label>
-                              <input class="form-control" type="text" name="subcategory" placeholder="Sottocategoria" value="<?php echo $annuncio["Sottocategoria"]; ?>">
+                              <input class="form-control" type="text" name="subcategory" placeholder="Sottocategoria" value="<?php echo $annuncio["Sottocategoria"]; ?>" >
                               <label>Area Geografica</label>
                               <input class="form-control" type="text" name="area" placeholder="Area Geografica se la Visibilità è Ristretta" value="<?php echo $annuncio["AreaGeo"]; ?>">
                             </div>
                             <div class="col-md-4">
                                 <label>Comune</label>
-                                <input class="form-control" type="text" name= "com" placeholder="Comune">
+                                <input class="form-control" type="text" name= "com" placeholder="Comune" value="<?php echo $annuncio["Comune"]; ?>" >
                             </div>
                             <div class="col-md-4">
                                 <label>Provincia</label>
-                                <input class="form-control" type="text" name="prov" placeholder="Provincia">
+                                <input class="form-control" type="text" name="prov" placeholder="Provincia" value="<?php echo $annuncio["Provincia"]; ?>" >
                             </div>
                             <div class="col-md-4">
                                 <label>Regione</label>
-                                <input class="form-control" type="text" name="reg" placeholder="Regione">
+                                <input class="form-control" type="text" name="reg" placeholder="Regione" value="<?php echo $annuncio["Regione"]; ?>" >
+                            </div>
+                            <div class="col-md-12">
+                                <label>Immagine</label>
+                                <input class="form-control" type="file" name="imgN" accept="image/jpeg/image/png/image/gif" >
                             </div>
                             <div class="col-md-12">
                                 <label>Descrizione Prodotto</label>
-                                <textarea class="form-control" rows="5" name="description" placeholder="Descrizione"></textarea>
+                                <textarea class="form-control" rows="5" name="description" placeholder="Descrizione" ></textarea>
                             </div>
                             <div class="col-md-12">
                               <button class="btn" type="submit" name="modify">Modifica</button>

@@ -198,3 +198,19 @@ function CreaStato($conn)
     mysqli_stmt_close($stmt);
     header("location: ../create-ad.php?error=none");
 }
+
+function CambiaImmagine($conn, $ida, $img)
+{
+    if ($img!== "") {
+        $sql= "UPDATE prodotto SET Foto = ? WHERE ID_P = (SELECT ID_P FROM annuncio WHERE ID_A = ? ) ;";
+        $stmt= mysqli_stmt_init($conn);
+        if (!mysqli_stmt_prepare($stmt, $sql)) {
+            header("location: ../my-account.php?error=stmtfailed");
+            exit();
+        }
+
+        mysqli_stmt_bind_param($stmt, "ss", $img, $ida);
+        mysqli_stmt_execute($stmt);
+        mysqli_stmt_close($stmt);
+    }
+}
