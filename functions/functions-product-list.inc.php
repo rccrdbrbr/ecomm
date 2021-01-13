@@ -73,7 +73,7 @@ function contaOsserva($conn, $ida)
 
 function fetchAnnuncio($conn, $ida)
 {
-    $sql= "SELECT * FROM annuncio a JOIN prodotto p ON a.ID_P=p.ID_P JOIN utente u ON a.CF=u.CF WHERE a.ID_A= ? ;";
+    $sql= "SELECT *, p.Tipo AS TipoP FROM annuncio a JOIN prodotto p ON a.ID_P=p.ID_P JOIN utente u ON a.CF=u.CF WHERE a.ID_A= ? ;";
     $stmt= mysqli_stmt_init($conn);
     if (!mysqli_stmt_prepare($stmt, $sql)) {
         header("location: ../product-list.php?error=stmtfailed");
