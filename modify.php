@@ -5,10 +5,10 @@ if (session_status() == PHP_SESSION_NONE) {
 }
 
 if (isset($_SESSION["CF"])) {
-    //if (isset($_GET["id"]) && isset($_GET["cf"])) {
-    //if (isset($_POST["modifica"])) {
-    include "common/header.php";
-    include "backend/product-detail.inc.php"; ?>
+    if (isset($_GET["id"]) && isset($_GET["cf"])) {
+        if (isset($_POST["modifica"])) {
+            include "common/header.php";
+            include "backend/product-detail.inc.php"; ?>
 
     <div class="breadcrumb-wrap">
         <div class="container-fluid">
@@ -96,6 +96,8 @@ if (isset($_SESSION["CF"])) {
 
 <?php
 include "common/footer.php";
+        }
+    }
 } else {
     header("location: index.php");
 } ?>
