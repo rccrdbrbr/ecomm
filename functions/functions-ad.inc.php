@@ -199,18 +199,6 @@ function CreaStato($conn)
     header("location: ../create-ad.php?error=none");
 }
 
-function modifyVuoto($nameA, $nameP, $price, $category, $visibility, $com, $prov, $reg)
-{
-    $risultato;
-    if (empty($nameA) || empty($nameP) || empty($price) || $category="#" || empty($visibility)
-  ||empty($com) ||empty($prov) ||empty($reg)) {
-        $risultato=true;
-    } else {
-        $risultato=false;
-    }
-    return $risultato;
-}
-
 function cambiaImmagine($conn, $ida, $img)
 {
     if ($img!== "") {
@@ -271,4 +259,18 @@ function cambiaDescrizione($conn, $ida, $description)
         mysqli_stmt_execute($stmt);
         mysqli_stmt_close($stmt);
     }
+}
+
+function eliminaAnnuncio($conn, $ida)
+{
+    $sql= "UPDATE stati SET Stato = 'eliminato' WHERE ID_A =  ?  ;";
+    $stmt= mysqli_stmt_init($conn);
+    if (!mysqli_stmt_prepare($stmt, $sql)) {
+        header("location: ../my-account.php?error=stmtfailed");
+        exit();
+    }
+
+    mysqli_stmt_bind_param($stmt, "i", $ida);
+    mysqli_stmt_execute($stmt);
+    mysqli_stmt_close($stmt);
 }

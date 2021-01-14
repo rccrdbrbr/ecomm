@@ -44,13 +44,12 @@ if (isset($_GET["cf"])) {
                   echo '<form action="evaluation.php?id='.$row["ID_A"].'&cf='.$row["CF"].'" method="post">';
                   echo '<td><button class="btn" type="submit" name="valuta" formmethod="post">Valuta</button></td>';
                   echo '</form>';
-              //echo '<td><a href="evaluation.php?id='.$row["ID_A"].'&cf='.$row["CF"].'"><button class="btn" type="submit" name="valutaA">Valuta</button></a></td>';
               } elseif ($row["Stato"] === "in vendita") {
                   echo '<form action="modify.php?id='.$row["ID_A"].'&cf='.$row["CF"].'" method="post">';
-                  echo '<td><button class="btn" type="submit" name="modifica" formmethod="post">Modifica</button></td>';
+                  echo '<td><button class="btn" type="submit" name="modifica" >Modifica</button></td>';
                   echo '</form>';
               } else {
-                  echo    '<td></td>';
+                  echo '<td></td>';
               }
           }
 

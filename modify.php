@@ -4,9 +4,9 @@ if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 
-if (isset($_SESSION["CF"])) {
-    if (isset($_GET["id"]) && isset($_GET["cf"])) {
-        if (isset($_POST["modifica"])) {
+//if (isset($_SESSION["CF"])) {
+    //if (isset($_GET["id"]) && isset($_GET["cf"])) {
+        //if (isset($_POST["modifica"])) {
             include "common/header.php";
             include "backend/product-detail.inc.php"; ?>
 
@@ -82,8 +82,11 @@ if (isset($_SESSION["CF"])) {
                                 <label>Descrizione Prodotto</label>
                                 <textarea class="form-control" rows="5" name="description" placeholder="Descrizione" ></textarea>
                             </div>
-                            <div class="col-md-12">
+                            <div class="col-md-2">
                               <button class="btn" type="submit" name="modify">Modifica</button>
+                            </div>
+                            <div class="col-md-2">
+                              <button class="btn" type="submit" name="delete">Elimina</button>
                             </div>
                          </div>
                      </div>
@@ -95,9 +98,13 @@ if (isset($_SESSION["CF"])) {
 
 
 <?php
-include "common/footer.php";
+include "common/footer.php";/*
+        } else {
+            header("location: index.php");
         }
+    } else {
+        header("location: index.php");
     }
 } else {
-    header("location: index.php");
-} ?>
+header("location: index.php");
+} */?>

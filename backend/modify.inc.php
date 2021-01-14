@@ -21,11 +21,6 @@ if (isset($_POST["modify"])) {
     require_once 'dbh.inc.php';
     require_once '../functions/functions-ad.inc.php';
 
-    if (modifyVuoto($nameA, $nameP, $price, $category, $visibility, $com, $prov, $reg)!== false) {
-        header("location: ../my-account.php?error=emptyinput");
-        exit();
-    }
-
     if (AreaVuota($visibility, $area)!== false) {
         header("location: ../my-account.php?error=missinginput");
         exit();
@@ -44,6 +39,17 @@ if (isset($_POST["modify"])) {
     if (isset($_POST["description"])) {
         cambiaDescrizione($conn, $ida, $description);
     }
+
+    header("location: ../my-account.php?error=none");
+} elseif (isset($_POST["delete"])) {
+    $ida=$_GET["id"];
+
+    require_once 'dbh.inc.php';
+    require_once '../functions/functions-ad.inc.php';
+
+    eliminaAnnuncio($conn, $ida);
+    
+    header("location: ../my-account.php?error=none");
 } else {
     header("location: my-account.php");
 }
