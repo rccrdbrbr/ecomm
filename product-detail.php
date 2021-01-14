@@ -4,9 +4,8 @@ if (session_status() == PHP_SESSION_NONE) {
 }
 
 if (isset($_GET["id"]) and isset($_GET["cf"])) {
-    if (!isset($_SESSION["CF"]) || $_GET["cf"] !== $_SESSION["CF"]) {
-        include "backend/product-detail.inc.php";
-        include "common/header.php"; ?>
+    include "backend/product-detail.inc.php";
+    include "common/header.php"; ?>
         <!-- Breadcrumb Start -->
         <div class="breadcrumb-wrap">
             <div class="container-fluid">
@@ -84,18 +83,18 @@ if (isset($_GET["id"]) and isset($_GET["cf"])) {
                                         <ul>
                                           <?php
                                           echo "<li>Venditore: <a href='my-account.php?cf=".$annuncio["CF"]."'>".$annuncio["Nome"]. " " .$annuncio["Cognome"]." </a></li>";
-        echo "<li>Prodotto ".$annuncio["Tipo"]."</li>";
-        if ($annuncio["Tipo"] === "nuovo") {
-            if ($annuncio["PeriodoAssicurazione"] > 0) {
-                echo "<li>L'assicurazione dura ancora ".$annuncio["PeriodoAssicurazione"]." mesi</li>";
-            }
-        } else {
-            echo "<li>Stato di usura: ".$annuncio["StatoUsura"]."</li>";
-            echo "<li>Il prodotto è stato usato per ".$annuncio["PeriodoUtilizzo"]." mesi</li>";
+    echo "<li>Prodotto ".$annuncio["Tipo"]."</li>";
+    if ($annuncio["Tipo"] === "nuovo") {
+        if ($annuncio["PeriodoAssicurazione"] > 0) {
+            echo "<li>L'assicurazione dura ancora ".$annuncio["PeriodoAssicurazione"]." mesi</li>";
         }
-        echo "<li>Categoria: ".$annuncio["Categoria"]."</li>";
-        echo "<li>Sottocategoria ".$annuncio["Sottocategoria"]."</li>";
-        echo "<li>Questo prodotto è osservato da ".$nOsserva["n"]." persone</li>"; ?>
+    } else {
+        echo "<li>Stato di usura: ".$annuncio["StatoUsura"]."</li>";
+        echo "<li>Il prodotto è stato usato per ".$annuncio["PeriodoUtilizzo"]." mesi</li>";
+    }
+    echo "<li>Categoria: ".$annuncio["Categoria"]."</li>";
+    echo "<li>Sottocategoria ".$annuncio["Sottocategoria"]."</li>";
+    echo "<li>Questo prodotto è osservato da ".$nOsserva["n"]." persone</li>"; ?>
 
 
                                         </ul>
@@ -139,9 +138,6 @@ if (isset($_GET["id"]) and isset($_GET["cf"])) {
 <?php
 
   include "common/footer.php";
-    } else {
-        header("location: product-list.php");
-    }
 } else {
     header("location: product-list.php");
 }

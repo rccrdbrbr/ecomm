@@ -4,9 +4,9 @@ if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 
-//if (isset($_SESSION["CF"])) {
-    //if (isset($_GET["id"]) && isset($_GET["cf"])) {
-        //if (isset($_POST["modifica"])) {
+if (isset($_SESSION["CF"])) {
+    if (isset($_GET["id"])) {
+        if (isset($_POST["modifica"])) {
             include "common/header.php";
             include "backend/product-detail.inc.php"; ?>
 
@@ -98,7 +98,7 @@ if (session_status() == PHP_SESSION_NONE) {
 
 
 <?php
-include "common/footer.php";/*
+include "common/footer.php";
         } else {
             header("location: index.php");
         }
@@ -106,5 +106,5 @@ include "common/footer.php";/*
         header("location: index.php");
     }
 } else {
-header("location: index.php");
-} */?>
+    header("location: index.php");
+} ?>

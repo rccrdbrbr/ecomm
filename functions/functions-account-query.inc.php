@@ -191,7 +191,7 @@ function CambiaPwd($conn, $utente, $pwdv, $pwdn1, $pwdn2)
 
 function fetchAnnunciP($conn, $cf)
 {
-    $sql= "SELECT * FROM annuncio a JOIN stati s ON a.ID_A=s.ID_A
+    $sql= "SELECT *, a.ID_A id FROM annuncio a JOIN stati s ON a.ID_A=s.ID_A
     LEFT OUTER JOIN acquista ac ON ac.ID_A=a.ID_A WHERE a.CF= ? ;";
     $stmt= mysqli_stmt_init($conn);
     if (!mysqli_stmt_prepare($stmt, $sql)) {
