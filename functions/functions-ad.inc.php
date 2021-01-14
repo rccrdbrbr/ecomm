@@ -199,7 +199,19 @@ function CreaStato($conn)
     header("location: ../create-ad.php?error=none");
 }
 
-function CambiaImmagine($conn, $ida, $img)
+function modifyVuoto($nameA, $nameP, $price, $category, $visibility, $com, $prov, $reg)
+{
+    $risultato;
+    if (empty($nameA) || empty($nameP) || empty($price) || $category="#" || empty($visibility)
+  ||empty($com) ||empty($prov) ||empty($reg)) {
+        $risultato=true;
+    } else {
+        $risultato=false;
+    }
+    return $risultato;
+}
+
+function cambiaImmagine($conn, $ida, $img)
 {
     if ($img!== "") {
         $sql= "UPDATE prodotto SET Foto = ? WHERE ID_P = (SELECT ID_P FROM annuncio WHERE ID_A = ? ) ;";
@@ -209,7 +221,53 @@ function CambiaImmagine($conn, $ida, $img)
             exit();
         }
 
-        mysqli_stmt_bind_param($stmt, "ss", $img, $ida);
+        mysqli_stmt_bind_param($stmt, "si", $img, $ida);
+        mysqli_stmt_execute($stmt);
+        mysqli_stmt_close($stmt);
+    }
+}
+
+function cambiaAnnuncio($conn, $ida, $nameA, $price, $com, $prov, $reg, $visibility, $area)
+{
+    CreaVisibilità($conn, $visibility, $area);
+    $sql= "UPDATE annuncio SET Nome_A = ?, Prezzo = ?, Comune = ?, Provincia = ?, Regione = ?, Tipo = ?, AreaGeo = ? WHERE ID_A = ? ;";
+    $stmt= mysqli_stmt_init($conn);
+    if (!mysqli_stmt_prepare($stmt, $sql)) {
+        header("location: ../my-account.php?error=stmtfailed1");
+        exit();
+    }
+
+    mysqli_stmt_bind_param($stmt, "sdsssssi", $nameA, $price, $com, $prov, $reg, $visibility, $area, $ida);
+    mysqli_stmt_execute($stmt);
+    mysqli_stmt_close($stmt);
+}
+
+function cambiaProdotto($conn, $ida, $nameP, $category, $subcategory)
+{
+    CreaCategoria($conn, $category, $subcategory);
+    $sql= "UPDATE prodotto SET Nome_P = ?, Categoria = ?, Sottocategoria = ? WHERE ID_P = (SELECT ID_P FROM annuncio WHERE ID_A = ? ) ;";
+    $stmt= mysqli_stmt_init($conn);
+    if (!mysqli_stmt_prepare($stmt, $sql)) {
+        header("location: ../my-account.php?error=stmtfailed");
+        exit();
+    }
+
+    mysqli_stmt_bind_param($stmt, "sssi", $nameP, $category, $subcategory, $ida);
+    mysqli_stmt_execute($stmt);
+    mysqli_stmt_close($stmt);
+}
+
+function cambiaDescrizione($conn, $ida, $description)
+{
+    if ($description!== "") {
+        $sql= "UPDATE annuncio SET Descrizione = ? WHERE ID_A =  ?  ;";
+        $stmt= mysqli_stmt_init($conn);
+        if (!mysqli_stmt_prepare($stmt, $sql)) {
+            header("location: ../my-account.php?error=stmtfailed");
+            exit();
+        }
+
+        mysqli_stmt_bind_param($stmt, "si", $description, $ida);
         mysqli_stmt_execute($stmt);
         mysqli_stmt_close($stmt);
     }
