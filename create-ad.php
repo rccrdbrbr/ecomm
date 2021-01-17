@@ -34,6 +34,8 @@ if ($_SESSION["Tipo"] == "Venditore" || $_SESSION["Tipo"] == "Venditore e Acquir
                                 echo "<p>La data è errata!</p>";
                             } elseif ($_GET["error"] == "wronginput") {
                                 echo "<p>La data è errata!</p>";
+                            } else {
+                                echo "<p>Annuncio creato!</p>";
                             }
                         } ?>
                       </div>
@@ -50,16 +52,20 @@ if ($_SESSION["Tipo"] == "Venditore" || $_SESSION["Tipo"] == "Venditore e Acquir
                             <input class="form-control" type="number" name="price" placeholder="Prezzo">
                         </div>
                         <div class="col-md-6">
-                            <label>Comune</label>
-                            <input class="form-control" type="text" name= "com" placeholder="Comune">
+                          <label>Regione</label>
+                          <select class="form-control" id="regione" name="regione">
+                            <option value="nessuna" selected></option>
+                          </select>
                         </div>
                         <div class="col-md-6">
                             <label>Provincia</label>
-                            <input class="form-control" type="text" name="prov" placeholder="Provincia">
+                            <select class="form-control" id="prov" name="prov">
+		                            <option value="nessuna" selected></option>
+		                            </select>
                         </div>
                         <div class="col-md-6">
-                            <label>Regione</label>
-                            <input class="form-control" type="text" name="reg" placeholder="Regione">
+                          <label>Comune</label>
+                          <input class="form-control" type="text" name= "com" placeholder="Comune">
                         </div>
                         <div class="col-md-12">
                             <label>Data Fine</label>
@@ -130,6 +136,10 @@ if ($_SESSION["Tipo"] == "Venditore" || $_SESSION["Tipo"] == "Venditore e Acquir
                                   echo "<p>C'è qualche errore!</p>";
                               } elseif ($_GET["error"] == "wrongdate") {
                                   echo "<p>La data è errata!</p>";
+                              } elseif ($_GET["error"] == "wronginput") {
+                                  echo "<p>La data è errata!</p>";
+                              } else {
+                                  echo "<p>Annuncio creato!</p>";
                               }
                           } ?>
                         </div>

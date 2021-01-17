@@ -6,7 +6,7 @@ if (isset($_POST["submit"])) {
     $price = $_POST["price"];
     $com = $_POST["com"];
     $prov = $_POST["prov"];
-    $reg = $_POST["reg"];
+    $reg = $_POST["regione"];
     $date = $_POST["date"];
     $visibility = $_POST["visibility"];
     $area = $_POST["area"];

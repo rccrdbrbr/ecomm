@@ -86,5 +86,7 @@
 
         <!-- Template Javascript -->
         <script src="js/main.js"></script>
+        <script src="js/regprov.js"></script>
+        <script src="js/eventHandlers.js"></script>
     </body>
 </html>

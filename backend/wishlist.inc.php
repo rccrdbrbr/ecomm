@@ -31,7 +31,8 @@ if (isset($_GET["category"])) {
             echo '</td>';
             echo '<td>€'.$row["Prezzo"].'</td>';
             //          echo '<form action="backend/actions-wishlist.inc.php" method="post">';
-            echo '<td><a href="backend/add-cart.inc.php?id='.$row["ID_A"].'"><button name="cart" class="btn-cart">Carrello</button></a></td>';
+            //echo '<td><a href="backend/add-cart.inc.php?id='.$row["ID_A"].'"><button id = "cart" name="cart" class="btn-cart">Carrello</button></a></td>';
+            echo '<td><button id = "cart" name="cart" class="btn-cart">Carrello</button></td>';
             echo '<td><a href="backend/delete-wishlist.inc.php?id='.$row["ID_A"].'"><button name="delete"><i class="fa fa-trash"></i></button></a></td>';
             //          echo '</form>';
             echo '</tr>';
@@ -66,8 +67,10 @@ if (isset($_GET["category"])) {
             echo '</td>';
             echo '<td>€'.$row["Prezzo"].'</td>';
 //          echo '<form action="backend/actions-wishlist.inc.php" method="post">';
-            echo '<td><a href="backend/add-cart.inc.php?id='.$row["ID_A"].'"><button name="cart" class="btn-cart">Carrello</button></a></td>';
-            echo '<td><a href="backend/delete-wishlist.inc.php?id='.$row["ID_A"].'"><button name="delete"><i class="fa fa-trash"></i></button></a></td>';
+            //echo '<td><a href="backend/add-cart.inc.php?id='.$row["ID_A"].'"><button id = "cart" name="cart" class="btn-cart">Carrello</button></a></td>';
+            echo '<td><button id = "cart" name="cart" class="btn-cart" onclick="add_cart()">Carrello</button></td>';
+            //echo '<td><a href="backend/delete-wishlist.inc.php?id='.$row["ID_A"].'"><button name="delete"><i class="fa fa-trash"></i></button></a></td>';
+            echo '<td><button name="delete"><i class="fa fa-trash"></i></button></td>';
 //          echo '</form>';
             echo '</tr>';
         }
@@ -78,3 +81,10 @@ if (isset($_GET["category"])) {
         echo "<p>Non hai nessun prodotto osservato!</p>";
     }
 }
+?>
+<script type="text/javascript">
+function add_cart(){
+  var cf = $(row["ID_A"]);
+  alert("" + cf + "");
+}
+</script>
