@@ -16,8 +16,8 @@ if (isset($_POST["modprof"])) {
     $type = $_POST["type"];
 
     require_once 'dbh.inc.php';
-    require_once 'functions/functions-account-query.inc.php';
-    require_once 'functions/functions-signup-login.inc.php';
+    require_once '../functions/functions-account-query.inc.php';
+    require_once '../functions/functions-signup-login.inc.php';
 
     if (EmailNValido($email)!== false) {
         header("location: ../my-account.php?error=invalidemail");
@@ -38,12 +38,12 @@ if (isset($_POST["modprof"])) {
     $pwdn2 = $_POST["pwdn2"];
 
     require_once 'dbh.inc.php';
-    require_once 'functions/functions-account-query.inc.php';
+    require_once '../functions/functions-account-query.inc.php';
 
     CambiaPwd($conn, $utente, $pwdv, $pwdn1, $pwdn2);
 } elseif (isset($_POST["delete"])) {
     require_once 'dbh.inc.php';
-    require_once 'functions/functions-account-query.inc.php';
+    require_once '../functions/functions-account-query.inc.php';
 
     eliminaAccount($conn, $utente);
 } else {
