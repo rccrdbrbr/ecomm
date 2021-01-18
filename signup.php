@@ -38,20 +38,24 @@ include "common/header.php"
                              <input class="form-control" type="text" name="cf" placeholder="Codice Fiscale">
                          </div>
                          <div class="col-md-6">
-                             <label>Via</label>
-                             <input class="form-control" type="text" name="via" placeholder="Via">
+                           <label>Regione</label>
+                           <select class="form-control" id="regione" name="regione">
+                             <option value="nessuna" selected></option>
+                           </select>
+                         </div>
+                         <div class="col-md-6">
+                           <label>Provincia</label>
+                           <select class="form-control" id="prov" name="prov">
+                             <option value="nessuna" selected></option>
+                           </select>
                          </div>
                          <div class="col-md-6">
                              <label>Città</label>
                              <input class="form-control" type="text" name="city" placeholder="Città">
                          </div>
                          <div class="col-md-6">
-                             <label>Provincia</label>
-                             <input class="form-control" type="text" name= "prov" placeholder="Provincia">
-                         </div>
-                         <div class="col-md-6">
-                             <label>Regione</label>
-                             <input class="form-control" type="text" name="reg" placeholder="regione">
+                           <label>Via</label>
+                           <input class="form-control" type="text" name="via" placeholder="Via">
                          </div>
                          <div class="col-md-12">
                              <label>Immagine</label>
