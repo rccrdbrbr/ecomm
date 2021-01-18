@@ -65,7 +65,7 @@ if ($_SESSION["Tipo"] == "Venditore" || $_SESSION["Tipo"] == "Venditore e Acquir
                         </div>
                         <div class="col-md-6">
                           <label>Comune</label>
-                          <input class="form-control" type="text" name= "com" placeholder="Comune">
+                          <input class="form-control" type="text" name= "com">
                         </div>
                         <div class="col-md-12">
                             <label>Data Fine</label>
@@ -81,7 +81,9 @@ if ($_SESSION["Tipo"] == "Venditore" || $_SESSION["Tipo"] == "Venditore e Acquir
                         </div>
                         <div class="col-md-6">
                             <label>Area Geografica</label>
-                            <input class="form-control" type="text" name="area" placeholder="Area Geografica se la Visibilità è Ristretta">
+                            <select class="form-control" id="area" name="area">
+		                            <option value="nessuna" selected></option>
+		                            </select>
                         </div>
                         <div class="col-md-12">
                             <label>Immagine</label>

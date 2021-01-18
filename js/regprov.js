@@ -25,9 +25,6 @@ function popolaRegioni()
 		  // console.log(this.response);
 		  risposta = JSON.parse(this.response);
           //console.log(risposta.status);
-          /*
-          if (risposta.status == "ok")
-		  {*/
            regioni = risposta.contenuto;
 		   menu = document.getElementById('regione');
        console.log(menu);
@@ -37,13 +34,7 @@ function popolaRegioni()
 			   item.setAttribute("value", regioni[i]);
 			   item.innerText=regioni[i];
 			   menu.appendChild(item);
-		   }/*
-		  }
-		  else
-		  {
-			  alert(risposta.msg);
-		  }
-*/
+		   }
 	  }
     };
 	xttp.open("GET","backend/getRegioni.php",true);
@@ -67,9 +58,7 @@ function popolaProvince()
 		  // console.log(this.response);
 		  risposta = JSON.parse(this.response);
 
-/*          if (risposta.status == "ok")
-		  {*/
-           province = risposta.contenuto;
+       province = risposta.contenuto;
 		   menu = document.getElementById('prov');
 		   menu.innerHTML="";
 		   console.log("valore di menu" + menu);
@@ -80,16 +69,43 @@ function popolaProvince()
 			   item.innerText=province[i].prov;
 			   menu.appendChild(item);
 			   console.log(province[i].prov);
-		   }/*
-		  }
-		  else
-		  {
-			  alert(risposta.msg);
-		  }*/
-
+		   }
 	  }
     };
 	xttp.open("GET","backend/getProvincia.php?regione="+regione,true);
 	xttp.send();
 	}
+}
+
+function popolaAreaGeo()
+{
+  visibilityMenu = document.getElementById('visibility');
+	visibility = regioneMenu.options[regioneMenu.selectedIndex].value;
+	// var cognome = this.value;
+  if (visibility == ristretto) {
+
+	var xttp = new ajaxRequest();
+	xttp.onreadystatechange  = function()
+	{
+		 //console.log(this.readyState + ' ' + this.status);
+      if (this.readyState == 4 && this.status == 200)
+	  {
+		  // console.log(this.response);
+		  risposta = JSON.parse(this.response);
+          //console.log(risposta.status);
+           regioni = risposta.contenuto;
+		   menu = document.getElementById('area');
+       console.log(menu);
+		   for(var i=0; i < regioni.length; i++)
+		   {
+			   var item = document.createElement('option');
+			   item.setAttribute("value", regioni[i]);
+			   item.innerText=regioni[i];
+			   menu.appendChild(item);
+		   }
+	  }
+    };
+	xttp.open("GET","backend/getRegioni.php",true);
+	xttp.send();
+}
 }
