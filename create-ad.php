@@ -73,7 +73,7 @@ if ($_SESSION["Tipo"] == "Venditore" || $_SESSION["Tipo"] == "Venditore e Acquir
                         </div>
                         <div class="col-md-6">
                           <label>Visibilità</label>
-                          <select name="visibility" class="form-control">
+                          <select id="visibility" name="visibility" class="form-control">
                             <option value="pubblico" selected="selected">Pubblico </option>
                             <option value="privato">Privato </option>
                             <option value="ristretto">Ristretto</option>
