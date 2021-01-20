@@ -33,7 +33,7 @@ if ($_SESSION["Tipo"] == "Venditore" || $_SESSION["Tipo"] == "Venditore e Acquir
                             } elseif ($_GET["error"] == "wrongdate") {
                                 echo "<p>La data è errata!</p>";
                             } elseif ($_GET["error"] == "wronginput") {
-                                echo "<p>La data è errata!</p>";
+                                echo "<p>I valori non sono coerenti!</p>";
                             } else {
                                 echo "<p>Annuncio creato!</p>";
                             }
@@ -82,7 +82,7 @@ if ($_SESSION["Tipo"] == "Venditore" || $_SESSION["Tipo"] == "Venditore e Acquir
                         <div class="col-md-6">
                             <label>Area Geografica</label>
                             <select class="form-control" id="area" name="area">
-		                            <option value="nessuna" selected></option>
+		                            <option value="nessuna" selected>Seleziona solo se la visibilità è privata</option>
 		                            </select>
                         </div>
                         <div class="col-md-12">
@@ -139,7 +139,7 @@ if ($_SESSION["Tipo"] == "Venditore" || $_SESSION["Tipo"] == "Venditore e Acquir
                               } elseif ($_GET["error"] == "wrongdate") {
                                   echo "<p>La data è errata!</p>";
                               } elseif ($_GET["error"] == "wronginput") {
-                                  echo "<p>La data è errata!</p>";
+                                  echo "<p>I valori non sono coerenti!</p>";
                               } else {
                                   echo "<p>Annuncio creato!</p>";
                               }
@@ -163,6 +163,8 @@ if ($_SESSION["Tipo"] == "Venditore" || $_SESSION["Tipo"] == "Venditore e Acquir
                               header("location: index.php");
                           }
 
+echo '<script src="js/regprov.js"></script>';
+echo '<script src="js/eventHandlers.js"></script>';
 include "common/footer.php"
 
 ?>

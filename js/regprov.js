@@ -26,7 +26,7 @@ function popolaRegioni() {
   xttp.onreadystatechange = function() {
     //console.log(this.readyState + ' ' + this.status);
     if (this.readyState == 4 && this.status == 200) {
-      // console.log(this.response);
+      console.log(this.response);
       risposta = JSON.parse(this.response);
       //console.log(risposta.status);
       regioni = risposta.contenuto;
@@ -42,10 +42,45 @@ function popolaRegioni() {
   };
   xttp.open("GET", "backend/getRegioni.php", true);
   xttp.send();
+}
+
+function popolaProvince() {
+  // var cognome = this.value;
+  regioneMenu = document.getElementById('regione');
+  regione = regioneMenu.options[regioneMenu.selectedIndex].value;
+  //console.log(regione);
+
+  if (regione != 'nessuna') {
+    var xttp = new ajaxRequest();
+    xttp.onreadystatechange = function() {
+      // console.log(this.readyState + ' ' + this.status);
+      if (this.readyState == 4 && this.status == 200) {
+        //console.log(this.response);
+        risposta = JSON.parse(this.response);
+
+        province = risposta.contenuto;
+        menu = document.getElementById('prov');
+        menu.innerHTML = "";
+        console.log("valore di menu" + menu);
+        for (var i = 0; i < province.length; i++) {
+          var item = document.createElement('option');
+          item.setAttribute("value", province[i].prov);
+          item.innerText = province[i].prov;
+          menu.appendChild(item);
+          console.log(province[i].prov);
+        }
+      }
+    };
+    xttp.open("GET", "backend/getProvincia.php?regione=" + regione, true);
+    xttp.send();
+  }
+}
+
+function popolaAreaGeo() {
   visibilitym = document.getElementById('visibility');
-  regione = visibilitym.options[visibilitym.selectedIndex].value;
+  visibility = visibilitym.options[visibilitym.selectedIndex].value;
   console.log(visibility);
-  //if (visibility == 'ristretto') {
+  //if (visibility == 'pubblico') {
   var xttp = new ajaxRequest();
   xttp.onreadystatechange = function() {
     //console.log(this.readyState + ' ' + this.status);
@@ -67,35 +102,4 @@ function popolaRegioni() {
   xttp.open("GET", "backend/getRegioni.php", true);
   xttp.send();
   //}
-}
-
-function popolaProvince() {
-  // var cognome = this.value;
-  regioneMenu = document.getElementById('regione');
-  regione = regioneMenu.options[regioneMenu.selectedIndex].value;
-
-  if (regione != 'nessuna') {
-    var xttp = new ajaxRequest();
-    xttp.onreadystatechange = function() {
-      // console.log(this.readyState + ' ' + this.status);
-      if (this.readyState == 4 && this.status == 200) {
-        // console.log(this.response);
-        risposta = JSON.parse(this.response);
-
-        province = risposta.contenuto;
-        menu = document.getElementById('prov');
-        menu.innerHTML = "";
-        console.log("valore di menu" + menu);
-        for (var i = 0; i < province.length; i++) {
-          var item = document.createElement('option');
-          item.setAttribute("value", province[i].prov);
-          item.innerText = province[i].prov;
-          menu.appendChild(item);
-          console.log(province[i].prov);
-        }
-      }
-    };
-    xttp.open("GET", "backend/getProvincia.php?regione=" + regione, true);
-    xttp.send();
-  }
 }
