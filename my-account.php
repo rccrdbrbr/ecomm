@@ -37,25 +37,18 @@ if (isset($_SESSION["CF"]) || isset($_GET["cf"])) {
                     <div class="col-md-9">
                         <div class="tab-content">
                             <div class="tab-pane fade show active" id="dashboard-tab" role="tabpanel" aria-labelledby="dashboard-nav">
-                              <?php
-                                echo '<div class="col-md-12">';
-    echo '<img src="img/'.$utente["Immagine"].'" width="150" height="150" style="float: right">';
-    echo '<h3><b>' .$utente["Nome"].' ' .$utente["Cognome"].'</b></h3>';
-
-    echo '</div>';
-    echo '<div class="col-md-12" >';
-    echo '<h5>' .$utente["Email"].'</h5>';
-    echo '</div>';
-
-    echo '<div class="col-md-12" >';
-
-
-    echo '<h5>' .$_SESSION["CF"].'</h5>';
-    echo 'Tipo Account:';
-    echo '<br>';
-    echo '<h5>' .$utente["Tipo"].'</h5>';
-
-    echo '</div>'; ?>
+                                <div class="col-md-12">
+                                  <img src="img/<?php echo $utente["Immagine"] ?>" width="150" height="150" style="float: right">
+                                  <h3><b><?php echo $utente["Nome"].' ' .$utente["Cognome"] ?></b></h3>
+                                </div>
+                                <div class="col-md-12" >
+                                  <h5><?php echo $utente["Email"] ?></h5>
+                                </div>
+                                <div class="col-md-12" >
+                                  <h5><?php echo $_SESSION["CF"] ?></h5>
+                                  <h5>Tipo Account:</h5>
+                                  <h5><?php echo $utente["Tipo"] ?></h5>
+                                </div>
                                 <?php if (!isset($_GET["cf"])) { ?>
                                <form action="backend/my-account.inc.php" method="post">
                                  <div class="col-md-12">
@@ -67,11 +60,12 @@ if (isset($_SESSION["CF"]) || isset($_GET["cf"])) {
                             </div>
                             <div class="tab-pane fade" id="orders-tab" role="tabpanel" aria-labelledby="orders-nav">
 
-                                          <?php
+                            <?php
 
-                                          include "backend/table-accountP.inc.php";
-    echo "<br>";
-    include "backend/table-accountC.inc.php"; ?>
+                            include "backend/table-accountP.inc.php"; ?>
+                            <br>
+                            <?php
+                            include "backend/table-accountC.inc.php"; ?>
                             </div>
 
                             <div class="tab-pane fade" id="address-tab" role="tabpanel" aria-labelledby="address-nav">
@@ -104,50 +98,49 @@ if (isset($_SESSION["CF"]) || isset($_GET["cf"])) {
                                 <h4>Modifica Account</h4>
                                 <form action="backend/my-account.inc.php" method="post">
                                 <div class="row">
-                                  <?php
-                                  echo '<div class="col-md-6">';
-    echo '<input class="form-control" type="text" name="name" placeholder="Nome" value='.$utente["Nome"].' disabled>';
-    echo '</div>';
-    echo  '<div class="col-md-6">';
-    echo    '<input class="form-control" type="text" name="surname" placeholder="Cognome" value='.$utente["Cognome"].' disabled>';
-    echo  '</div>';
-    echo  '<div class="col-md-6">';
-    echo    '<input class="form-control" type="text" name= "email" placeholder="E-mail" value='.$utente["Email"].'>';
-    echo  '</div>';
-    echo  '<div class="col-md-6">';
-    echo    '<input class="form-control" type="text" name="cf" placeholder="Codice Fiscale" value='.$utente["CF"].' disabled>';
-    echo  '</div>';
-    echo  '<div class="col-md-3">';
-    echo    '<input class="form-control" type="text" name="via" placeholder="Via" value='.$utente["Via"].'>';
-    echo  '</div>';
-    echo  '<div class="col-md-3">';
-    echo    '<input class="form-control" type="text" name="city" placeholder="Città" value='.$utente["Città"].'>';
-    echo  '</div>';
-    echo  '<div class="col-md-3">';
-    echo    '<input class="form-control" type="text" name= "prov" placeholder="Provincia" value='.$utente["Prov"].'>';
-    echo  '</div>';
-    echo  '<div class="col-md-3">';
-    echo    '<input class="form-control" type="text" name="reg" placeholder="regione" value='.$utente["Reg"].'>';
-    echo  '</div>';
-    echo  '<div class="col-md-12">';
-    echo      '<input class="form-control" type="file" name="img" accept="image/jpeg/image/png/image/gif" >';
-    echo  '</div>';
-    echo  '<div class="col-md-4">';
-    echo      '<label>Acquirente</label>';
-    echo      '<input class="form-control" type="radio" name= "type" value="Acquirente" required>';
-    echo  '</div>';
-    echo  '<div class="col-md-4">';
-    echo      '<label>venditore</label>';
-    echo      '<input class="form-control" type="radio" name="type" value="Venditore" required>';
-    echo  '</div>';
-    echo  '<div class="col-md-4">';
-    echo      '<label>Acquirente/Venditore</label>';
-    echo      '<input class="form-control" type="radio" name="type" value="Venditore e Acquirente" required>';
-    echo  '</div>';
-    echo  '<div class="col-md-12">';
-    echo      '<button class="btn" type="submit" name="modprof">Aggiorna Account</button>';
-    echo      '<br><br>'; ?>
-                                    </div>
+                                  <div class="col-md-6">
+                                    <input class="form-control" type="text" name="name" placeholder="Nome" value=<?php echo $utente["Nome"] ?> disabled>
+                                  </div>
+                                  <div class="col-md-6">
+                                    <input class="form-control" type="text" name="surname" placeholder="Cognome" value=<?php echo $utente["Cognome"] ?> disabled>
+                                  </div>
+                                  <div class="col-md-6">
+                                    <input class="form-control" type="text" name= "email" placeholder="E-mail" value=<?php echo $utente["Email"] ?>>
+                                  </div>
+                                  <div class="col-md-6">
+                                    <input class="form-control" type="text" name="cf" placeholder="Codice Fiscale" value=<?php echo $utente["CF"] ?> disabled>
+                                  </div>
+                                  <div class="col-md-3">
+                                    <input class="form-control" type="text" name="via" placeholder="Via" value=<?php echo $utente["Via"] ?>>
+                                  </div>
+                                  <div class="col-md-3">
+                                    <input class="form-control" type="text" name="city" placeholder="Città" value=<?php echo $utente["Città"] ?>>
+                                  </div>
+                                  <div class="col-md-3">
+                                    <input class="form-control" type="text" name= "prov" placeholder="Provincia" value=<?php echo $utente["Prov"] ?>>
+                                  </div>
+                                  <div class="col-md-3">
+                                    <input class="form-control" type="text" name="reg" placeholder="regione" value=<?php echo $utente["Reg"] ?>>
+                                  </div>
+                                  <div class="col-md-12">
+                                    <input class="form-control" type="file" name="img" accept="image/jpeg/image/png/image/gif" >
+                                  </div>
+                                  <div class="col-md-4">
+                                    <label>Acquirente</label>
+                                    <input class="form-control" type="radio" name= "type" value="Acquirente" required>
+                                  </div>
+                                  <div class="col-md-4">
+                                    <label>venditore</label>
+                                    <input class="form-control" type="radio" name="type" value="Venditore" required>
+                                  </div>
+                                  <div class="col-md-4">
+                                    <label>Acquirente/Venditore</label>
+                                    <input class="form-control" type="radio" name="type" value="Venditore e Acquirente" required>
+                                  </div>
+                                  <div class="col-md-12">
+                                    <button class="btn" type="submit" name="modprof">Aggiorna Account</button>
+                                    <br><br>
+                                  </div>
                                 </div>
 
                                 <h4>Cambia Password</h4>
