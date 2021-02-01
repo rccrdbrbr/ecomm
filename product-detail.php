@@ -38,10 +38,12 @@ if (isset($_GET["id"]) and isset($_GET["cf"])) {
                                         <div class="title">
                                           <?php
                                           if (isset($_GET["id"])) {
-                                              echo "<h2>".$annuncio["Nome_A"]."</h2></div>";
-                                              echo '<div class="price">';
-                                              echo "<h4>Prezzo:</h4>";
-                                              echo "<p>€".$annuncio["Prezzo"]." </p>";
+                                              ?>
+                                              <h2><?php echo $annuncio["Nome_A"] ?></h2></div>
+                                              <div class="price">
+                                              <h4>Prezzo:</h4>
+                                              <p>€ <?php echo $annuncio["Prezzo"] ?> </p>
+                                              <?php
                                           } ?>
 
 
@@ -81,25 +83,27 @@ if (isset($_GET["id"]) and isset($_GET["cf"])) {
                                     <div id="specification" class="container tab-pane fade">
                                         <h4>Specifiche</h4>
                                         <ul>
+                                          <li>Venditore: <a href='my-account.php?cf=<?php echo $annuncio["CF"] ?>'>
+                                          <?php echo $annuncio["Nome"]. " " .$annuncio["Cognome"] ?> </a></li>
+                                          <li>Prodotto <?php echo $annuncio["TipoP"] ?></li>
                                           <?php
-                                          echo "<li>Venditore: <a href='my-account.php?cf=".$annuncio["CF"]."'>".$annuncio["Nome"]. " " .$annuncio["Cognome"]." </a></li>";
-    echo "<li>Prodotto ".$annuncio["Tipo"]."</li>";
-    if ($annuncio["Tipo"] === "nuovo") {
-        if ($annuncio["PeriodoAssicurazione"] > 0) {
-            echo "<li>L'assicurazione dura ancora ".$annuncio["PeriodoAssicurazione"]." mesi</li>";
-        }
-    } else {
-        echo "<li>Stato di usura: ".$annuncio["StatoUsura"]."</li>";
-        echo "<li>Il prodotto è stato usato per ".$annuncio["PeriodoUtilizzo"]." mesi</li>";
-    }
-    echo "<li>Categoria: ".$annuncio["Categoria"]."</li>";
-    echo "<li>Sottocategoria ".$annuncio["Sottocategoria"]."</li>";
-    echo "<li>Questo prodotto è osservato da ".$nOsserva["n"]." persone</li>"; ?>
-
-
+                                          if ($annuncio["TipoP"] === "nuovo") {
+                                              if ($annuncio["PeriodoAssicurazione"] > 0) {
+                                                  ?>
+                                              <li>L'assicurazione dura ancora <?php echo $annuncio["PeriodoAssicurazione"] ?> mesi</li>
+                                              <?php
+                                              }
+                                          } else {
+                                              ?>
+                                            <li>Stato di usura: <?php echo $annuncio["StatoUsura"] ?></li>
+                                            <li>Il prodotto è stato usato per <?php echo $annuncio["PeriodoUtilizzo"] ?> mesi</li>
+                                            <?php
+                                          } ?>
+                                          <li>Categoria: <?php echo $annuncio["Categoria"] ?></li>
+                                          <li>Sottocategoria <?php echo $annuncio["Sottocategoria"] ?></li>
+                                          <li>Questo prodotto è osservato da <?php echo $nOsserva["n"] ?> persone</li>
                                         </ul>
                                     </div>
-
                                 </div>
                             </div>
                         </div>
@@ -108,35 +112,18 @@ if (isset($_GET["id"]) and isset($_GET["cf"])) {
                             <div class="section-header">
                                 <h1>Annunci Popolari</h1>
                             </div>
-
                             <div class="row align-items-center product-slider product-slider-3">
                               <?php
-
                               include "backend/featured-products.inc.php"
-
                                ?>
-
-                               </div>
-
-
-
-
+                            </div>
                         </div>
-
-                        </div>
-                        <!-- Side Bar Start -->
+                    </div>
                         <?php include "common/sidebar.php" ?>
-                        <!-- Side Bar End -->
-                        </div>
-
-                  </div>
-
-                  </div>
-
-          <!-- Product Detail End -->
-
+                </div>
+            </div>
+        </div>
 <?php
-
   include "common/footer.php";
 } else {
     header("location: product-list.php");
