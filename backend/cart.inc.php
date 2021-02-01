@@ -54,9 +54,11 @@ foreach ($_SESSION["Carrello"] as $ida) {
 </div>
 <?php
 } else {
-    echo '<div class="col-lg-8">';
-    echo '<div class="cart-page-inner">';
-    echo "Non hai nessun prodotto nel carrello!";
-    echo '</div>';
-    echo '</div>';
+    ?>
+    <div class="col-lg-8">
+    <div class="cart-page-inner">
+    <p>Non hai nessun prodotto nel carrello!</p>
+    </div>
+    </div>
+    <?php
 }

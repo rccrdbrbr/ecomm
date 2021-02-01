@@ -1,11 +1,11 @@
 <?php
 
-session_start();
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 include "account-query.inc.php";
 
 if (isset($_POST["modprof"])) {
-    //  $name = $_POST["name"];
-    //  $surname = $_POST["surname"];
     $email = $_POST["email"];
     //  $cf = $_POST["cf"];
     $via = $_POST["via"];

@@ -22,13 +22,6 @@ if (isset($_POST["submit"])) {
         exit();
     }
 
-    /*
-    if (UsernameNValido($cf)!== false) {
-      header("location: ../signup.php?error=invalidusername");
-      exit();
-    }
-    */
-
     if (EmailNValido($email)!== false) {
         header("location: ../signup.php?error=invalidemail");
         exit();
@@ -43,8 +36,6 @@ if (isset($_POST["submit"])) {
         header("location: ../signup.php?error=usernametaken");
         exit();
     }
-
-
 
     CreaIndirizzo($conn, $via, $city, $prov, $reg);
     CreaUtente($conn, $name, $surname, $email, $cf, $via, $city, $prov, $reg, $img, $type, $pwd1);

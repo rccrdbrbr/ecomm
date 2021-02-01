@@ -1,9 +1,10 @@
 <?php
+if (session_status() == PHP_SESSION_NONE) {
     session_start();
-    //while (empty($_SESSION["Carrello"]) !== true) {
-    unset($_SESSION["Carrello"]);
-    //}
+}
+    
+  unset($_SESSION["Carrello"]);
 
-    $_SESSION["Carrello"]= array();
-    header("location: ../cart.php");
-    exit();
+  $_SESSION["Carrello"]= array();
+  header("location: ../cart.php");
+  exit();
