@@ -73,32 +73,37 @@ if (session_status() == PHP_SESSION_NONE) {
                         <?php
 
                           if (isset($_SESSION["CF"])) {
-                              echo  '<div class="navbar-nav ml-auto">';
-                              echo  '<div class="nav-item dropdown">';
-                              echo  '<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Account</a>';
-                              echo  '<div class="dropdown-menu">';
-                              echo  '<a href="my-account.php" class="dropdown-item">Profilo</a>';
-                              if ($_SESSION["Tipo"]=== "Venditore" || $_SESSION["Tipo"]=== "Venditore e Acquirente") {
-                                  echo  '<a href="create-ad.php" class="dropdown-item">Crea Annuncio</a>';
-                              }
-                              echo  '<a href="backend/logout.inc.php" class="dropdown-item">Logout</a>';
-                              echo  '</div>';
-                              echo  '</div>';
-                              echo  '</div>';
+                              ?>
+                              <div class="navbar-nav ml-auto">
+                                <div class="nav-item dropdown">
+                                  <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Account</a>
+                                  <div class="dropdown-menu">
+                                    <a href="my-account.php" class="dropdown-item">Profilo</a>
+                                    <?php
+                                    if ($_SESSION["Tipo"]=== "Venditore" || $_SESSION["Tipo"]=== "Venditore e Acquirente") {
+                                        ?>
+                                    <a href="create-ad.php" class="dropdown-item">Crea Annuncio</a>
+                                    <?php
+                                    } ?>
+                                    <a href="backend/logout.inc.php" class="dropdown-item">Logout</a>
+                                  </div>
+                                </div>
+                              </div>
+                              <?php
                           } else {
-                              echo  '<div class="navbar-nav ml-auto">';
-                              echo  '<div class="nav-item dropdown">';
-                              echo  '<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Account</a>';
-                              echo  '<div class="dropdown-menu">';
-                              echo  '<a href="login.php" class="dropdown-item">Login</a>';
-                              echo  '<a href="signup.php" class="dropdown-item">Registrati</a>';
-                              echo  '</div>';
-                              echo  '</div>';
-                              echo  '</div>';
+                              ?>
+                              <div class="navbar-nav ml-auto">
+                                <div class="nav-item dropdown">
+                                  <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Account</a>
+                                  <div class="dropdown-menu">
+                                    <a href="login.php" class="dropdown-item">Login</a>
+                                    <a href="signup.php" class="dropdown-item">Registrati</a>
+                                  </div>
+                                </div>
+                              </div>
+                              <?php
                           }
-
                          ?>
-
                     </div>
                 </nav>
             </div>
@@ -116,12 +121,6 @@ if (session_status() == PHP_SESSION_NONE) {
                         </div>
                     </div>
                     <div class="col-md-6">
-                      <!--
-                        <div class="search">
-                            <input type="text" placeholder="Cerca">
-                            <button><i class="fa fa-search"></i></button>
-                        </div>
-                         -->
                     </div>
                     <div class="col-md-3">
                         <div class="user">
