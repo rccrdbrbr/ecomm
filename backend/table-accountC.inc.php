@@ -12,41 +12,51 @@ if (isset($_GET["cf"])) {
   $annunciC = fetchAnnunciC($conn, $cf);
 
 if ($annunciC == true) {
-    echo '<div class="col-md-12">';
-    echo '<h3>Annunci Comprati</h3>';
-    echo '</div>';
-    echo '<div class="table-responsive">';
-    echo '<table class="table table-bordered">';
-    echo '<thead class="thead-dark">';
-    echo '<tr>';
-    echo '<th>No</th>';
-    echo '<th>Nome Annuncio</th>';
-    echo '<th>Data Acquisto</th>';
-    echo '<th>Prezzo</th>';
-    echo '<th>Metodo di Pagamento</th>';
+    ?>
+    <div class="col-md-12">
+    <h3>Annunci Comprati</h3>
+    </div>
+    <div class="table-responsive">
+    <table class="table table-bordered">
+    <thead class="thead-dark">
+    <tr>
+    <th>No</th>
+    <th>Nome Annuncio</th>
+    <th>Data Acquisto</th>
+    <th>Prezzo</th>
+    <th>Metodo di Pagamento</th>
+    <?php
     if (!isset($_GET["cf"])) {
-        echo '<th>Valuta Venditore</th>';
-    }
-    echo '</tr>';
-    echo '</thead>';
-    echo '<tbody>';
+        ?>
+        <th>Valuta Venditore</th>
+        <?php
+    } ?>
+    </tr>
+    </thead>
+    <tbody>
+    <?php
     $i=1;
     while ($row = mysqli_fetch_assoc($annunciC)) {
-        echo '<tr>';
-        echo '<td>'.$i.'</td>';
-        echo '<td>'.$row["Nome_A"].'</td>';
-        echo '<td>'.$row["DataAcquisto"].'</td>';
-        echo '<td>'.$row["Prezzo"].' €</td>';
-        echo '<td>'.$row["MetodoPagamento"].'</td>';
+        ?>
+        <tr>
+        <td><?php echo $i ?></td>
+        <td><?php echo $row["Nome_A"] ?></td>
+        <td><?php echo $row["DataAcquisto"] ?></td>
+        <td><?php echo $row["Prezzo"] ?> €</td>
+        <td><?php echo $row["MetodoPagamento"] ?></td>
+        <?php
         if (!isset($_GET["cf"])) {
-            echo '<form action="evaluation.php?id='.$row["ID_A"].'&cf='.$row["CF"].'" method="post">';
-            echo '<td><button class="btn" type="submit" name="valuta" formmethod="post">Valuta</button></td>';
-            echo '</form>';
+            ?>
+            <form action="evaluation.php?id=<?php echo  $row["ID_A"].'&cf='.$row["CF"]?>" method="post">
+            <td><button class="btn" type="submit" name="valuta" formmethod="post">Valuta</button></td>
+            </form>
+            <?php
         }
         echo'</tr>';
         $i+=1;
-    }
-    echo '</tbody>';
-    echo '</table>';
-    echo '</div>';
+    } ?>
+    </tbody>
+    </table>
+    </div>
+    <?php
 }

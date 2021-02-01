@@ -13,41 +13,52 @@ if (isset($_GET["cf"])) {
 
 
   if ($annunciP == true) {
-      echo '<div class="col-md-12">';
-      echo '<h3>Annunci Pubblicati</h3>';
-      echo '</div>';
-      echo '<div class="table-responsive">';
-      echo '<table class="table table-bordered">';
-      echo '<thead class="thead-dark">';
-      echo '<tr>';
-      echo '<th>No</th>';
-      echo '<th>Nome Annuncio</th>';
-      echo '<th>Data Scadenza</th>';
-      echo '<th>Prezzo</th>';
-      echo '<th>Stato</th>';
+      ?>
+      <div class="col-md-12">
+      <h3>Annunci Pubblicati</h3>
+      </div>
+      <div class="table-responsive">
+      <table class="table table-bordered">
+      <thead class="thead-dark">
+      <tr>
+      <th>No</th>
+      <th>Nome Annuncio</th>
+      <th>Data Scadenza</th>
+      <th>Prezzo</th>
+      <th>Stato</th>
+      <?php
       if (!isset($_GET["cf"])) {
-          echo '<th>Valuta/Modifica</th>';
-      }
-      echo '</tr>';
-      echo '</thead>';
-      echo '<tbody>';
+          ?>
+          <th>Valuta/Modifica</th>
+          <?php
+      } ?>
+      </tr>
+      </thead>
+      <tbody>
+      <?php
       $i=1;
       while ($row = mysqli_fetch_assoc($annunciP)) {
-          echo '<tr>';
-          echo    '<td>'.$i.'</td>';
-          echo    '<td>'.$row["Nome_A"].'</td>';
-          echo    '<td>'.$row["DataFine"].'</td>';
-          echo    '<td>'.$row["Prezzo"].' €</td>';
-          echo    '<td>'.$row["Stato"].'</td>';
+          ?>
+          <tr>
+          <td><?php echo $i ?></td>
+          <td><?php echo $row["Nome_A"] ?></td>
+          <td><?php echo $row["DataFine"] ?></td>
+          <td><?php echo $row["Prezzo"] ?> €</td>
+          <td><?php echo $row["Stato"] ?></td>
+          <?php
           if (!isset($_GET["cf"])) {
               if ($row["Stato"] === "in vendita") {
-                  echo '<form action="modify.php?id='.$row["id"].'" method="post">';
-                  echo '<td><button class="btn" type="submit" name="modifica" formmethod="post">Modifica</button></td>';
-                  echo '</form>';
+                  ?>
+                  <form action="modify.php?id=<?php echo $row["id"] ?>" method="post">
+                  <td><button class="btn" type="submit" name="modifica" formmethod="post">Modifica</button></td>
+                  </form>
+                  <?php
               } elseif ($row["Stato"] === "venduto") {
-                  echo '<form action="evaluation.php?id='.$row["ID_A"].'&cf='.$row["CF"].'" method="post">';
-                  echo '<td><button class="btn" type="submit" name="valuta" formmethod="post">Valuta</button></td>';
-                  echo '</form>';
+                  ?>
+                  <form action="evaluation.php?id=<?php echo  $row["ID_A"].'&cf='.$row["CF"]?>" method="post">
+                  <td><button class="btn" type="submit" name="valuta" formmethod="post">Valuta</button></td>
+                  </form>
+                  <?php
               } else {
                   echo '<td></td>';
               }
@@ -55,8 +66,9 @@ if (isset($_GET["cf"])) {
 
           echo'</tr>';
           $i+=1;
-      }
-      echo '</tbody>';
-      echo '</table>';
-      echo '</div>';
+      } ?>
+      </tbody>
+      </table>
+      </div>
+      <?php
   }
