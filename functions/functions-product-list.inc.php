@@ -27,7 +27,8 @@ function fetchAnnunci($conn)
 
 function fetchAnnunciRecenti($conn)
 {
-    $sql= "SELECT * FROM annuncio a JOIN prodotto p ON a.ID_P=p.ID_P JOIN stati s ON s.ID_A=a.ID_A
+    $sql= "SELECT a.ID_A, a.Nome_A, p.ID_P, a.CF, p.Foto, a.Prezzo, Stato, a.Tipo TipoA, AreaGeo
+    FROM annuncio a JOIN prodotto p ON a.ID_P=p.ID_P JOIN stati s ON s.ID_A=a.ID_A
     WHERE Stato='in vendita' ORDER BY DataPubb DESC;";
     $stmt= mysqli_stmt_init($conn);
     if (!mysqli_stmt_prepare($stmt, $sql)) {
@@ -152,7 +153,9 @@ function fetchAnnunciSubcat($conn, $subcat)
 
 function fetchCategorie($conn)
 {
-    $sql= "SELECT DISTINCT  * FROM categoria ;";
+    $sql= "SELECT DISTINCT  Sottocategoria FROM categoria c NATURAL JOIN prodotto p
+    JOIN annuncio a ON p.ID_P=a.ID_P JOIN stati s ON s.ID_A=a.ID_A 
+    WHERE stato='in vendita';";
     $stmt= mysqli_stmt_init($conn);
     if (!mysqli_stmt_prepare($stmt, $sql)) {
         header("location: ../product-list.php?error=stmtfailed");
