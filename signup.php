@@ -113,6 +113,9 @@ include "common/header.php"
          </div>
        </div>
 </form>
+
+<script src="js/regprov.js"></script>
+<script src="js/eventHandlers.js"></script>
 <?php
 
   include "common/footer.php"

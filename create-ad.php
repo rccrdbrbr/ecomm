@@ -162,9 +162,10 @@ if ($_SESSION["Tipo"] == "Venditore" || $_SESSION["Tipo"] == "Venditore e Acquir
 } else {
                               header("location: index.php");
                           }
-
-echo '<script src="js/regprov.js"></script>';
-echo '<script src="js/eventHandlers.js"></script>';
+?>
+<script src="js/regprov.js"></script>
+<script src="js/eventHandlers.js"></script>
+<?php
 include "common/footer.php"
 
 ?>
