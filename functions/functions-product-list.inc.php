@@ -2,7 +2,7 @@
 
 function fetchAnnunci($conn)
 {
-    $sql= "SELECT a.ID_A, a.Nome_A, p.ID_P, a.CF, p.Foto, a.Prezzo, stato, count(o.CF) n
+    $sql= "SELECT a.ID_A, a.Nome_A, p.ID_P, a.CF, p.Foto, a.Prezzo, Stato, a.Tipo TipoA, AreaGeo, count(o.CF) n
     FROM annuncio a JOIN prodotto p ON a.ID_P=p.ID_P JOIN stati s ON s.ID_A=a.ID_A LEFT OUTER JOIN osserva o ON o.ID_A=a.ID_A
     WHERE Stato='in vendita'
     GROUP BY a.ID_A, p.ID_P
@@ -73,7 +73,8 @@ function contaOsserva($conn, $ida)
 
 function fetchAnnuncio($conn, $ida)
 {
-    $sql= "SELECT *, p.Tipo AS TipoP FROM annuncio a JOIN prodotto p ON a.ID_P=p.ID_P JOIN utente u ON a.CF=u.CF WHERE a.ID_A= ? ;";
+    $sql= "SELECT *, p.Tipo AS TipoP FROM annuncio a JOIN prodotto p ON a.ID_P=p.ID_P
+    JOIN utente u ON a.CF=u.CF WHERE a.ID_A= ? ;";
     $stmt= mysqli_stmt_init($conn);
     if (!mysqli_stmt_prepare($stmt, $sql)) {
         header("location: ../product-list.php?error=stmtfailed");
@@ -97,7 +98,11 @@ function fetchAnnuncio($conn, $ida)
 
 function fetchAnnunciCat($conn, $cat)
 {
-    $sql= "SELECT * FROM annuncio a JOIN prodotto p ON a.ID_P=p.ID_P JOIN stati s ON s.ID_A=a.ID_A WHERE Categoria=? AND Stato='in vendita' ORDER BY DataPubb DESC;";
+    $sql= "SELECT a.ID_A, a.Nome_A, p.ID_P, a.CF, p.Foto, a.Prezzo, Stato, a.Tipo TipoA, AreaGeo, count(o.CF) n
+    FROM annuncio a JOIN prodotto p ON a.ID_P=p.ID_P JOIN stati s ON s.ID_A=a.ID_A LEFT OUTER JOIN osserva o ON o.ID_A=a.ID_A
+    WHERE Categoria=? AND Stato='in vendita'
+    GROUP BY a.ID_A, p.ID_P
+    ORDER BY n DESC;";
     $stmt= mysqli_stmt_init($conn);
     if (!mysqli_stmt_prepare($stmt, $sql)) {
         header("location: ../product-list.php?error=stmtfailed");
@@ -120,7 +125,11 @@ function fetchAnnunciCat($conn, $cat)
 
 function fetchAnnunciSubcat($conn, $subcat)
 {
-    $sql= "SELECT * FROM annuncio a JOIN prodotto p ON a.ID_P=p.ID_P JOIN stati s ON s.ID_A=a.ID_A WHERE Sottocategoria=? AND Stato='in vendita' ORDER BY DataPubb DESC;";
+    $sql= "SELECT  a.ID_A, a.Nome_A, p.ID_P, a.CF, p.Foto, a.Prezzo, Stato, a.Tipo TipoA, AreaGeo, count(o.CF) n
+    FROM annuncio a JOIN prodotto p ON a.ID_P=p.ID_P JOIN stati s ON s.ID_A=a.ID_A LEFT OUTER JOIN osserva o ON o.ID_A=a.ID_A
+    WHERE Sottocategoria=? AND Stato='in vendita'
+    GROUP BY a.ID_A, p.ID_P
+    ORDER BY n DESC;";
     $stmt= mysqli_stmt_init($conn);
     if (!mysqli_stmt_prepare($stmt, $sql)) {
         header("location: ../product-list.php?error=stmtfailed");

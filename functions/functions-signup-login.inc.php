@@ -140,6 +140,7 @@ function LoginUser($conn, $cf, $pwd)
         $_SESSION["CF"]= $cfEsiste["CF"];
         $_SESSION["Email"]= $cfEsiste["Email"];
         $_SESSION["Tipo"]= $cfEsiste["Tipo"];
+        $_SESSION["Regione"]= $cfEsiste["Reg"];
         $_SESSION["Carrello"]= array();
         header("location: ../index.php");
         exit();

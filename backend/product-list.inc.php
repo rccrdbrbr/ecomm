@@ -1,6 +1,8 @@
 <?php
 
-  //$cat=$_GET["category"];
+  if (session_status() == PHP_SESSION_NONE) {
+      session_start();
+  }
 
   require_once 'dbh.inc.php';
   require_once 'functions/functions-product-list.inc.php';
@@ -72,7 +74,8 @@
 
       if ($annunci == true) {
           while ($row = mysqli_fetch_assoc($annunci)) {
-              ?>
+              if (!isset($_SESSION["CF"]) && $row["TipoA"]=="pubblico" || $row["TipoA"]=="pubblico" || $row["TipoA"]=="ristretto" && $row["AreaGeo"]==$_SESSION["Regione"]) {
+                  ?>
               <div class="col-md-4">
                 <div class="product-item">
                   <div class="product-title">
@@ -95,6 +98,7 @@
                 </div>
               </div>
               <?php
+              }
           }
       } else {
           ?>

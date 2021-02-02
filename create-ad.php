@@ -82,7 +82,7 @@ if ($_SESSION["Tipo"] == "Venditore" || $_SESSION["Tipo"] == "Venditore e Acquir
                         <div class="col-md-6">
                             <label>Area Geografica</label>
                             <select class="form-control" id="area" name="area">
-		                            <option value="nessuna" selected>Seleziona solo se la visibilità è privata</option>
+		                            <option value="" selected>Seleziona solo se la visibilità è privata</option>
 		                            </select>
                         </div>
                         <div class="col-md-12">
