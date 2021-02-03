@@ -45,7 +45,7 @@ if (isset($_SESSION["CF"]) || isset($_GET["cf"])) {
                                   <h5><?php echo $utente["Email"] ?></h5>
                                 </div>
                                 <div class="col-md-12" >
-                                  <h5><?php echo $_SESSION["CF"] ?></h5>
+                                  <h5><?php echo $utente["CF"] ?></h5>
                                   <h5>Tipo Account:</h5>
                                   <h5><?php echo $utente["Tipo"] ?></h5>
                                 </div>
