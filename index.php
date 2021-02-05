@@ -101,10 +101,11 @@ include "common/header.php"
         <div class="review">
             <div class="container-fluid">
                 <div class="row align-items-center review-slider normal-slider">
-                  <?php include "backend/evaluations-slider.inc.php"; ?>      
+                  <?php include "backend/evaluations-slider.inc.php"; ?>
                 </div>
             </div>
         </div>
+        <script src="js/buttons.js"></script>
         <!-- Review End -->
 <?php
 

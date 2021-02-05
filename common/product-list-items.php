@@ -1,4 +1,3 @@
-<div class="col-md-4">
   <div class="product-item">
     <div class="product-title">
       <a href="product-detail.php?id=<?php echo $row["ID_A"].'&cf='.$row["CF"] ?>"><?php echo $row["Nome_A"] ?></a>
@@ -18,5 +17,3 @@
       <a class="btn" onclick="addCart(<?php echo $row["ID_A"] ?>)"><i class="fa fa-shopping-cart"></i>Carrello</a>
     </div>
   </div>
-</div>
-<script src="js/buttons.js"></script>

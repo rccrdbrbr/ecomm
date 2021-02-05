@@ -15,11 +15,21 @@
           while ($row = mysqli_fetch_assoc($annunci)) {
               if (isset($_SESSION["CF"])) {
                   if ($row["TipoA"]=="pubblico" || $row["TipoA"]=="ristretto" && $row["AreaGeo"]==$_SESSION["Regione"]) {
-                      include "common/product-list-items.php";
+                      ?>
+                    <div class="col-md-4">
+                    <?php
+                      include "common/product-list-items.php"; ?>
+                      </div>
+                      <?php
                       $f=1;
                   }
               } elseif (!isset($_SESSION["CF"]) && $row["TipoA"]=="pubblico") {
-                  include "common/product-list-items.php";
+                  ?>
+                <div class="col-md-4">
+                <?php
+                  include "common/product-list-items.php"; ?>
+                  </div>
+                  <?php
                   $f=1;
               }
           }
@@ -39,11 +49,21 @@
           while ($row = mysqli_fetch_assoc($annunci)) {
               if (isset($_SESSION["CF"])) {
                   if ($row["TipoA"]=="pubblico" || $row["TipoA"]=="ristretto" && $row["AreaGeo"]==$_SESSION["Regione"]) {
-                      include "common/product-list-items.php";
+                      ?>
+                    <div class="col-md-4">
+                    <?php
+                      include "common/product-list-items.php"; ?>
+                      </div>
+                      <?php
                       $f=1;
                   }
               } elseif (!isset($_SESSION["CF"]) && $row["TipoA"]=="pubblico") {
-                  include "common/product-list-items.php";
+                  ?>
+                <div class="col-md-4">
+                <?php
+                  include "common/product-list-items.php"; ?>
+                  </div>
+                  <?php
                   $f=1;
               }
           }
@@ -64,11 +84,21 @@
           while ($row = mysqli_fetch_assoc($annunci)) {
               if (isset($_SESSION["CF"])) {
                   if ($row["TipoA"]=="pubblico" || $row["TipoA"]=="ristretto" && $row["AreaGeo"]==$_SESSION["Regione"]) {
-                      include "common/product-list-items.php";
+                      ?>
+                    <div class="col-md-4">
+                    <?php
+                      include "common/product-list-items.php"; ?>
+                      </div>
+                      <?php
                       $f=1;
                   }
               } elseif (!isset($_SESSION["CF"]) && $row["TipoA"]=="pubblico") {
-                  include "common/product-list-items.php";
+                  ?>
+                <div class="col-md-4">
+                <?php
+                  include "common/product-list-items.php"; ?>
+                  </div>
+                  <?php
                   $f=1;
               }
           }

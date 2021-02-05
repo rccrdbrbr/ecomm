@@ -98,6 +98,7 @@ include "common/header.php"
                 </div>
             </div>
         </div>
+        <script src="js/buttons.js"></script>
         <!-- Product List End -->
         <?php
 

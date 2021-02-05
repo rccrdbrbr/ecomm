@@ -52,9 +52,10 @@ if (isset($_GET["id"]) and isset($_GET["cf"])) {
 
 
                                         <div class="action">
-                                          <a class="btn" href="backend/add-wishlist.inc.php?id=<?php echo $_GET["id"]; ?>">
+                                          <a class="btn" onclick="addWish(<?php echo $annuncio["ID_A"] ?>)">
                                             <i class="fa fa-heart"></i>Osserva</a>
-                                            <a class="btn" href="backend/add-cart.inc.php?id=<?php echo $_GET["id"]; ?>"><i class="fa fa-shopping-cart"></i>Carrello</a>
+                                          <a class="btn" onclick="addCart(<?php echo $annuncio["ID_A"] ?>)">
+                                            <i class="fa fa-shopping-cart"></i>Carrello</a>
                                         </div>
                                     </div>
                                 </div>
@@ -123,6 +124,7 @@ if (isset($_GET["id"]) and isset($_GET["cf"])) {
                 </div>
             </div>
         </div>
+        <script src="js/buttons.js"></script>
 <?php
   include "common/footer.php";
 } else {
