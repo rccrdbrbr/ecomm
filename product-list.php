@@ -99,7 +99,6 @@ include "common/header.php"
             </div>
         </div>
         <!-- Product List End -->
-
         <?php
 
            include "common/footer.php"
