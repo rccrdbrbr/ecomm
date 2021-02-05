@@ -50,7 +50,7 @@ function popolaProvince() {
   regione = regioneMenu.options[regioneMenu.selectedIndex].value;
   //console.log(regione);
 
-  if (regione != 'nessuna') {
+  if (regione != 'pubblico') {
     var xttp = new ajaxRequest();
     xttp.onreadystatechange = function() {
       // console.log(this.readyState + ' ' + this.status);
