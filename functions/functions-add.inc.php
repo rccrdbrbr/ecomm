@@ -19,5 +19,5 @@ function aggiungiOsserva($conn, $cf, $ida)
     }
 
     mysqli_stmt_close($stmt);
-    header("location: ../product-detail.php?id=".$ida."");
+    //header("location: ../product-detail.php?id=".$ida."");
 }

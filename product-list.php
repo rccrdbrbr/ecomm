@@ -99,7 +99,6 @@ include "common/header.php"
             </div>
         </div>
         <!-- Product List End -->
-        <script src="js/buttons.js"></script>
         <?php
 
            include "common/footer.php"
