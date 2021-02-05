@@ -130,7 +130,7 @@ if (session_status() == PHP_SESSION_NONE) {
                             </a>
                             <a href="cart.php" class="btn cart">
                                 <i class="fa fa-shopping-cart"></i>
-                                <span onchange="noCart()">(<!--<?php include "backend/no-cart.inc.php" ?>-->)</span>
+                                <span >(<?php include "backend/no-cart.inc.php" ?>)</span>
                                 <script src=""="js/buttons.js"></script>
                             </a>
                         </div>

@@ -27,15 +27,8 @@ function addCart(id) {
 
 function noCart() {
   $.ajax({
-<<<<<<< HEAD
     url: "backend/no-cart.inc.php",
-=======
-    url: "backend/add-cart.inc.php",
->>>>>>> 94393bc9c8311c12843f351694fb91fe52607b22
     type: "POST",
-    data: {
-      id: id
-    },
     cache: false,
     success: function(dataResult) {
       console.log(dataResult);
