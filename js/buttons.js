@@ -37,7 +37,8 @@ function noCart() {
   })
 }
 
-function deleteWish(id) {
+function deleteWish(id, nrow) {
+  deleteRowTable(nrow);
   console.log(id);
   $.ajax({
     url: "backend/delete-wishlist.inc.php",
@@ -50,4 +51,9 @@ function deleteWish(id) {
       var dataResult = JSON.parse(dataResult);
     }
   })
+}
+
+function deleteRowTable(nrow) {
+  document.getElementById("WishTable").deleteRow(nrow);
+  console.log(nrow);
 }
