@@ -34,9 +34,10 @@ if (isset($_GET["category"])) {
                   </div>
                 </td>
                 <td>€ <?php echo $row["Prezzo"] ?></td>
-                <td><button id = "cart" name="cart" class="btn-cart">Carrello</button></td>
-                <td><a href="backend/delete-wishlist.inc.php?id=<?php echo $row["ID_A"] ?>">
-                  <button name="delete"><i class="fa fa-trash"></i></button></a></td>
+                <td><button id = "cart" name="cart" class="btn-cart" onclick="addCart(<?php echo $row["ID_A"] ?>)">
+                  Carrello</button></td>
+                <td><button name="delete" onclick="deleteWish(<?php echo $row["ID_A"] ?>)"><i class="fa fa-trash">
+                </i></button></a></td>
                 </tr>
                 <?php
               } ?>
@@ -76,8 +77,10 @@ if (isset($_GET["category"])) {
                   </div>
                 </td>
                 <td>€ <?php echo $row["Prezzo"] ?></td>
-                <td><button id = "cart" name="cart" class="btn-cart">Carrello</button></td>
-                <td><button name="delete"><i class="fa fa-trash"></i></button></td>
+                <td><button id = "cart" name="cart" class="btn-cart" onclick="addCart(<?php echo $row["ID_A"] ?>)">
+                  Carrello</button></td>
+                <td><button name="delete" onclick="deleteWish(<?php echo $row["ID_A"] ?>)"><i class="fa fa-trash">
+                  </i></button></td>
               </tr>
               <?php
               } ?>
@@ -91,3 +94,5 @@ if (isset($_GET["category"])) {
         <?php
     }
 }
+?>
+<script src="js/buttons.js"></script>

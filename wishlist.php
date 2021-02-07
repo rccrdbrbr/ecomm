@@ -52,6 +52,7 @@ if (isset($_SESSION["CF"])) {
                 </div>
             </div>
         </div>
+        <script src="js/buttons.js"></script>
         <!-- Wishlist End -->
 <?php
 } else {

@@ -35,5 +35,19 @@ function noCart() {
       //var dataResult = JSON.parse(dataResult);
     }
   })
+}
 
+function deleteWish(id) {
+  console.log(id);
+  $.ajax({
+    url: "backend/delete-wishlist.inc.php",
+    type: "POST",
+    data: {
+      id: id
+    },
+    cache: false,
+    success: function(dataResult) {
+      var dataResult = JSON.parse(dataResult);
+    }
+  })
 }
