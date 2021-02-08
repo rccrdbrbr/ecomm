@@ -39,8 +39,8 @@ function noCart() {
   })
 }
 
-function deleteWish(id, nrow) {
-  deleteRowTable(nrow);
+function deleteWish(id) {
+  deleteRowTable(id);
   console.log(id);
   $.ajax({
     url: "backend/delete-wishlist.inc.php",
@@ -55,18 +55,9 @@ function deleteWish(id, nrow) {
   })
 }
 
-function deleteRowTable(nrow) {
-  //nrow = nrow - j;
-  //document.getElementById("WishTable").deleteRow(nrow);
-  document.getElementById("WishTable").deleteRow(nrow + 1);
-  console.log(nrow);
-  $.ajax({
-    url: "backend/delete-row.inc.php",
-    type: "POST",
-    data: {
-      nrow: nrow
-    },
-    cache: false
-  })
-  //j += 1;
+function deleteRowTable(id) {
+
+  idr = 'row' + id;
+  console.log(idr);
+  document.getElementById(idr).style.display = 'none';
 }

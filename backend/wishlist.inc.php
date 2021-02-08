@@ -26,7 +26,7 @@ if (isset($_GET["category"])) {
               <?php
               while ($row = mysqli_fetch_assoc($osservati)) {
                   ?>
-              <tr>
+              <tr id="row<?php echo $row["ID_A"] ?>">
                 <td>
                   <div class="img">
                     <a href="product-detail.php?id=<?php echo $row["ID_A"] ?>">
@@ -35,9 +35,9 @@ if (isset($_GET["category"])) {
                   </div>
                 </td>
                 <td>€ <?php echo $row["Prezzo"] ?></td>
-                <td><button id = "cart" name="cart" class="btn-cart" onclick="addCart(<?php echo $row["ID_A"] ?>)">
+                <td><button id = "cart<?php echo $row["ID_A"] ?>" name="cart" class="btn-cart" onclick="addCart(<?php echo $row["ID_A"] ?>)">
                   Carrello</button></td>
-                <td><button name="delete" onclick="deleteWish(<?php echo $row["ID_A"].",".$i ?>)"><i class="fa fa-trash">
+                <td><button id="delete<?php echo $row["ID_A"] ?>" name="delete" onclick="deleteWish(<?php echo $row["ID_A"] ?>)"><i class="fa fa-trash">
                 </i></button></a></td>
                 </tr>
                 <?php
@@ -70,7 +70,7 @@ if (isset($_GET["category"])) {
               <?php
               while ($row = mysqli_fetch_assoc($osservati)) {
                   array_push($_SESSION["table"], $row["ID_A"]); ?>
-              <tr>
+              <tr id="row<?php echo $row["ID_A"] ?>">
                 <td>
                   <div class="img">
                     <a href="product-detail.php?id=<?php echo $row["ID_A"] ?>">
@@ -79,20 +79,15 @@ if (isset($_GET["category"])) {
                   </div>
                 </td>
                 <td>€ <?php echo $row["Prezzo"] ?></td>
-                <td><button id = "cart" name="cart" class="btn-cart" onclick="addCart(<?php echo $row["ID_A"] ?>)">
+                <td><button id = "cart<?php echo $row["ID_A"] ?>" name="cart" class="btn-cart" onclick="addCart(<?php echo $row["ID_A"] ?>)">
                   Carrello</button></td>
-                <td><button name="delete" onclick="deleteWish(<?php echo $row["ID_A"].",".array_search($row["ID_A"], $_SESSION["table"]) ?>)"><i class="fa fa-trash">
+                <td><button id="delete<?php echo $row["ID_A"] ?>" name="delete" onclick="deleteWish(<?php echo $row["ID_A"]?>)"><i class="fa fa-trash">
                   </i></button></td>
               </tr>
               <?php
               } ?>
             </tbody>
           </table>
-            <?php //var_dump($_SESSION["table"]);
-        //unset($_SESSION["table"][1]);
-        //echo "<br>";
-        //$_SESSION["table"]=array_values($_SESSION["table"]);
-        //var_dump($_SESSION["table"]);?>
         </div>
         <?php
     } else {
