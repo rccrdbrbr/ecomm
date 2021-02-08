@@ -1,3 +1,5 @@
+var j = 0;
+
 function addWish(id) {
   console.log(id);
   $.ajax({
@@ -54,6 +56,17 @@ function deleteWish(id, nrow) {
 }
 
 function deleteRowTable(nrow) {
-  document.getElementById("WishTable").deleteRow(nrow);
+  //nrow = nrow - j;
+  //document.getElementById("WishTable").deleteRow(nrow);
+  document.getElementById("WishTable").deleteRow(nrow + 1);
   console.log(nrow);
+  $.ajax({
+    url: "backend/delete-row.inc.php",
+    type: "POST",
+    data: {
+      nrow: nrow
+    },
+    cache: false
+  })
+  //j += 1;
 }

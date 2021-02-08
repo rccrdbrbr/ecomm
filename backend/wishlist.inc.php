@@ -3,6 +3,7 @@
 //session_start();
 
 $cf=$_SESSION["CF"];
+$_SESSION["table"]=array();
 
 require_once 'dbh.inc.php';
 require_once 'functions/functions-wishlist-cart.inc.php';
@@ -10,7 +11,7 @@ require_once 'functions/functions-wishlist-cart.inc.php';
 if (isset($_GET["category"])) {
     $osservati=fetchOsservatiCat($conn, $cf, $_GET["category"]);
     if ($osservati == true) {
-        $i=1; ?>
+        //$i=1;?>
         <div class="table-responsive">
           <table class="table table-bordered" id="WishTable">
             <thead class="thead-dark">
@@ -40,7 +41,7 @@ if (isset($_GET["category"])) {
                 </i></button></a></td>
                 </tr>
                 <?php
-                $i+=1;
+                //$i+=1;
               } ?>
             </tbody>
           </table>
@@ -54,7 +55,7 @@ if (isset($_GET["category"])) {
 } else {
     $osservati=fetchOsservati($conn, $cf);
     if ($osservati == true) {
-        $i=1; ?>
+        $i=array(); ?>
         <div class="table-responsive">
           <table class="table table-bordered" id="WishTable">
             <thead class="thead-dark">
@@ -68,7 +69,7 @@ if (isset($_GET["category"])) {
             <tbody class="align-middle">
               <?php
               while ($row = mysqli_fetch_assoc($osservati)) {
-                  ?>
+                  array_push($_SESSION["table"], $row["ID_A"]); ?>
               <tr>
                 <td>
                   <div class="img">
@@ -80,14 +81,18 @@ if (isset($_GET["category"])) {
                 <td>€ <?php echo $row["Prezzo"] ?></td>
                 <td><button id = "cart" name="cart" class="btn-cart" onclick="addCart(<?php echo $row["ID_A"] ?>)">
                   Carrello</button></td>
-                <td><button name="delete" onclick="deleteWish(<?php echo $row["ID_A"].",".$i ?>)"><i class="fa fa-trash">
+                <td><button name="delete" onclick="deleteWish(<?php echo $row["ID_A"].",".array_search($row["ID_A"], $_SESSION["table"]) ?>)"><i class="fa fa-trash">
                   </i></button></td>
               </tr>
               <?php
-              $i+=1;
               } ?>
             </tbody>
           </table>
+            <?php //var_dump($_SESSION["table"]);
+        //unset($_SESSION["table"][1]);
+        //echo "<br>";
+        //$_SESSION["table"]=array_values($_SESSION["table"]);
+        //var_dump($_SESSION["table"]);?>
         </div>
         <?php
     } else {
