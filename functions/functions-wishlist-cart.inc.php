@@ -94,9 +94,10 @@ function contaOsservati($conn, $cf)
     mysqli_stmt_execute($stmt);
 
     $dati= mysqli_stmt_get_result($stmt);
+    //$conta=mysqli_num_rows($dati);
 
     if ($riga= mysqli_fetch_assoc($dati)) {
-        return $riga;
+        return $conta;
     } else {
         $risultato= false;
         return $risultato;

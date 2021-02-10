@@ -39,9 +39,12 @@ function noCart() {
   })
 }
 
-function deleteWish(id) {
+function deleteWish(id, i) {
   deleteRowTable(id);
+  //countRows(i);
   console.log(id);
+  j -= 1;
+  console.log(j);
   $.ajax({
     url: "backend/delete-wishlist.inc.php",
     type: "POST",
@@ -56,8 +59,26 @@ function deleteWish(id) {
 }
 
 function deleteRowTable(id) {
-
   idr = 'row' + id;
   console.log(idr);
   document.getElementById(idr).style.display = 'none';
+}
+
+/*function countRows() {
+  j = i;
+  console.log(j);
+}*/
+
+function countRows() {
+  $.ajax({
+    url: "backend/no-wishlist.inc.php",
+    type: "POST",
+    cache: false,
+    success: function(dataResult) {
+      console.log(dataResult);
+      console.log("ah");
+      //var dataResult = JSON.parse(dataResult);
+      //console.log(dataResult);
+    }
+  })
 }
