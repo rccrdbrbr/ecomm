@@ -86,6 +86,8 @@
 
         <!-- Template Javascript -->
         <script src="js/main.js"></script>
+        <script src="js/buttons.js"></script>
+        <script src="js/eventHandlerWish.js"></script>
 
     </body>
 </html>

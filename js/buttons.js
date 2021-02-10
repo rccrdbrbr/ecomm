@@ -1,7 +1,8 @@
 //var j = 0;
 
 function addWish(id) {
-  console.log(id);
+  console.log("idwish: " + id);
+  //document.getElementById("nwish").innerHTML = "(" + j + ")";
   $.ajax({
     url: "backend/add-wishlist.inc.php",
     type: "POST",
@@ -13,10 +14,11 @@ function addWish(id) {
       var dataResult = JSON.parse(dataResult);
     }
   })
+  countWish();
 }
 
 function addCart(id) {
-  console.log(id);
+  console.log("idcart: " + id);
   $.ajax({
     url: "backend/add-cart.inc.php",
     type: "POST",
@@ -25,26 +27,16 @@ function addCart(id) {
     },
     cache: false
   })
-}
-
-function noCart() {
-  $.ajax({
-    url: "backend/no-cart.inc.php",
-    type: "POST",
-    cache: false,
-    success: function(dataResult) {
-      console.log(dataResult);
-      //var dataResult = JSON.parse(dataResult);
-    }
-  })
+  countCart();
 }
 
 function deleteWish(id, i) {
   deleteRowTable(id);
   //countRows(i);
-  console.log(id);
+  console.log("id: " + id);
   j -= 1;
-  console.log(j);
+  document.getElementById("nwish").innerHTML = "(" + j + ")";
+  console.log("j: " + j);
   $.ajax({
     url: "backend/delete-wishlist.inc.php",
     type: "POST",
@@ -69,25 +61,39 @@ function deleteRowTable(id) {
   }
 }
 
-/*function countRows() {
-  j = i;
-  console.log(j);
-}*/
 
-function countRows() {
+function countCart() {
+  $.ajax({
+    url: "backend/no-cart.inc.php",
+    type: "POST",
+    cache: false,
+    //dataType: "json",
+    success: function(risposta) {
+      console.log("ncart: " + risposta);
+      document.getElementById("ncart").innerHTML = "(" + risposta + ")";
+      t = risposta;
+      //var dataResult = JSON.parse(dataResult);
+      //console.log(dataResult);
+    }
+  })
+}
+
+function countWish() {
   $.ajax({
     url: "backend/no-wishlist.inc.php",
     type: "POST",
     cache: false,
     //dataType: "json",
     success: function(risposta) {
-      console.log(risposta);
+      console.log("nwish: " + risposta);
+      document.getElementById("nwish").innerHTML = "(" + risposta + ")";
       j = risposta;
       //var dataResult = JSON.parse(dataResult);
       //console.log(dataResult);
     }
   })
 }
+
 
 function countRowsCat() {
   $.ajax({
@@ -96,7 +102,7 @@ function countRowsCat() {
     cache: false,
     //dataType: "json",
     success: function(risposta) {
-      console.log(risposta);
+      console.log("nwishCat: " + risposta);
       j = risposta;
       //var dataResult = JSON.parse(dataResult);
       //console.log(dataResult);

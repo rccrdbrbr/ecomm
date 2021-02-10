@@ -82,6 +82,8 @@ if (isset($_SESSION["CF"])) {
         //echo $i;
     //return $i;
     }
+} else {
+    echo 0;
 }
 
     /*if (contaOsservati($conn, $cf) !== false) {
