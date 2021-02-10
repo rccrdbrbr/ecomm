@@ -38,8 +38,8 @@ if (isset($_SESSION["CF"])) {
                                             <h2>Totale<span>€<?php echo $_SESSION["Totale"]; ?></span></h2>
                                         </div>
                                         <div class="cart-btn">
-                                            <a href="backend/empty-cart.inc.php"><button>Svuota</button></a>
-                                            <a href="backend/buy-cart.inc.php"><button>Compra</button></a>
+                                            <button onclick="emptyCart()">Svuota</button>
+                                            <button>Compra</button>
                                             <!--<button>Comra</button>
                                             <button>Compra</button> <button>Compra</button> <button>Compra</button>-->
                                         </div>

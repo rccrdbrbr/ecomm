@@ -30,8 +30,8 @@ function addCart(id) {
   countCart();
 }
 
-function deleteWish(id, i) {
-  deleteRowTable(id);
+function deleteWish(id) {
+  deleteRowTableWish(id);
   //countRows(i);
   console.log("id: " + id);
   j -= 1;
@@ -50,7 +50,7 @@ function deleteWish(id, i) {
   })
 }
 
-function deleteRowTable(id) {
+function deleteRowTableWish(id) {
   idr = 'row' + id;
   console.log(idr);
   if (j > 1) {
@@ -61,6 +61,47 @@ function deleteRowTable(id) {
   }
 }
 
+function deleteCart(id) {
+  deleteRowTableCart(id);
+  console.log("id: " + id);
+  t -= 1;
+  document.getElementById("ncart").innerHTML = "(" + t + ")";
+  console.log("t: " + t);
+  $.ajax({
+    url: "backend/remove-element-cart.inc.php",
+    type: "POST",
+    data: {
+      id: id
+    },
+    cache: false
+    /*,
+        success: function(dataResult) {
+          var dataResult = JSON.parse(dataResult);
+        }*/
+  })
+}
+
+function deleteRowTableCart(id) {
+  idr = 'row' + id;
+  console.log(idr);
+  if (t > 1) {
+    document.getElementById(idr).style.display = 'none';
+  } else {
+    document.getElementById("cartTable").style.display = 'none';
+    document.getElementById("p").innerHTML = "Non hai nessun prodotto nel carrello!";
+  }
+}
+
+function emptyCart() {
+  $.ajax({
+    url: "backend/empty-cart.inc.php",
+    type: "POST",
+    cache: false
+  })
+  document.getElementById("cartTable").style.display = 'none';
+  document.getElementById("p").innerHTML = "Non hai nessun prodotto nel carrello!";
+  document.getElementById("ncart").innerHTML = "(0)";
+}
 
 function countCart() {
   $.ajax({

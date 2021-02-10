@@ -14,7 +14,8 @@ if (!empty($_SESSION["Carrello"])) {
 <div class="col-lg-8">
     <div class="cart-page-inner">
         <div class="table-responsive">
-            <table class="table table-bordered">
+          <p id="p"></p>
+            <table class="table table-bordered" id="cartTable">
                 <thead class="thead-dark">
                     <tr>
                         <th>Annunci</th>
@@ -31,7 +32,7 @@ foreach ($_SESSION["Carrello"] as $ida) {
     $elemento= fetchCarrello($conn, $ida);
     if ($elemento ==  true) {
         ?>
-    <tr>
+    <tr id="row<?php echo $elemento["ID_A"] ?>">
         <td>
             <div class="img">
                 <a href="product-detail.php?id=<?php echo $elemento["ID_A"]; ?>"><img src="img/<?php echo $elemento["Foto"]; ?>" alt="Image"></a>
@@ -41,7 +42,7 @@ foreach ($_SESSION["Carrello"] as $ida) {
         <td>€<?php echo $elemento["Prezzo"]; ?></td>
 
 
-        <td><a href="backend/remove-element-cart.inc.php?id=<?php echo $elemento["ID_A"]; ?>"><button><i class="fa fa-trash"></i></button></td>
+        <td><a onclick="deleteCart(<?php echo $elemento["ID_A"]; ?>)"><button><i class="fa fa-trash"></i></button></td>
     </tr>
     <?php
     $_SESSION["Totale"]+= $elemento["Prezzo"];
