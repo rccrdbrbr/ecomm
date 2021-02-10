@@ -33,9 +33,9 @@ if (isset($_SESSION["CF"])) {
                                     <div class="cart-summary">
                                         <div class="cart-content">
                                             <h1>Riepilogo</h1>
-                                            <p>Subtotale<span>€<?php echo $_SESSION["Totale"]; ?></span></p>
+                                            <p >Subtotale<span id="subtot"><!--€<?php echo $_SESSION["Totale"]; ?>--></span></p>
                                             <p>Spese di spedizione<span>€0</span></p>
-                                            <h2>Totale<span>€<?php echo $_SESSION["Totale"]; ?></span></h2>
+                                            <h2 >Totale<span id="tot"><!--€<?php echo $_SESSION["Totale"]; ?>--></span></h2>
                                         </div>
                                         <div class="cart-btn">
                                             <button onclick="emptyCart()">Svuota</button>
@@ -51,6 +51,8 @@ if (isset($_SESSION["CF"])) {
                 </div>
             </div>
         </div>
+        <script src="js/buttons.js"></script>
+        <script src="js/eventHandlerCart.js"></script>
         <!-- Cart End -->
         <?php
 } else {

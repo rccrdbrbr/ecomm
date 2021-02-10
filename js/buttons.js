@@ -101,6 +101,24 @@ function emptyCart() {
   document.getElementById("cartTable").style.display = 'none';
   document.getElementById("p").innerHTML = "Non hai nessun prodotto nel carrello!";
   document.getElementById("ncart").innerHTML = "(0)";
+  document.getElementById("subtot").innerHTML = "€0";
+  document.getElementById("tot").innerHTML = "€0";
+}
+
+function priceCart() {
+  $.ajax({
+    url: "backend/price-cart.inc.php",
+    type: "POST",
+    cache: false,
+    //dataType: "json",
+    success: function(risposta) {
+      console.log("prezzo: " + risposta);
+      //document.getElementById("ncart").innerHTML = "(" + risposta + ")";
+      //t = risposta;
+      //var dataResult = JSON.parse(dataResult);
+      //console.log(dataResult);
+    }
+  })
 }
 
 function countCart() {

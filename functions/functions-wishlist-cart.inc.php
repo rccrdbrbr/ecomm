@@ -198,3 +198,26 @@ function aggiungiOsserva($conn, $cf, $ida)
     mysqli_stmt_close($stmt);
     //header("location: ../product-detail.php?id=".$ida."");
 }
+
+function productPrice($conn, $ida)
+{
+    $sql= "SELECT Prezzo FROM annuncio a WHERE ID_A= ? ;";
+    $stmt= mysqli_stmt_init($conn);
+    if (!mysqli_stmt_prepare($stmt, $sql)) {
+        header("location: ../wishlist.php?error=stmtfailed");
+        exit();
+    }
+
+    mysqli_stmt_bind_param($stmt, "i", $ida);
+    mysqli_stmt_execute($stmt);
+
+    $dati= mysqli_stmt_get_result($stmt);
+    if ($riga= mysqli_fetch_assoc($dati)) {
+        return $riga;
+    } else {
+        $risultato= false;
+        return $risultato;
+    }
+
+    mysqli_stmt_close($stmt);
+}
