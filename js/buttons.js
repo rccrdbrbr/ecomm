@@ -83,7 +83,21 @@ function countRows() {
     success: function(risposta) {
       console.log(risposta);
       j = risposta;
-      console.log("ah");
+      //var dataResult = JSON.parse(dataResult);
+      //console.log(dataResult);
+    }
+  })
+}
+
+function countRowsCat() {
+  $.ajax({
+    url: "backend/no-wishlist-cat.inc.php",
+    type: "POST",
+    cache: false,
+    //dataType: "json",
+    success: function(risposta) {
+      console.log(risposta);
+      j = risposta;
       //var dataResult = JSON.parse(dataResult);
       //console.log(dataResult);
     }
