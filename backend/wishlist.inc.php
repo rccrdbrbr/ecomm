@@ -55,9 +55,9 @@ if (isset($_GET["category"])) {
         <?php
     }
 } else {
-    $osservati=fetchOsservati($conn, $cf);
-    $i = mysqli_num_rows($osservati);
     if ($osservati == true) {
+        $osservati=fetchOsservati($conn, $cf);
+        $i = mysqli_num_rows($osservati);
         //$i=0;
         /*
         while ($row = mysqli_fetch_assoc($osservati)) {
@@ -66,6 +66,7 @@ if (isset($_GET["category"])) {
         <div class="table-responsive" >
           <table class="table table-bordered" id="WishTable">
             <thead class="thead-dark">
+              <p id="p"></p>
               <tr>
                 <th>Annunci</th>
                 <th>Pezzo</th>

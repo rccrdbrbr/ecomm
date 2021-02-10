@@ -1,4 +1,4 @@
-var j = 0;
+//var j = 0;
 
 function addWish(id) {
   console.log(id);
@@ -61,7 +61,12 @@ function deleteWish(id, i) {
 function deleteRowTable(id) {
   idr = 'row' + id;
   console.log(idr);
-  document.getElementById(idr).style.display = 'none';
+  if (j > 1) {
+    document.getElementById(idr).style.display = 'none';
+  } else {
+    document.getElementById("WishTable").style.display = 'none';
+    document.getElementById("p").innerHTML = "Non hai nessun prodotto osservato!";
+  }
 }
 
 /*function countRows() {
@@ -74,8 +79,10 @@ function countRows() {
     url: "backend/no-wishlist.inc.php",
     type: "POST",
     cache: false,
-    success: function(dataResult) {
-      console.log(dataResult);
+    //dataType: "json",
+    success: function(risposta) {
+      console.log(risposta);
+      j = risposta;
       console.log("ah");
       //var dataResult = JSON.parse(dataResult);
       //console.log(dataResult);

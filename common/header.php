@@ -126,7 +126,7 @@ if (session_status() == PHP_SESSION_NONE) {
                         <div class="user">
                             <a href="wishlist.php" class="btn wishlist">
                                 <i class="fa fa-heart"></i>
-                                <span>(<?php include "backend/no-wishlist.inc.php"?>)</span>
+                                <span>(<!--<?php include "backend/no-wishlist.inc.php"?>-->)</span>
                             </a>
                             <a href="cart.php" class="btn cart">
                                 <i class="fa fa-shopping-cart"></i>
