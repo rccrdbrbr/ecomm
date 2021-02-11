@@ -64,10 +64,16 @@ if (session_status() == PHP_SESSION_NONE) {
 
                             <a href="index.php" class="nav-item nav-link ">Home</a>
                             <a href="product-list.php" class="nav-item nav-link">Annunci</a>
-                            <?php if (isset($_SESSION["CF"])) { ?>
+                            <?php if (isset($_SESSION["CF"])) {
+     if ($_SESSION["Tipo"]!== "Venditore") {   ?>
                             <a href="wishlist.php" class="nav-item nav-link" >Osservati</a>
                             <a href="cart.php" class="nav-item nav-link">Carrello</a>
-                          <?php } ?>
+                          <?php } else {
+         ?>
+                            <a href="create-ad.php" class="nav-item nav-link">Crea Annuncio</a>
+                            <?php
+     }
+ } ?>
 
                         </div>
                         <?php

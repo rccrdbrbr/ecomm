@@ -2,17 +2,17 @@
 
 function addWish(id) {
   console.log("idwish: " + id);
-  //document.getElementById("nwish").innerHTML = "(" + j + ")";
   $.ajax({
     url: "backend/add-wishlist.inc.php",
     type: "POST",
     data: {
       id: id
     },
-    cache: false,
-    success: function(dataResult) {
-      var dataResult = JSON.parse(dataResult);
-    }
+    cache: false
+    /*,
+        success: function(dataResult) {
+          var dataResult = JSON.parse(dataResult);
+        }*/
   })
   countWish();
 }
@@ -32,7 +32,6 @@ function addCart(id) {
 
 function deleteWish(id) {
   deleteRowTableWish(id);
-  //countRows(i);
   console.log("id: " + id);
   j -= 1;
   document.getElementById("nwish").innerHTML = "(" + j + ")";
@@ -74,10 +73,6 @@ function deleteCart(id) {
       id: id
     },
     cache: false
-    /*,
-        success: function(dataResult) {
-          var dataResult = JSON.parse(dataResult);
-        }*/
   })
   priceCart()
 }
@@ -115,10 +110,6 @@ function priceCart() {
       console.log("price: " + price);
       document.getElementById("subtot").innerHTML = "€" + price;
       document.getElementById("tot").innerHTML = "€" + price;
-      //document.getElementById("ncart").innerHTML = "(" + risposta + ")";
-      //t = risposta;
-      //var dataResult = JSON.parse(dataResult);
-      //console.log(dataResult);
     }
   })
 }
@@ -153,13 +144,10 @@ function countCart() {
     url: "backend/no-cart.inc.php",
     type: "POST",
     cache: false,
-    //dataType: "json",
     success: function(ncart) {
       console.log("ncart: " + ncart);
       document.getElementById("ncart").innerHTML = "(" + ncart + ")";
       t = ncart;
-      //var dataResult = JSON.parse(dataResult);
-      //console.log(dataResult);
     }
   })
 }
@@ -169,13 +157,10 @@ function countWish() {
     url: "backend/no-wishlist.inc.php",
     type: "POST",
     cache: false,
-    //dataType: "json",
     success: function(nwish) {
       console.log("nwish: " + nwish);
       document.getElementById("nwish").innerHTML = "(" + nwish + ")";
       j = nwish;
-      //var dataResult = JSON.parse(dataResult);
-      //console.log(dataResult);
     }
   })
 }
@@ -186,12 +171,9 @@ function countRowsCat() {
     url: "backend/no-wishlist-cat.inc.php",
     type: "POST",
     cache: false,
-    //dataType: "json",
     success: function(nwishCat) {
       console.log("nwishCat: " + nwishCat);
       j = nwishCat;
-      //var dataResult = JSON.parse(dataResult);
-      //console.log(dataResult);
     }
   })
 }

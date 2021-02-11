@@ -9,4 +9,6 @@
   require_once 'dbh.inc.php';
   require_once '../functions/functions-wishlist-cart.inc.php';
 
-  aggiungiOsserva($conn, $cf, $ida);
+  if ($_SESSION["Tipo"] !== "Venditore") {
+      aggiungiOsserva($conn, $cf, $ida);
+  }

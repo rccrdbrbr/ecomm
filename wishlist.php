@@ -3,7 +3,8 @@ session_start();
 
 
 if (isset($_SESSION["CF"])) {
-    include "common/header.php"; ?>
+    if ($_SESSION["Tipo"] !== "Venditore") {
+        include "common/header.php"; ?>
 
         <!-- Breadcrumb Start -->
         <div class="breadcrumb-wrap">
@@ -52,12 +53,15 @@ if (isset($_SESSION["CF"])) {
                 </div>
             </div>
         </div>
-        
+
         <!-- Wishlist End -->
 <?php
-} else {
+    } else {
         header("location: index.php");
     }
+} else {
+    header("location: index.php");
+}
 include "common/footer.php"
 
  ?>
