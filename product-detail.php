@@ -50,13 +50,19 @@ if (isset($_GET["id"]) and isset($_GET["cf"])) {
 
                                         </div>
 
-
-                                        <div class="action">
-                                          <a class="btn" onclick="addWish(<?php echo $annuncio["ID_A"] ?>)">
+                                        <?php
+                                        if (isset($_SESSION["Tipo"])) {
+                                            if ($_SESSION["Tipo"] !== "Venditore") {
+                                                ?>
+                                            <div class="action">
+                                            <a class="btn" onclick="addWish(<?php echo $annuncio["ID_A"] ?>)">
                                             <i class="fa fa-heart"></i>Osserva</a>
-                                          <a class="btn" onclick="addCart(<?php echo $annuncio["ID_A"] ?>)">
+                                            <a class="btn" onclick="addCart(<?php echo $annuncio["ID_A"] ?>)">
                                             <i class="fa fa-shopping-cart"></i>Carrello</a>
-                                        </div>
+                                            </div>
+                                            <?php
+                                            }
+                                        } ?>
                                     </div>
                                 </div>
                             </div>

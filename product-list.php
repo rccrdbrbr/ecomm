@@ -22,6 +22,7 @@ include "common/header.php"
                 <div class="row">
                     <div class="col-lg-8">
                         <div class="row">
+                          <!--
                             <div class="col-md-12">
                                 <div class="product-view-top">
                                     <div class="row">
@@ -64,7 +65,7 @@ include "common/header.php"
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div>-->
                             <?php
 
                             include "backend/product-list.inc.php";
@@ -74,6 +75,7 @@ include "common/header.php"
                         </div>
 
                         <!-- Pagination Start -->
+                        <!--
                         <div class="col-md-12">
                             <nav aria-label="Page navigation example">
                                 <ul class="pagination justify-content-center">
@@ -88,7 +90,7 @@ include "common/header.php"
                                     </li>
                                 </ul>
                             </nav>
-                      </div>
+                      </div> -->
                         <!-- Pagination Start -->
                     </div>
 
