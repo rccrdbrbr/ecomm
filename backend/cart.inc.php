@@ -3,7 +3,7 @@
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
-$_SESSION["Totale"]=0;
+//$_SESSION["Totale"]=0;
 
 require_once 'dbh.inc.php';
 require_once 'functions/functions-wishlist-cart.inc.php';

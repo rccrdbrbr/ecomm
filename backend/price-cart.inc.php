@@ -12,8 +12,9 @@ $_SESSION["Totale"]=0;
 
 foreach ($cart as $ida) {
     if (productPrice($conn, $ida)!==false) {
-        $p = intval(productPrice($conn, $ida));
-        $_SESSION["Totale"]+= $p;
-        echo $_SESSION["Totale"];
+        $p = productPrice($conn, $ida);
+        $_SESSION["Totale"]+= $p["Prezzo"];
     }
 }
+
+echo $_SESSION["Totale"];

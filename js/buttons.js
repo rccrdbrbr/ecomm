@@ -79,6 +79,7 @@ function deleteCart(id) {
           var dataResult = JSON.parse(dataResult);
         }*/
   })
+  priceCart()
 }
 
 function deleteRowTableCart(id) {
@@ -110,13 +111,39 @@ function priceCart() {
     url: "backend/price-cart.inc.php",
     type: "POST",
     cache: false,
-    //dataType: "json",
-    success: function(risposta) {
-      console.log("prezzo: " + risposta);
+    success: function(price) {
+      console.log("price: " + price);
+      document.getElementById("subtot").innerHTML = "€" + price;
+      document.getElementById("tot").innerHTML = "€" + price;
       //document.getElementById("ncart").innerHTML = "(" + risposta + ")";
       //t = risposta;
       //var dataResult = JSON.parse(dataResult);
       //console.log(dataResult);
+    }
+  })
+}
+
+function buyCart() {
+  $.ajax({
+    url: "backend/buy-cart.inc.php",
+    type: "POST",
+    cache: false,
+    success: function(f) {
+      if (f = 0) {
+        document.getElementById("pcart").innerHTML = "L'acquisto è andato a buon fine!";
+        document.getElementById("cartTable").style.display = 'none';
+        document.getElementById("p").innerHTML = "Non hai nessun prodotto nel carrello!";
+        document.getElementById("ncart").innerHTML = "(0)";
+        document.getElementById("subtot").innerHTML = "€0";
+        document.getElementById("tot").innerHTML = "€0";
+      } else {
+        document.getElementById("pcart").innerHTML = "Non tutti i prodotti sono stati acquistati!";
+        document.getElementById("cartTable").style.display = 'none';
+        document.getElementById("p").innerHTML = "Qualcosa è andato storto!";
+        document.getElementById("ncart").innerHTML = "(" + t + ")";
+        document.getElementById("subtot").innerHTML = "€0";
+        document.getElementById("tot").innerHTML = "€0";
+      }
     }
   })
 }
@@ -127,10 +154,10 @@ function countCart() {
     type: "POST",
     cache: false,
     //dataType: "json",
-    success: function(risposta) {
-      console.log("ncart: " + risposta);
-      document.getElementById("ncart").innerHTML = "(" + risposta + ")";
-      t = risposta;
+    success: function(ncart) {
+      console.log("ncart: " + ncart);
+      document.getElementById("ncart").innerHTML = "(" + ncart + ")";
+      t = ncart;
       //var dataResult = JSON.parse(dataResult);
       //console.log(dataResult);
     }
@@ -143,10 +170,10 @@ function countWish() {
     type: "POST",
     cache: false,
     //dataType: "json",
-    success: function(risposta) {
-      console.log("nwish: " + risposta);
-      document.getElementById("nwish").innerHTML = "(" + risposta + ")";
-      j = risposta;
+    success: function(nwish) {
+      console.log("nwish: " + nwish);
+      document.getElementById("nwish").innerHTML = "(" + nwish + ")";
+      j = nwish;
       //var dataResult = JSON.parse(dataResult);
       //console.log(dataResult);
     }
@@ -160,9 +187,9 @@ function countRowsCat() {
     type: "POST",
     cache: false,
     //dataType: "json",
-    success: function(risposta) {
-      console.log("nwishCat: " + risposta);
-      j = risposta;
+    success: function(nwishCat) {
+      console.log("nwishCat: " + nwishCat);
+      j = nwishCat;
       //var dataResult = JSON.parse(dataResult);
       //console.log(dataResult);
     }

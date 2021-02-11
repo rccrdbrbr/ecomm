@@ -39,7 +39,8 @@ if (isset($_SESSION["CF"])) {
                                         </div>
                                         <div class="cart-btn">
                                             <button onclick="emptyCart()">Svuota</button>
-                                            <button>Compra</button>
+                                            <button onclick="buyCart()">Compra</button>
+                                            <p id="pcart"></p>
                                             <!--<button>Comra</button>
                                             <button>Compra</button> <button>Compra</button> <button>Compra</button>-->
                                         </div>
