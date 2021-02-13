@@ -6,7 +6,6 @@ function fetchInfo($conn, $cf)
     $sql= "SELECT * FROM utente WHERE CF= ? ;";
     $stmt= mysqli_stmt_init($conn);
     if (!mysqli_stmt_prepare($stmt, $sql)) {
-        header("location: ../my-account.php?error=stmtfailed");
         exit();
     }
 
@@ -52,14 +51,6 @@ function EmailEsiste($conn, $email)
 
 function CambiaEmail($conn, $utente, $email)
 {
-    /*
-    $emailEsiste= EmailEsiste($conn, $email);
-
-    if ($emailEsiste !== false){
-      header("location: ../my-account.php?error=repemail");
-      exit();
-    }
-*/
     $sql= "UPDATE utente SET Email = ? WHERE CF = ? ;";
     $stmt= mysqli_stmt_init($conn);
     if (!mysqli_stmt_prepare($stmt, $sql)) {
@@ -195,7 +186,6 @@ function fetchAnnunciP($conn, $cf)
     LEFT OUTER JOIN acquista ac ON ac.ID_A=a.ID_A WHERE a.CF= ? ;";
     $stmt= mysqli_stmt_init($conn);
     if (!mysqli_stmt_prepare($stmt, $sql)) {
-        header("location: ../my-account.php?error=stmtfailed");
         exit();
     }
 
@@ -219,7 +209,6 @@ function fetchAnnunciC($conn, $cf)
     FROM annuncio an JOIN acquista ac ON an.ID_A=ac.ID_A WHERE ac.CF= ? ;";
     $stmt= mysqli_stmt_init($conn);
     if (!mysqli_stmt_prepare($stmt, $sql)) {
-        header("location: ../my-account.php?error=stmtfailed");
         exit();
     }
 
@@ -283,7 +272,6 @@ function fetchValutazioni($conn, $cf)
     $sql= "SELECT count(*) n, avg(Serietà) s, avg(Puntualità) p  FROM valutazione WHERE CF2=? ;";
     $stmt= mysqli_stmt_init($conn);
     if (!mysqli_stmt_prepare($stmt, $sql)) {
-        header("location: ../index.php?error=stmtfailed1");
         exit();
     }
 
@@ -310,7 +298,6 @@ function fetchTopVenditori($conn)
     WHERE u.Tipo= "Venditore" OR u.Tipo= "Venditore e Acquirente" GROUP BY v.CF2 ORDER BY val DESC ;';
     $stmt= mysqli_stmt_init($conn);
     if (!mysqli_stmt_prepare($stmt, $sql)) {
-        header("location: ../my-account.php?error=stmtfailed");
         exit();
     }
 

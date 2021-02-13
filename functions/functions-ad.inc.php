@@ -131,10 +131,6 @@ function CreaProdotto($conn, $name_ar, $type, $img, $ensurance, $usura, $periodo
     $last_id = mysqli_insert_id($conn);
     session_start();
     $_SESSION["ID_P"]= $last_id;
-
-
-    //mysqli_stmt_close($stmt);
-  //header("location: ../create-ad.php?error=none");
 }
 
 function CreaVisibilità($conn, $visibility, $area)
@@ -148,9 +144,6 @@ function CreaVisibilità($conn, $visibility, $area)
 
     mysqli_stmt_bind_param($stmt, "ss", $visibility, $area);
     mysqli_stmt_execute($stmt);
-
-    //mysqli_stmt_close($stmt);
-    //header("location: ../create-ad.php?error=none");
 }
 
 
@@ -175,9 +168,6 @@ function CreaAnnuncio($conn, $name_an, $price, $com, $prov, $reg, $date, $visibi
     $last_id = mysqli_insert_id($conn);
     session_start();
     $_SESSION["ID_A"]= $last_id;
-
-    //mysqli_stmt_close($stmt);
-  //header("location: ../create-ad.php?error=none");
 }
 
 function CreaStato($conn)

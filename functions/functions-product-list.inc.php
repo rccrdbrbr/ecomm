@@ -9,7 +9,6 @@ function fetchAnnunci($conn)
     ORDER BY n DESC;";
     $stmt= mysqli_stmt_init($conn);
     if (!mysqli_stmt_prepare($stmt, $sql)) {
-        header("location: ../product-list.php?error=stmtfailed");
         exit();
     }
     mysqli_stmt_execute($stmt);
@@ -32,7 +31,6 @@ function fetchAnnunciRecenti($conn)
     WHERE Stato='in vendita' ORDER BY DataPubb DESC;";
     $stmt= mysqli_stmt_init($conn);
     if (!mysqli_stmt_prepare($stmt, $sql)) {
-        header("location: ../product-list.php?error=stmtfailed");
         exit();
     }
     mysqli_stmt_execute($stmt);
@@ -53,7 +51,6 @@ function contaOsserva($conn, $ida)
     $sql= "SELECT COUNT(*) as n FROM osserva o WHERE o.ID_A= ? ;";
     $stmt= mysqli_stmt_init($conn);
     if (!mysqli_stmt_prepare($stmt, $sql)) {
-        header("location: product-list.php?error=stmtfailed");
         exit();
     }
 
@@ -78,7 +75,6 @@ function fetchAnnuncio($conn, $ida)
     JOIN utente u ON a.CF=u.CF WHERE a.ID_A= ? ;";
     $stmt= mysqli_stmt_init($conn);
     if (!mysqli_stmt_prepare($stmt, $sql)) {
-        header("location: ../product-list.php?error=stmtfailed");
         exit();
     }
 
@@ -106,7 +102,6 @@ function fetchAnnunciCat($conn, $cat)
     ORDER BY n DESC;";
     $stmt= mysqli_stmt_init($conn);
     if (!mysqli_stmt_prepare($stmt, $sql)) {
-        header("location: ../product-list.php?error=stmtfailed");
         exit();
     }
 
@@ -133,7 +128,6 @@ function fetchAnnunciSubcat($conn, $subcat)
     ORDER BY n DESC;";
     $stmt= mysqli_stmt_init($conn);
     if (!mysqli_stmt_prepare($stmt, $sql)) {
-        header("location: ../product-list.php?error=stmtfailed");
         exit();
     }
 
@@ -154,11 +148,10 @@ function fetchAnnunciSubcat($conn, $subcat)
 function fetchCategorie($conn)
 {
     $sql= "SELECT DISTINCT  Sottocategoria FROM categoria c NATURAL JOIN prodotto p
-    JOIN annuncio a ON p.ID_P=a.ID_P JOIN stati s ON s.ID_A=a.ID_A 
+    JOIN annuncio a ON p.ID_P=a.ID_P JOIN stati s ON s.ID_A=a.ID_A
     WHERE stato='in vendita';";
     $stmt= mysqli_stmt_init($conn);
     if (!mysqli_stmt_prepare($stmt, $sql)) {
-        header("location: ../product-list.php?error=stmtfailed");
         exit();
     }
     mysqli_stmt_execute($stmt);

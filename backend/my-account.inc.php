@@ -7,7 +7,6 @@ include "account-query.inc.php";
 
 if (isset($_POST["modprof"])) {
     $email = $_POST["email"];
-    //  $cf = $_POST["cf"];
     $via = $_POST["via"];
     $city = $_POST["city"];
     $prov = $_POST["prov"];
