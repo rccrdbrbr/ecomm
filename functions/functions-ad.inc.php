@@ -109,9 +109,6 @@ function CreaCategoria($conn, $category, $subcategory)
 
     mysqli_stmt_bind_param($stmt, "ss", $category, $subcategory);
     mysqli_stmt_execute($stmt);
-
-    //mysqli_stmt_close($stmt);
-    //header("location: ../create-ad.php?error=none");
 }
 
 function CreaProdotto($conn, $name_ar, $type, $img, $ensurance, $usura, $periodo, $category, $subcategory)

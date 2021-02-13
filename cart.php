@@ -34,16 +34,14 @@ if (isset($_SESSION["CF"])) {
                                     <div class="cart-summary">
                                         <div class="cart-content">
                                             <h1>Riepilogo</h1>
-                                            <p >Subtotale<span id="subtot"><!--€<?php echo $_SESSION["Totale"]; ?>--></span></p>
+                                            <p >Subtotale<span id="subtot"></span></p>
                                             <p>Spese di spedizione<span>€0</span></p>
-                                            <h2 >Totale<span id="tot"><!--€<?php echo $_SESSION["Totale"]; ?>--></span></h2>
+                                            <h2 >Totale<span id="tot"></span></h2>
                                         </div>
                                         <div class="cart-btn">
                                             <button onclick="emptyCart()">Svuota</button>
                                             <button onclick="buyCart()">Compra</button>
                                             <p id="pcart"></p>
-                                            <!--<button>Comra</button>
-                                            <button>Compra</button> <button>Compra</button> <button>Compra</button>-->
                                         </div>
                                     </div>
                                 </div>

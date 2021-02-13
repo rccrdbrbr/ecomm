@@ -248,7 +248,6 @@ function fetchValutazione($conn, $cf1, $cf2, $ida)
     $sql= "SELECT * FROM valutazione WHERE CF1 = ? AND CF2=? AND ID_A=? ;";
     $stmt= mysqli_stmt_init($conn);
     if (!mysqli_stmt_prepare($stmt, $sql)) {
-        header("location: ../index.php?error=stmtfailed1");
         exit();
     }
 
@@ -319,7 +318,7 @@ function valuta($conn, $cf1, $cf2, $ida, $serieta, $puntualita)
     $sql= "INSERT INTO valutazione (CF1, CF2, ID_A, Serietà, Puntualità) VALUES (?, ?, ?, ?, ?);";
     $stmt= mysqli_stmt_init($conn);
     if (!mysqli_stmt_prepare($stmt, $sql)) {
-        header("location: ../index.php?error=stmtfailed3");
+        header("location: ../my-account.php?error=stmtfailed");
         exit();
     }
 

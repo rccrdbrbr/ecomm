@@ -1,5 +1,3 @@
-//var j = 0;
-
 function addWish(id) {
   console.log("idwish: " + id);
   $.ajax({
@@ -9,10 +7,6 @@ function addWish(id) {
       id: id
     },
     cache: false
-    /*,
-        success: function(dataResult) {
-          var dataResult = JSON.parse(dataResult);
-        }*/
   })
   countWish();
 }

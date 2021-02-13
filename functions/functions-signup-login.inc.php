@@ -10,17 +10,7 @@ function SignupVuoto($name, $surname, $email, $cf, $via, $city, $prov, $reg, $im
     }
     return $risultato;
 }
-/*
-function UsernameNValido($cf){
-  $risultato;
-  if (!preg_match("/^[a-zA-Z0-9]*$/", $cf)){
-    $risultato=true;
-  }else{
-    $risultato=false;
-  }
-  return $risultato;
-}
-*/
+
 function EmailNValido($email)
 {
     $risultato;
@@ -42,7 +32,6 @@ function ControlloPwd($pwd1, $pwd2)
     }
     return $risultato;
 }
-
 
 function UsernameEsiste($conn, $cf, $email)
 {
@@ -69,7 +58,6 @@ function UsernameEsiste($conn, $cf, $email)
     mysqli_stmt_close($stmt);
 }
 
-
 function CreaIndirizzo($conn, $via, $city, $prov, $reg)
 {
     $sql= "INSERT INTO indirizzo (Via, Citta, Prov, Reg) VALUES (?, ?, ?, ?);";
@@ -81,11 +69,7 @@ function CreaIndirizzo($conn, $via, $city, $prov, $reg)
 
     mysqli_stmt_bind_param($stmt, "ssss", $via, $city, $prov, $reg);
     mysqli_stmt_execute($stmt);
-
-    //mysqli_stmt_close($stmt);
-    //header("location: ../signup.php?error=none");
 }
-
 
 function CreaUtente($conn, $name, $surname, $email, $cf, $via, $city, $prov, $reg, $img, $type, $pwd1)
 {
@@ -107,7 +91,6 @@ function CreaUtente($conn, $name, $surname, $email, $cf, $via, $city, $prov, $re
 
     header("location: ../signup.php?error=none");
 }
-
 
 function LoginVuoto($cf, $pwd)
 {
