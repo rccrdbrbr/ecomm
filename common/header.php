@@ -68,11 +68,17 @@ if (session_status() == PHP_SESSION_NONE) {
      if ($_SESSION["Tipo"]!== "Venditore") {   ?>
                             <a href="wishlist.php" class="nav-item nav-link" >Osservati</a>
                             <a href="cart.php" class="nav-item nav-link">Carrello</a>
-                          <?php } else {
+
+                          <?php if ($_SESSION["Tipo"]=== "Venditore e Acquirente") {
          ?>
                             <a href="create-ad.php" class="nav-item nav-link">Crea Annuncio</a>
                             <?php
      }
+                         } else {
+                             ?>
+                            <a href="create-ad.php" class="nav-item nav-link">Crea Annuncio</a>
+                            <?php
+                         }
  } ?>
 
                         </div>
