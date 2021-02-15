@@ -9,7 +9,9 @@ if (isset($_POST["submit"])) {
     $city = $_POST["city"];
     $prov = $_POST["prov"];
     $reg = $_POST["reg"];
-    $img = $_POST["img"];
+    $img = $_FILES["img"];
+    $imgname = $img["name"];
+    $imgtmpname = $img["tmp_name"];
     $type = $_POST["type"];
     $pwd1 = $_POST["pwd1"];
     $pwd2 = $_POST["pwd2"];
@@ -38,7 +40,7 @@ if (isset($_POST["submit"])) {
     }
 
     CreaIndirizzo($conn, $via, $city, $prov, $reg);
-    CreaUtente($conn, $name, $surname, $email, $cf, $via, $city, $prov, $reg, $img, $type, $pwd1);
+    CreaUtente($conn, $name, $surname, $email, $cf, $via, $city, $prov, $reg, $imgname, $imgtmpname, $type, $pwd1);
 } else {
     header("location: ../signup.php");
     exit();

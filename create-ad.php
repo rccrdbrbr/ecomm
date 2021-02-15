@@ -15,7 +15,7 @@ if ($_SESSION["Tipo"] == "Venditore" || $_SESSION["Tipo"] == "Venditore e Acquir
     </div>
 </div>
 <!-- Breadcrumb End -->
-<form action="backend/create-ad.inc.php" method="post">
+<form action="backend/create-ad.inc.php" method="post" enctype="multipart/form-data">
 <div class="login">
     <div class="container-fluid">
         <div class="row">

@@ -111,9 +111,11 @@ function CreaCategoria($conn, $category, $subcategory)
     mysqli_stmt_execute($stmt);
 }
 
-function CreaProdotto($conn, $name_ar, $type, $img, $ensurance, $usura, $periodo, $category, $subcategory)
+function CreaProdotto($conn, $name_ar, $type, $imgname, $imgtmpname, $ensurance, $usura, $periodo, $category, $subcategory)
 {
     CreaCategoria($conn, $category, $subcategory);
+    $fileDestination = "../img/".$imgname;
+    move_uploaded_file($imgtmpname, $fileDestination);
     $sql= "INSERT INTO prodotto (Nome_P, Tipo, Foto, PeriodoAssicurazione, StatoUsura, PeriodoUtilizzo, Categoria, Sottocategoria) VALUES (?, ?, ?, ?, ?, ?, ?, ?);";
     $stmt= mysqli_stmt_init($conn);
     if (!mysqli_stmt_prepare($stmt, $sql)) {
@@ -121,7 +123,7 @@ function CreaProdotto($conn, $name_ar, $type, $img, $ensurance, $usura, $periodo
         exit();
     }
 
-    mysqli_stmt_bind_param($stmt, "ssssssss", $name_ar, $type, $img, $ensurance, $usura, $periodo, $category, $subcategory);
+    mysqli_stmt_bind_param($stmt, "ssssssss", $name_ar, $type, $imgname, $ensurance, $usura, $periodo, $category, $subcategory);
     mysqli_stmt_execute($stmt);
 
 
@@ -186,9 +188,11 @@ function CreaStato($conn)
     header("location: ../create-ad.php?error=none");
 }
 
-function cambiaImmagine($conn, $ida, $img)
+function cambiaImmagine($conn, $ida, $imgname, $imgtmpname)
 {
-    if ($img!== "") {
+    if ($imgname!== "") {
+        $fileDestination = "../img/".$imgname;
+        move_uploaded_file($imgtmpname, $fileDestination);
         $sql= "UPDATE prodotto SET Foto = ? WHERE ID_P = (SELECT ID_P FROM annuncio WHERE ID_A = ? ) ;";
         $stmt= mysqli_stmt_init($conn);
         if (!mysqli_stmt_prepare($stmt, $sql)) {
@@ -196,7 +200,7 @@ function cambiaImmagine($conn, $ida, $img)
             exit();
         }
 
-        mysqli_stmt_bind_param($stmt, "si", $img, $ida);
+        mysqli_stmt_bind_param($stmt, "si", $imgname, $ida);
         mysqli_stmt_execute($stmt);
         mysqli_stmt_close($stmt);
     }

@@ -71,10 +71,12 @@ function CreaIndirizzo($conn, $via, $city, $prov, $reg)
     mysqli_stmt_execute($stmt);
 }
 
-function CreaUtente($conn, $name, $surname, $email, $cf, $via, $city, $prov, $reg, $img, $type, $pwd1)
+function CreaUtente($conn, $name, $surname, $email, $cf, $via, $city, $prov, $reg, $imgname, $imgtmpname, $type, $pwd1)
 {
     $del=0;
 
+    $fileDestination = "../img/".$imgname;
+    move_uploaded_file($imgtmpname, $fileDestination);
     $sql= "INSERT INTO utente (CF, Email, Tipo, Nome, Cognome,  Immagine, Eliminato,  Via, Città, Prov, Reg, Password) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
     $stmt= mysqli_stmt_init($conn);
     if (!mysqli_stmt_prepare($stmt, $sql)) {
@@ -84,7 +86,7 @@ function CreaUtente($conn, $name, $surname, $email, $cf, $via, $city, $prov, $re
 
     $hashPwd = password_hash($pwd1, PASSWORD_DEFAULT);
 
-    mysqli_stmt_bind_param($stmt, "ssssssisssss", $cf, $email, $type, $name, $surname, $img, $del, $via, $city, $prov, $reg, $hashPwd);
+    mysqli_stmt_bind_param($stmt, "ssssssisssss", $cf, $email, $type, $name, $surname, $imgname, $del, $via, $city, $prov, $reg, $hashPwd);
     mysqli_stmt_execute($stmt);
 
     mysqli_stmt_close($stmt);

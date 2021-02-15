@@ -19,7 +19,7 @@ if (isset($_SESSION["CF"])) {
         </div>
     </div>
 
-    <form action="backend/modify.inc.php?id=<?php echo $_GET["id"]; ?>" method="post">
+    <form action="backend/modify.inc.php?id=<?php echo $_GET["id"]; ?>" method="post" enctype="multipart/form-data">
     <div class="login">
         <div class="container-fluid">
             <div class="row">

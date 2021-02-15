@@ -10,7 +10,9 @@ if (isset($_POST["submit"])) {
     $date = $_POST["date"];
     $visibility = $_POST["visibility"];
     $area = $_POST["area"];
-    $img = $_POST["img"];
+    $img = $_FILES["img"];
+    $imgname = $img["name"];
+    $imgtmpname = $img["tmp_name"];
     $type = $_POST["type"];
     $ensurance = $_POST["ensurance"];
     $usura = $_POST["usura"];
@@ -52,7 +54,7 @@ if (isset($_POST["submit"])) {
         exit();
     }
 
-    CreaProdotto($conn, $name_ar, $type, $img, $ensurance, $usura, $periodo, $category, $subcategory);
+    CreaProdotto($conn, $name_ar, $type, $imgname, $imgtmpname, $ensurance, $usura, $periodo, $category, $subcategory);
 
     CreaAnnuncio($conn, $name_an, $price, $com, $prov, $reg, $date, $visibility, $area, $description);
 

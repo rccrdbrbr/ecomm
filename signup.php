@@ -14,7 +14,7 @@ include "common/header.php"
      </div>
  </div>
  <!-- Breadcrumb End -->
-<form action="backend/signup.inc.php" method="post">
+<form action="backend/signup.inc.php" method="post" enctype="multipart/form-data">
  <div class="login">
      <div class="container-fluid">
          <div class="row">

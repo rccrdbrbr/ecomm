@@ -14,8 +14,10 @@ if (isset($_POST["modify"])) {
     if (isset($_POST["description"])) {
         $description = $_POST["description"];
     }
-    if (isset($_POST["imgN"])) {
-        $img = $_POST["imgN"];
+    if (isset($_FILES["imgN"])) {
+        $img = $_FILES["imgN"];
+        $imgname = $img["name"];
+        $imgtmpname = $img["tmp_name"];
     }
 
     require_once 'dbh.inc.php';
@@ -33,8 +35,8 @@ if (isset($_POST["modify"])) {
 
     cambiaAnnuncio($conn, $ida, $nameA, $price, $com, $prov, $reg, $visibility, $area);
     cambiaProdotto($conn, $ida, $nameP, $category, $subcategory);
-    if (isset($_POST["imgN"])) {
-        cambiaImmagine($conn, $ida, $img);
+    if (isset($_FILES["imgN"])) {
+        cambiaImmagine($conn, $ida, $imgname, $imgtmpname);
     }
     if (isset($_POST["description"])) {
         cambiaDescrizione($conn, $ida, $description);
@@ -48,7 +50,7 @@ if (isset($_POST["modify"])) {
     require_once '../functions/functions-ad.inc.php';
 
     eliminaAnnuncio($conn, $ida);
-    
+
     header("location: ../my-account.php?error=none");
 } else {
     header("location: my-account.php");
