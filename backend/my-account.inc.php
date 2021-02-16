@@ -10,8 +10,10 @@ if (isset($_POST["modprof"])) {
     $via = $_POST["via"];
     $city = $_POST["city"];
     $prov = $_POST["prov"];
-    $reg = $_POST["reg"];
-    $img = $_POST["img"];
+    $reg = $_POST["regione"];
+    $img = $_FILES["img"];
+    $imgname = $img["name"];
+    $imgtmpname = $img["tmp_name"];
     $type = $_POST["type"];
 
     require_once 'dbh.inc.php';
@@ -22,14 +24,11 @@ if (isset($_POST["modprof"])) {
         header("location: ../my-account.php?error=invalidemail");
         exit();
     }
-
+    $sigla = fetchSigla($conn, $prov, $reg);
+    CambiaIndirizzo($conn, $utente, $sigla, $reg, $city, $via);
+    CreaIndirizzo($conn, $via, $city, $sigla, $reg);
     CambiaEmail($conn, $utente, $email);
-    CreaIndirizzo($conn, $via, $city, $prov, $reg);
-    CambiaVia($conn, $utente, $via);
-    CambiaCittà($conn, $utente, $city);
-    CambiaProvincia($conn, $utente, $prov);
-    CambiaRegione($conn, $utente, $reg);
-    CambiaImmagine($conn, $utente, $img);
+    CambiaImmagine($conn, $utente, $imgname, $imgtmpname);
     CambiaTipo($conn, $utente, $type);
 } elseif (isset($_POST["modpwd"])) {
     $pwdv = $_POST["pwdv"];

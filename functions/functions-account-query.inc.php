@@ -63,65 +63,25 @@ function CambiaEmail($conn, $utente, $email)
     mysqli_stmt_close($stmt);
 }
 
-function CambiaVia($conn, $utente, $via)
+function CambiaIndirizzo($conn, $utente, $prov, $reg, $city, $via)
 {
-    $sql= "UPDATE utente SET Via = ? WHERE CF = ? ;";
+    $sql= "UPDATE utente SET Via = ?, Città = ?,  Prov= ?, Reg = ? WHERE CF = ? ;";
     $stmt= mysqli_stmt_init($conn);
     if (!mysqli_stmt_prepare($stmt, $sql)) {
         header("location: ../my-account.php?error=stmtfailed");
         exit();
     }
 
-    mysqli_stmt_bind_param($stmt, "ss", $via, $utente["CF"]);
+    mysqli_stmt_bind_param($stmt, "sssss", $via, $city, $prov, $reg, $utente["CF"]);
     mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
 }
 
-function CambiaCittà($conn, $utente, $city)
+function CambiaImmagine($conn, $utente, $imgname, $imgtmpname)
 {
-    $sql= "UPDATE utente SET Città = ? WHERE CF = ? ;";
-    $stmt= mysqli_stmt_init($conn);
-    if (!mysqli_stmt_prepare($stmt, $sql)) {
-        header("location: ../my-account.php?error=stmtfailed");
-        exit();
-    }
-
-    mysqli_stmt_bind_param($stmt, "ss", $city, $utente["CF"]);
-    mysqli_stmt_execute($stmt);
-    mysqli_stmt_close($stmt);
-}
-
-function CambiaProvincia($conn, $utente, $prov)
-{
-    $sql= "UPDATE utente SET Prov = ? WHERE CF = ? ;";
-    $stmt= mysqli_stmt_init($conn);
-    if (!mysqli_stmt_prepare($stmt, $sql)) {
-        header("location: ../my-account.php?error=stmtfailed");
-        exit();
-    }
-
-    mysqli_stmt_bind_param($stmt, "ss", $prov, $utente["CF"]);
-    mysqli_stmt_execute($stmt);
-    mysqli_stmt_close($stmt);
-}
-
-function CambiaRegione($conn, $utente, $reg)
-{
-    $sql= "UPDATE utente SET Reg = ? WHERE CF = ? ;";
-    $stmt= mysqli_stmt_init($conn);
-    if (!mysqli_stmt_prepare($stmt, $sql)) {
-        header("location: ../my-account.php?error=stmtfailed");
-        exit();
-    }
-
-    mysqli_stmt_bind_param($stmt, "ss", $reg, $utente["CF"]);
-    mysqli_stmt_execute($stmt);
-    mysqli_stmt_close($stmt);
-}
-
-function CambiaImmagine($conn, $utente, $img)
-{
-    if ($img!== "") {
+    if ($imgname!== "") {
+        $fileDestination = "../img/".$imgname;
+        move_uploaded_file($imgtmpname, $fileDestination);
         $sql= "UPDATE utente SET Immagine = ? WHERE CF = ? ;";
         $stmt= mysqli_stmt_init($conn);
         if (!mysqli_stmt_prepare($stmt, $sql)) {
@@ -129,7 +89,7 @@ function CambiaImmagine($conn, $utente, $img)
             exit();
         }
 
-        mysqli_stmt_bind_param($stmt, "ss", $img, $utente["CF"]);
+        mysqli_stmt_bind_param($stmt, "ss", $imgname, $utente["CF"]);
         mysqli_stmt_execute($stmt);
         mysqli_stmt_close($stmt);
     }
@@ -148,6 +108,7 @@ function CambiaTipo($conn, $utente, $type)
     mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
 
+    $_SESSION["Tipo"]=$type;
     header("location: ../my-account.php?error=none");
     exit();
 }

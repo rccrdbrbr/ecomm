@@ -96,7 +96,7 @@ if (isset($_SESSION["CF"]) || isset($_GET["cf"])) {
                             </div>
                             <div class="tab-pane fade" id="account-tab" role="tabpanel" aria-labelledby="account-nav">
                                 <h4>Modifica Account</h4>
-                                <form action="backend/my-account.inc.php" method="post">
+                                <form action="backend/my-account.inc.php" method="post" enctype="multipart/form-data">
                                 <div class="row">
                                   <div class="col-md-6">
                                     <input class="form-control" type="text" name="name" placeholder="Nome" value=<?php echo $utente["Nome"] ?> disabled>
@@ -111,16 +111,19 @@ if (isset($_SESSION["CF"]) || isset($_GET["cf"])) {
                                     <input class="form-control" type="text" name="cf" placeholder="Codice Fiscale" value=<?php echo $utente["CF"] ?> disabled>
                                   </div>
                                   <div class="col-md-3">
-                                    <input class="form-control" type="text" name="via" placeholder="Via" value=<?php echo $utente["Via"] ?>>
+                                    <select class="form-control" id="regione" name="regione">
+                                      <option value=<?php echo $utente["Reg"] ?> selected><?php echo $utente["Reg"] ?></option>
+                                    </select>
                                   </div>
+                                  <div class="col-md-3">
+                                    <select class="form-control" id="prov" name="prov">
+                                      <option value="<?php echo $utente["Prov"] ?>" selected><?php echo $utente["Prov"] ?></option>
+                                    </select>                                  </div>
                                   <div class="col-md-3">
                                     <input class="form-control" type="text" name="city" placeholder="Città" value=<?php echo $utente["Città"] ?>>
                                   </div>
                                   <div class="col-md-3">
-                                    <input class="form-control" type="text" name= "prov" placeholder="Provincia" value=<?php echo $utente["Prov"] ?>>
-                                  </div>
-                                  <div class="col-md-3">
-                                    <input class="form-control" type="text" name="reg" placeholder="regione" value=<?php echo $utente["Reg"] ?>>
+                                    <input class="form-control" type="text" name="via" placeholder="Via" value=<?php echo $utente["Via"] ?>>
                                   </div>
                                   <div class="col-md-12">
                                     <input class="form-control" type="file" name="img" accept="image/jpeg/image/png/image/gif" >
@@ -166,7 +169,8 @@ if (isset($_SESSION["CF"]) || isset($_GET["cf"])) {
             </div>
         </div>
         <!-- My Account End -->
-
+        <script src="js/regprov.js"></script>
+        <script src="js/eventHandlers.js"></script>
 <?php
 
   include "common/footer.php";
