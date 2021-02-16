@@ -8,7 +8,7 @@ if (isset($_POST["submit"])) {
     $via = $_POST["via"];
     $city = $_POST["city"];
     $prov = $_POST["prov"];
-    $reg = $_POST["reg"];
+    $reg = $_POST["regione"];
     $img = $_FILES["img"];
     $imgname = $img["name"];
     $imgtmpname = $img["tmp_name"];
@@ -19,7 +19,7 @@ if (isset($_POST["submit"])) {
     require_once 'dbh.inc.php';
     require_once '../functions/functions-signup-login.inc.php';
 
-    if (SignupVuoto($name, $surname, $email, $cf, $via, $city, $prov, $reg, $img, $pwd1, $pwd2)!== false) {
+    if (SignupVuoto($name, $surname, $email, $cf, $via, $city, $prov, $reg, $imgname, $pwd1, $pwd2)!== false) {
         header("location: ../signup.php?error=emptyinput");
         exit();
     }
@@ -38,9 +38,10 @@ if (isset($_POST["submit"])) {
         header("location: ../signup.php?error=usernametaken");
         exit();
     }
-
-    CreaIndirizzo($conn, $via, $city, $prov, $reg);
-    CreaUtente($conn, $name, $surname, $email, $cf, $via, $city, $prov, $reg, $imgname, $imgtmpname, $type, $pwd1);
+    $sigla=fetchSigla($conn, $prov, $reg);
+    CreaIndirizzo($conn, $via, $city, $sigla, $reg);
+    CreaUtente($conn, $name, $surname, $email, $cf, $via, $city, $sigla, $reg, $imgname, $imgtmpname, $type, $pwd1);
+//echo $name, $surname, $email, $cf, $via, $city, $prov, $reg, $imgname, $imgtmpname, $type, $pwd1;
 } else {
     header("location: ../signup.php");
     exit();

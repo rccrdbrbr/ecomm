@@ -58,6 +58,30 @@ function UsernameEsiste($conn, $cf, $email)
     mysqli_stmt_close($stmt);
 }
 
+function fetchSigla($conn, $prov, $reg)
+{
+    $sql= "SELECT sigla FROM regioni WHERE provincia = ? AND regione = ? ;";
+    $stmt= mysqli_stmt_init($conn);
+    if (!mysqli_stmt_prepare($stmt, $sql)) {
+        header("location: ../signup.php?error=stmtfailed");
+        exit();
+    }
+
+    mysqli_stmt_bind_param($stmt, "ss", $prov, $reg);
+    mysqli_stmt_execute($stmt);
+
+    $dati= mysqli_stmt_get_result($stmt);
+
+    if ($riga= mysqli_fetch_assoc($dati)) {
+        return $riga["sigla"];
+    } else {
+        $risultato= false;
+        return $risultato;
+    }
+
+    mysqli_stmt_close($stmt);
+}
+
 function CreaIndirizzo($conn, $via, $city, $prov, $reg)
 {
     $sql= "INSERT INTO indirizzo (Via, Citta, Prov, Reg) VALUES (?, ?, ?, ?);";
@@ -77,7 +101,7 @@ function CreaUtente($conn, $name, $surname, $email, $cf, $via, $city, $prov, $re
 
     $fileDestination = "../img/".$imgname;
     move_uploaded_file($imgtmpname, $fileDestination);
-    $sql= "INSERT INTO utente (CF, Email, Tipo, Nome, Cognome,  Immagine, Eliminato,  Via, Città, Prov, Reg, Password) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+    $sql= "INSERT INTO utente (CF, Email, Tipo, Nome, Cognome, Immagine, Eliminato,  Via, Città, Prov, Reg, Password) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
     $stmt= mysqli_stmt_init($conn);
     if (!mysqli_stmt_prepare($stmt, $sql)) {
         header("location: ../signup.php?error=stmtfailed");
