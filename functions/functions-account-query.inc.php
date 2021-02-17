@@ -201,7 +201,23 @@ function eliminaAccount($conn, $utente)
     mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
 
+    eliminaAnnunciEliminato($conn, $utente["CF"]);
+
     header("location: ../backend/logout.inc.php");
+}
+
+function eliminaAnnunciEliminato($conn, $utente)
+{
+    $sql= "UPDATE stati SET Stato = 'eliminato' WHERE CF =  ?  ;";
+    $stmt= mysqli_stmt_init($conn);
+    if (!mysqli_stmt_prepare($stmt, $sql)) {
+        header("location: ../my-account.php?error=stmtfailed");
+        exit();
+    }
+
+    mysqli_stmt_bind_param($stmt, "s", $utente);
+    mysqli_stmt_execute($stmt);
+    mysqli_stmt_close($stmt);
 }
 
 function fetchValutazione($conn, $cf1, $cf2, $ida)
