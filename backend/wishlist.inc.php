@@ -1,6 +1,4 @@
 <?php
-
-//session_start();
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
@@ -13,9 +11,7 @@ require_once 'functions/functions-wishlist-cart.inc.php';
 if (isset($_GET["category"])) {
     $osservati=fetchOsservatiCat($conn, $cf, $_GET["category"]);
     $_SESSION["Categoria"]=$_GET["category"];
-    if ($osservati == true) {
-        //$osservati=fetchOsservati($conn, $cf);
-        //$i = mysqli_num_rows($osservati);?>
+    if ($osservati == true) { ?>
         <div class="table-responsive">
           <table class="table table-bordered" id="WishTable">
             <thead class="thead-dark">
@@ -35,7 +31,7 @@ if (isset($_GET["category"])) {
               <tr id="row<?php echo $row["ID_A"] ?>">
                 <td>
                   <div class="img">
-                    <a href="product-detail.php?id=<?php echo $row["ID_A"] ?>">
+                    <a href="product-detail.php?id=<?php echo $row["ID_A"] ?>&cf=<?php echo $row["CF"] ?>">
                       <img src="img/<?php echo $row["Foto"] ?>" alt="Image"></a>
                     <p><?php echo $row["Nome_A"] ?></p>
                   </div>
@@ -59,13 +55,7 @@ if (isset($_GET["category"])) {
     }
 } else {
     $osservati=fetchOsservati($conn, $cf);
-    if ($osservati == true) {
-        //$i = mysqli_num_rows($osservati);
-        //$i=0;
-        /*
-        while ($row = mysqli_fetch_assoc($osservati)) {
-            $i+=1;
-        }*/ ?>
+    if ($osservati == true) { ?>
         <div class="table-responsive" >
           <table class="table table-bordered" id="WishTable">
             <thead class="thead-dark">
@@ -84,7 +74,7 @@ if (isset($_GET["category"])) {
               <tr id="row<?php echo $row["ID_A"] ?>">
                 <td>
                   <div class="img">
-                    <a href="product-detail.php?id=<?php echo $row["ID_A"] ?>">
+                    <a href="product-detail.php?id=<?php echo $row["ID_A"] ?>&cf=<?php echo $row["CF"] ?>">
                       <img src="img/<?php echo $row["Foto"] ?>" alt="Image"></a>
                     <p><?php echo $row["Nome_A"] ?></p>
                   </div>
