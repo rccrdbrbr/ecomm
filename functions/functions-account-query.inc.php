@@ -255,7 +255,8 @@ function fetchTopVenditori($conn)
     $sql= 'SELECT v.CF2, count(*) n, avg(Serietà) s, avg(Puntualità) p, u.Nome, u.Cognome, u.Tipo, u.Immagine,
     (avg(Serietà)+avg(Puntualità))/2 av, ((avg(Serietà)+avg(Puntualità))/2)*count(*) val
     FROM valutazione v JOIN utente u ON v.CF2=u.CF
-    WHERE u.Tipo= "Venditore" OR u.Tipo= "Venditore e Acquirente" GROUP BY v.CF2 ORDER BY val DESC ;';
+    WHERE u.Tipo= "Venditore" AND TipoValutante= "Acquirente" OR u.Tipo= "Venditore e Acquirente" AND TipoValutante= "Acquirente"
+    GROUP BY v.CF2 ORDER BY val DESC ;';
     $stmt= mysqli_stmt_init($conn);
     if (!mysqli_stmt_prepare($stmt, $sql)) {
         exit();
@@ -274,16 +275,16 @@ function fetchTopVenditori($conn)
     mysqli_stmt_close($stmt);
 }
 
-function valuta($conn, $cf1, $cf2, $ida, $serieta, $puntualita)
+function valuta($conn, $cf1, $cf2, $ida, $serieta, $puntualita, $tipo)
 {
-    $sql= "INSERT INTO valutazione (CF1, CF2, ID_A, Serietà, Puntualità) VALUES (?, ?, ?, ?, ?);";
+    $sql= "INSERT INTO valutazione (CF1, CF2, ID_A, Serietà, Puntualità, TipoValutante) VALUES (?, ?, ?, ?, ?, ?);";
     $stmt= mysqli_stmt_init($conn);
     if (!mysqli_stmt_prepare($stmt, $sql)) {
         header("location: ../my-account.php?error=stmtfailed");
         exit();
     }
 
-    mysqli_stmt_bind_param($stmt, "ssiii", $cf1, $cf2, $ida, $serieta, $puntualita);
+    mysqli_stmt_bind_param($stmt, "ssiiis", $cf1, $cf2, $ida, $serieta, $puntualita, $tipo);
     mysqli_stmt_execute($stmt);
 
     mysqli_stmt_close($stmt);

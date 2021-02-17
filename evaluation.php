@@ -6,7 +6,7 @@ if (session_status() == PHP_SESSION_NONE) {
 
 if (isset($_SESSION["CF"])) {
     if (isset($_GET["id"]) && isset($_GET["cf"])) {
-        if (isset($_POST["valuta"])) {
+        if (isset($_POST["valutaA"]) || isset($_POST["valutaV"])) {
             include "common/header.php"; ?>
 
  <!-- Breadcrumb Start -->
@@ -53,7 +53,14 @@ if (isset($_SESSION["CF"])) {
                          </div>
                          <div class="col-md-12">
 
-                             <button class="btn" type="submit" name="submit">Invia</button>
+                              <?php if (isset($_POST["valutaA"])) { ?>
+                                <button class="btn" type="submit" name="submit" value="Venditore">Invia</button>
+                                <?php
+                              } else {
+                                  ?>
+                                <button class="btn" type="submit" name="submit" value="Acquirente">Invia</button>
+                                <?php
+                              } ?>
                          </div>
                       </div>
                   </div>

@@ -56,7 +56,7 @@ if (isset($_GET["cf"])) {
               } elseif ($row["Stato"] === "venduto") {
                   ?>
                   <form action="evaluation.php?id=<?php echo  $row["ID_A"].'&cf='.$row["CF"]?>" method="post">
-                  <td><button class="btn" type="submit" name="valuta" formmethod="post">Valuta</button></td>
+                  <td><button class="btn" type="submit" name="valutaA" formmethod="post">Valuta</button></td>
                   </form>
                   <?php
               } else {
