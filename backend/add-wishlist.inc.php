@@ -8,7 +8,12 @@
 
   require_once 'dbh.inc.php';
   require_once '../functions/functions-wishlist-cart.inc.php';
+  require_once '../functions/functions-product-list.inc.php';
 
-  if ($_SESSION["Tipo"] !== "Venditore") {
-      aggiungiOsserva($conn, $cf, $ida);
+  $annuncio=fetchAnnuncio($conn, $ida);
+
+  if ($annuncio["CF"] !== $cf) {
+      if ($_SESSION["Tipo"] !== "Venditore") {
+          aggiungiOsserva($conn, $cf, $ida);
+      }
   }
