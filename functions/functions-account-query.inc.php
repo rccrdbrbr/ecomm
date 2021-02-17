@@ -201,7 +201,23 @@ function eliminaAccount($conn, $utente)
     mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
 
+    eliminaAnnunciEliminato($conn, $utente["CF"]);
+
     header("location: ../backend/logout.inc.php");
+}
+
+function eliminaAnnunciEliminato($conn, $utente)
+{
+    $sql= "UPDATE stati SET Stato = 'eliminato' WHERE CF =  ?  ;";
+    $stmt= mysqli_stmt_init($conn);
+    if (!mysqli_stmt_prepare($stmt, $sql)) {
+        header("location: ../my-account.php?error=stmtfailed");
+        exit();
+    }
+
+    mysqli_stmt_bind_param($stmt, "s", $utente);
+    mysqli_stmt_execute($stmt);
+    mysqli_stmt_close($stmt);
 }
 
 function fetchValutazione($conn, $cf1, $cf2, $ida)
@@ -255,7 +271,8 @@ function fetchTopVenditori($conn)
     $sql= 'SELECT v.CF2, count(*) n, avg(Serietà) s, avg(Puntualità) p, u.Nome, u.Cognome, u.Tipo, u.Immagine,
     (avg(Serietà)+avg(Puntualità))/2 av, ((avg(Serietà)+avg(Puntualità))/2)*count(*) val
     FROM valutazione v JOIN utente u ON v.CF2=u.CF
-    WHERE u.Tipo= "Venditore" AND TipoValutante= "Acquirente" OR u.Tipo= "Venditore e Acquirente" AND TipoValutante= "Acquirente"
+    WHERE u.Tipo= "Venditore" AND TipoValutante= "Acquirente" AND Eliminato=0
+    OR u.Tipo= "Venditore e Acquirente" AND TipoValutante= "Acquirente" AND Eliminato=0
     GROUP BY v.CF2 ORDER BY val DESC ;';
     $stmt= mysqli_stmt_init($conn);
     if (!mysqli_stmt_prepare($stmt, $sql)) {
