@@ -35,7 +35,7 @@ foreach ($_SESSION["Carrello"] as $ida) {
     <tr id="row<?php echo $elemento["ID_A"] ?>">
         <td>
             <div class="img">
-                <a href="product-detail.php?id=<?php echo $elemento["ID_A"]; ?>"><img src="img/<?php echo $elemento["Foto"]; ?>" alt="Image"></a>
+                <a href="product-detail.php?id=<?php echo $elemento["ID_A"]; ?>&cf=<?php echo $elemento["CF"]; ?>"><img src="img/<?php echo $elemento["Foto"]; ?>" alt="Image"></a>
                 <p><?php echo $elemento["Nome_A"]; ?></p>
             </div>
         </td>
