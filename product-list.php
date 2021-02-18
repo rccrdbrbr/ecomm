@@ -22,6 +22,25 @@ include "common/header.php"
                 <div class="row">
                     <div class="col-lg-8">
                         <div class="row">
+                          <div class="col-md-12">
+                                <div class="product-view-top">
+                                    <div class="row">
+                                      <div class="col-md-5">
+                                        <select class="form-control" id="regione" name="regione">
+                                          <option value="nessuna" selected>Scegli la regione</option>
+                                        </select>
+                                      </div>
+                                      <div class="col-md-5">
+                                        <select class="form-control" id="prov" name="prov">
+                                          <option value="nessuna" selected>Scegli la provincia</option>
+                                        </select>
+                                      </div>
+                                        <div class="col-md-2">
+                                          <a class="btn" href="" >Cerca</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                             <?php
 
                             include "backend/product-list.inc.php";
@@ -36,6 +55,8 @@ include "common/header.php"
                 </div>
             </div>
         </div>
+        <script src="js/regprov.js"></script>
+        <script src="js/eventHandlers.js"></script>
         <script src="js/buttons.js"></script>
         <!-- Product List End -->
         <?php
