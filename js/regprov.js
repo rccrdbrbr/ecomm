@@ -80,26 +80,26 @@ function popolaAreaGeo() {
   visibilitym = document.getElementById('visibility');
   visibility = visibilitym.options[visibilitym.selectedIndex].value;
   console.log(visibility);
-  //if (visibility == 'pubblico') {
-  var xttp = new ajaxRequest();
-  xttp.onreadystatechange = function() {
-    //console.log(this.readyState + ' ' + this.status);
-    if (this.readyState == 4 && this.status == 200) {
-      // console.log(this.response);
-      risposta = JSON.parse(this.response);
-      //console.log(risposta.status);
-      regioni = risposta.contenuto;
-      menu = document.getElementById('area');
-      console.log(menu);
-      for (var i = 0; i < regioni.length; i++) {
-        var item = document.createElement('option');
-        item.setAttribute("value", regioni[i]);
-        item.innerText = regioni[i];
-        menu.appendChild(item);
+  if (visibility == 'ristretto') {
+    var xttp = new ajaxRequest();
+    xttp.onreadystatechange = function() {
+      //console.log(this.readyState + ' ' + this.status);
+      if (this.readyState == 4 && this.status == 200) {
+        // console.log(this.response);
+        risposta = JSON.parse(this.response);
+        //console.log(risposta.status);
+        regioni = risposta.contenuto;
+        menu = document.getElementById('area');
+        console.log(menu);
+        for (var i = 0; i < regioni.length; i++) {
+          var item = document.createElement('option');
+          item.setAttribute("value", regioni[i]);
+          item.innerText = regioni[i];
+          menu.appendChild(item);
+        }
       }
-    }
-  };
-  xttp.open("GET", "backend/getRegioni.php", true);
-  xttp.send();
-  //}
+    };
+    xttp.open("GET", "backend/getRegioni.php", true);
+    xttp.send();
+  }
 }
