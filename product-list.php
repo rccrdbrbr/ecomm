@@ -36,7 +36,7 @@ include "common/header.php"
                                         </select>
                                       </div>
                                         <div class="col-md-2">
-                                          <a class="btn" href="" >Cerca</a>
+                                          <a id="cercaProv" class="btn">Cerca</a>
                                         </div>
                                     </div>
                                 </div>
@@ -56,8 +56,8 @@ include "common/header.php"
             </div>
         </div>
         <script src="js/regprov.js"></script>
-        <script src="js/eventHandlers.js"></script>
         <script src="js/buttons.js"></script>
+        <script src="js/eventHandlers.js"></script>
         <!-- Product List End -->
         <?php
 

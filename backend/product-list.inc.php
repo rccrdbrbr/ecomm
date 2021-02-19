@@ -77,6 +77,41 @@
           <p>Nessun prodotto nella sottocategoria selezionata!</p>
           <?php
       }
+  } elseif (isset($_GET["prov"])) {
+      $annunci = fetchAnnunciProv($conn, $_GET["prov"]);
+
+      if ($annunci == true) {
+          while ($row = mysqli_fetch_assoc($annunci)) {
+              if (isset($_SESSION["CF"])) {
+                  if ($row["TipoA"]=="pubblico" || $row["TipoA"]=="ristretto" && $row["AreaGeo"]==$_SESSION["Regione"]) {
+                      ?>
+                  <div class="col-md-4">
+                  <?php
+                    include "common/product-list-items.php"; ?>
+                    </div>
+                    <?php
+                    $f=1;
+                  }
+              } elseif (!isset($_SESSION["CF"]) && $row["TipoA"]=="pubblico") {
+                  ?>
+              <div class="col-md-4">
+              <?php
+                include "common/product-list-items.php"; ?>
+                </div>
+                <?php
+                $f=1;
+              }
+          }
+          if ($f==0) {
+              ?>
+          <p>Nessun prodotto nell'area geografica selezionata!</p>
+          <?php
+          }
+      } else {
+          ?>
+        <p>Nessun prodotto presente!</p>
+        <?php
+      }
   } else {
       $annunci = fetchAnnunci($conn);
 

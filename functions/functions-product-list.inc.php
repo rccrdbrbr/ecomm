@@ -145,6 +145,32 @@ function fetchAnnunciSubcat($conn, $subcat)
     mysqli_stmt_close($stmt);
 }
 
+function fetchAnnunciProv($conn, $prov)
+{
+    $sql= "SELECT  a.ID_A, a.Nome_A, p.ID_P, a.CF, p.Foto, a.Prezzo, Stato, a.Tipo TipoA, AreaGeo, count(o.CF) n
+    FROM annuncio a JOIN prodotto p ON a.ID_P=p.ID_P JOIN stati s ON s.ID_A=a.ID_A LEFT OUTER JOIN osserva o ON o.ID_A=a.ID_A
+    WHERE Provincia=? AND Stato='in vendita'
+    GROUP BY a.ID_A, p.ID_P
+    ORDER BY n DESC;";
+    $stmt= mysqli_stmt_init($conn);
+    if (!mysqli_stmt_prepare($stmt, $sql)) {
+        exit();
+    }
+
+    mysqli_stmt_bind_param($stmt, "s", $prov);
+    mysqli_stmt_execute($stmt);
+
+    $dati= mysqli_stmt_get_result($stmt);
+    if (mysqli_num_rows($dati) > 0) {
+        return $dati;
+    } else {
+        $risultato=false;
+        return $risultato;
+    }
+
+    mysqli_stmt_close($stmt);
+}
+
 function fetchCategorie($conn)
 {
     $sql= "SELECT DISTINCT  Sottocategoria FROM categoria c NATURAL JOIN prodotto p

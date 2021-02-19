@@ -171,3 +171,14 @@ function countRowsCat() {
     }
   })
 }
+
+function cercaRegProv() {
+  provinciaMenu = document.getElementById('prov');
+  provincia = provinciaMenu.options[provinciaMenu.selectedIndex].value;
+
+  console.log(provincia);
+
+  link = "product-list.php?prov=" + provincia;
+
+  window.location.replace(link);
+}

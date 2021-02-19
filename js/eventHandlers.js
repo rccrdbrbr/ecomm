@@ -1,6 +1,8 @@
 window.addEventListener('DOMContentLoaded', popolaRegioni);
-//window.addEventListener('DOMContentLoaded', popolaAreaGeo);
-
-// document.getElementById('prov').addEventListener('click',popolaProvince);
 document.getElementById('regione').addEventListener('change', popolaProvince);
-document.getElementById('visibility').addEventListener('change', popolaAreaGeo);
+if (document.getElementById('visibility') !== null) {
+  document.getElementById('visibility').addEventListener('change', popolaAreaGeo);
+}
+if (document.getElementById('cercaProv') !== null) {
+  document.getElementById('cercaProv').addEventListener('click', cercaRegProv);
+}
