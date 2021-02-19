@@ -18,17 +18,13 @@ function ajaxRequest() {
 
 
 
-
 function popolaRegioni() {
-  // var cognome = this.value;
-
   var xttp = new ajaxRequest();
+
   xttp.onreadystatechange = function() {
-    //console.log(this.readyState + ' ' + this.status);
     if (this.readyState == 4 && this.status == 200) {
       console.log(this.response);
       risposta = JSON.parse(this.response);
-      //console.log(risposta.status);
       regioni = risposta.contenuto;
       menu = document.getElementById('regione');
       console.log(menu);
@@ -45,17 +41,13 @@ function popolaRegioni() {
 }
 
 function popolaProvince() {
-  // var cognome = this.value;
   regioneMenu = document.getElementById('regione');
   regione = regioneMenu.options[regioneMenu.selectedIndex].value;
-  //console.log(regione);
 
   if (regione != 'pubblico') {
     var xttp = new ajaxRequest();
     xttp.onreadystatechange = function() {
-      // console.log(this.readyState + ' ' + this.status);
       if (this.readyState == 4 && this.status == 200) {
-        //console.log(this.response);
         risposta = JSON.parse(this.response);
 
         province = risposta.contenuto;
@@ -80,14 +72,12 @@ function popolaAreaGeo() {
   visibilitym = document.getElementById('visibility');
   visibility = visibilitym.options[visibilitym.selectedIndex].value;
   console.log(visibility);
+
   if (visibility == 'ristretto') {
     var xttp = new ajaxRequest();
     xttp.onreadystatechange = function() {
-      //console.log(this.readyState + ' ' + this.status);
       if (this.readyState == 4 && this.status == 200) {
-        // console.log(this.response);
         risposta = JSON.parse(this.response);
-        //console.log(risposta.status);
         regioni = risposta.contenuto;
         menu = document.getElementById('area');
         console.log(menu);
