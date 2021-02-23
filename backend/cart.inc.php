@@ -45,7 +45,6 @@ foreach ($_SESSION["Carrello"] as $ida) {
         <td><a onclick="deleteCart(<?php echo $elemento["ID_A"]; ?>)"><button><i class="fa fa-trash"></i></button></td>
     </tr>
     <?php
-    //$_SESSION["Totale"]+= $elemento["Prezzo"];
     }
 } ?>
 </tbody>
