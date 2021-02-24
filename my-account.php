@@ -74,9 +74,6 @@ if (isset($_SESSION["CF"]) || isset($_GET["cf"])) {
                                       <h4>Indirizzo</h4>
                                       <?php
                                         echo '<p>Via ' .$utente["Via"]. ', ' .$utente["Città"]. ', ' .$utente["Prov"].', ' .$utente["Reg"].'</p>'; ?>
-
-
-                                      <!--  <button class="btn" href="#account-tab">Modifica Indirizzo</button> -->
                                     </div>
                                     <div class="col-md-6">
                                       <h4>Numero valutazioni</h4>
