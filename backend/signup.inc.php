@@ -41,7 +41,6 @@ if (isset($_POST["submit"])) {
     $sigla=fetchSigla($conn, $prov, $reg);
     CreaIndirizzo($conn, $via, $city, $sigla, $reg);
     CreaUtente($conn, $name, $surname, $email, $cf, $via, $city, $sigla, $reg, $imgname, $imgtmpname, $type, $pwd1);
-//echo $name, $surname, $email, $cf, $via, $city, $prov, $reg, $imgname, $imgtmpname, $type, $pwd1;
 } else {
     header("location: ../signup.php");
     exit();
