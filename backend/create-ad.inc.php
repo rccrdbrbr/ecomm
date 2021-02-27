@@ -35,17 +35,17 @@ if (isset($_POST["submit"])) {
     }
 
     if (AreaErrata($visibility, $area)!== false) {
-        header("location: ../create-ad.php?error=wronginput1");
+        header("location: ../create-ad.php?error=wronginput");
         exit();
     }
 
     if (AssicurazioneErr($type, $ensurance)!== false) {
-        header("location: ../create-ad.php?error=wronginput2");
+        header("location: ../create-ad.php?error=wronginput");
         exit();
     }
 
     if (UsuraPeriodoErr($type, $usura, $periodo)!== false) {
-        header("location: ../create-ad.php?error=wronginput3");
+        header("location: ../create-ad.php?error=wronginput");
         exit();
     }
 
