@@ -3,9 +3,9 @@ require_once 'dbh.inc.php';
 require_once 'functions/functions-account-query.inc.php';
 
 $venditori = fetchTopVenditori($conn);
-
-while ($row = mysqli_fetch_assoc($venditori)) {
-    ?>
+if ($venditori!== false) {
+    while ($row = mysqli_fetch_assoc($venditori)) {
+        ?>
 
 <div class="col-md-6">
     <div class="review-slider-item">
@@ -29,4 +29,15 @@ while ($row = mysqli_fetch_assoc($venditori)) {
 </div>
 
 <?php
+    }
+} else {
+    ?>
+    <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-12">
+            <h3>Non ci sono utenti da mostrare!</h3>
+          </div>
+        </div>
+    </div>
+  <?php
 }
