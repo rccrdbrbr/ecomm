@@ -3,7 +3,11 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
+<<<<<<< HEAD
 -- Creato il: Mar 02, 2021 alle 19:28
+=======
+-- Creato il: Mar 02, 2021 alle 19:02
+>>>>>>> 1df4937bfa479ffcdbf31314850973280bb863b2
 -- Versione del server: 10.4.10-MariaDB
 -- Versione PHP: 7.3.12
 
@@ -78,6 +82,7 @@ INSERT INTO `annuncio` (`ID_A`, `Nome_A`, `Prezzo`, `Comune`, `Provincia`, `Regi
 (4, 'Annuncio4', 66, 'Venosa', 'Potenza', 'Basilicata', '2021-02-28', 9, 'pubblico', '', 'RMNMAL98D03T251Z', '2020-12-24', 'Camicia quasi mai indossata, taglia L'),
 (5, 'Annuncio5', 89, 'Crema', 'Cremona', 'Lombardia', '2021-02-28', 10, 'pubblico', '', 'BRBRCR99S05D142T', '2021-01-01', 'Scarpe nuove, taglia 41'),
 (6, 'Annuncio6', 95, 'Firenze', 'Firenze', 'Toscana', '2021-02-28', 11, 'pubblico', '', 'GRGGOI73S02A172Z', '2020-12-24', 'Lavatrice portatile 2 in 1'),
+<<<<<<< HEAD
 (7, 'Annuncio7', 20, 'Firenze', 'Firenze', 'Toscana', '2021-03-10', 12, 'pubblico', '', 'GRGGOI73S02A172Z', '2020-12-26', 'Pallone del mondiale del 2010'),
 (8, 'Annuncio8', 12, 'Crema', 'Cremona', 'Lombardia', '2021-03-10', 13, 'pubblico', '', 'BRBRCR99S05D142T', '2020-12-30', 'Occhiali da sole mai usati, ancora incartati'),
 (9, 'Annuncio9', 45, 'Crema', 'Chieti', 'Abruzzo', '2021-02-28', 14, 'pubblico', '', 'BRBRCR99S05D142T', '2021-01-17', 'Vestito mai usato'),
@@ -86,6 +91,16 @@ INSERT INTO `annuncio` (`ID_A`, `Nome_A`, `Prezzo`, `Comune`, `Provincia`, `Regi
 (12, 'Annuncio12', 200, 'Venosa', 'Potenza', 'Basilicata', '2021-02-23', 17, 'pubblico', '', 'RMNMAL98D03T251Z', '2021-02-15', 'Sedia di design'),
 (13, 'Annuncio13', 200, 'Venosa', 'Potenza', 'Basilicata', '2021-03-10', 18, 'pubblico', '', 'RMNMAL98D03T251Z', '2021-02-15', 'Sedia di design'),
 (14, 'Annuncio14', 60, 'Venosa', 'Potenza', 'Basilicata', '2021-03-10', 19, 'pubblico', '', 'RMNMAL98D03T251Z', '2021-02-15', 'Camicia mai usata, taglia L');
+=======
+(7, 'Annuncio7', 20, 'Firenze', 'Firenze', 'Toscana', '2021-01-31', 12, 'pubblico', '', 'GRGGOI73S02A172Z', '2020-12-26', 'Pallone del mondiale del 2010'),
+(8, 'Annuncio8', 12, 'Crema', 'Cremona', 'Lombardia', '2021-02-28', 13, 'pubblico', '', 'BRBRCR99S05D142T', '2020-12-30', 'Occhiali da sole mai usati, ancora incartati'),
+(9, 'Annuncio9', 45, 'Crema', 'Chieti', 'Abruzzo', '2021-02-28', 14, 'pubblico', '', 'BRBRCR99S05D142T', '2021-01-17', 'Vestito mai usato'),
+(10, 'Annuncio10', 8, 'Venosa', 'Potenza', 'Basilicata', '2021-02-09', 15, 'pubblico', '', 'RMNMAL98D03T251Z', '2021-02-02', 'Quaderno a quadretti 5 mm, verde '),
+(11, 'Annuncio11', 123, 'Venosa', 'Potenza', 'Basilicata', '2021-02-21', 16, 'pubblico', '', 'RMNMAL98D03T251Z', '2021-02-15', 'dascbhob'),
+(12, 'Annuncio12', 200, 'Venosa', 'Potenza', 'Basilicata', '2021-02-23', 17, 'pubblico', '', 'RMNMAL98D03T251Z', '2021-02-15', 'Sedia di design'),
+(13, 'Annuncio13', 200, 'Venosa', 'Potenza', 'Basilicata', '2021-02-23', 18, 'pubblico', '', 'RMNMAL98D03T251Z', '2021-02-15', 'Sedia di design'),
+(14, 'Annuncio14', 60, 'Venosa', 'Potenza', 'Basilicata', '2021-02-23', 19, 'pubblico', '', 'RMNMAL98D03T251Z', '2021-02-15', 'Camicia mai usata, taglia L');
+>>>>>>> 1df4937bfa479ffcdbf31314850973280bb863b2
 
 -- --------------------------------------------------------
 
@@ -159,6 +174,16 @@ CREATE TABLE `osserva` (
   `ID_A` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+<<<<<<< HEAD
+=======
+--
+-- Dump dei dati per la tabella `osserva`
+--
+
+INSERT INTO `osserva` (`CF`, `ID_A`) VALUES
+('MRCPSE98S02F346Z', 1);
+
+>>>>>>> 1df4937bfa479ffcdbf31314850973280bb863b2
 -- --------------------------------------------------------
 
 --
@@ -342,6 +367,7 @@ CREATE TABLE `stati` (
 --
 
 INSERT INTO `stati` (`CF`, `ID_A`, `Stato`) VALUES
+<<<<<<< HEAD
 ('BRBRCR99S05D142T', 1, 'eliminato'),
 ('BRBRCR99S05D142T', 2, 'venduto'),
 ('BRBRCR99S05D142T', 5, 'eliminato'),
@@ -356,6 +382,22 @@ INSERT INTO `stati` (`CF`, `ID_A`, `Stato`) VALUES
 ('RMNMAL98D03T251Z', 12, 'eliminato'),
 ('RMNMAL98D03T251Z', 13, 'in vendita'),
 ('RMNMAL98D03T251Z', 14, 'in vendita');
+=======
+('BRBRCR99S05D142T', 1, 'in vendita'),
+('BRBRCR99S05D142T', 2, 'venduto'),
+('BRBRCR99S05D142T', 5, 'in vendita'),
+('BRBRCR99S05D142T', 8, 'in vendita'),
+('BRBRCR99S05D142T', 9, 'in vendita'),
+('GRGGOI73S02A172Z', 6, 'eliminato'),
+('GRGGOI73S02A172Z', 7, 'eliminato'),
+('RMNMAL98D03T251Z', 3, 'eliminato'),
+('RMNMAL98D03T251Z', 4, 'eliminato'),
+('RMNMAL98D03T251Z', 10, 'eliminato'),
+('RMNMAL98D03T251Z', 11, 'eliminato'),
+('RMNMAL98D03T251Z', 12, 'eliminato'),
+('RMNMAL98D03T251Z', 13, 'eliminato'),
+('RMNMAL98D03T251Z', 14, 'eliminato');
+>>>>>>> 1df4937bfa479ffcdbf31314850973280bb863b2
 
 -- --------------------------------------------------------
 
@@ -384,7 +426,11 @@ CREATE TABLE `utente` (
 
 INSERT INTO `utente` (`CF`, `Email`, `Tipo`, `Nome`, `Cognome`, `Immagine`, `Eliminato`, `Via`, `Città`, `Prov`, `Reg`, `Password`) VALUES
 ('BRBRCR99S05D142T', 'riccardobarbieri99@gmail.com', 'Venditore e Acquirente', 'Riccardo', 'Barbieri', 'IMG-20200808-WA0007.jpg', 0, 'Roma', 'Pieranica', 'CR', 'Lombardia', '$2y$10$jXAttecrLOqVazwzyVVrMO9dtxDk8fHO1cZ3VQxXa02hnVFLzd9Du'),
+<<<<<<< HEAD
 ('GRGGOI73S02A172Z', 'giorgio@gmail.com', 'Venditore e Acquirente', 'Giorgio', 'Gori', 'giorgio-gori.jpg', 0, 'A. Manzoni, 31\r\n', 'Firenze', 'FI', 'Toscana', '$2y$10$0as9KXHv.hCgo0mAnSV41.uMSEIpx9sNNNfgMZjAJ2se70pySlhZS'),
+=======
+('GRGGOI73S02A172Z', 'giorgio@gmail.com', 'Venditore e Acquirente', 'Giorgio', 'Gori', 'giorgio-gori.jpg', 1, 'A. Manzoni, 31\r\n', 'Firenze', 'FI', 'Toscana', '$2y$10$0as9KXHv.hCgo0mAnSV41.uMSEIpx9sNNNfgMZjAJ2se70pySlhZS'),
+>>>>>>> 1df4937bfa479ffcdbf31314850973280bb863b2
 ('MRCPSE98S02F346Z', 'marco@pesce.it', 'Acquirente', 'Marco', 'Pesce', 'pesce.jpg', 0, 'Medici', 'Brescia', 'BR', 'Lombardia', '$2y$10$76y2ol.nvECJemuUx78OReE6j8kqGGIBJUMpTgccImH3DI.Hw.kUK'),
 ('RMNMAL98D03T251Z', 'sapo@gmail.com', 'Venditore', 'Romano', 'Maiorella', 'sapo.jpg', 0, 'Cocco', 'Venosa', 'PZ', 'Basilicata', '$2y$10$qprfKGEK.PVTJH9oHRj/Rud9PRX./jOzMtBh7hIxNAG0Zl2I9jCIe');
 
